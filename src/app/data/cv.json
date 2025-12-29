@@ -1,0 +1,171 @@
+{
+    "name": "Curriculum Vitae",
+    "title": "Full Stack Web Developer",
+    "subtitle": "Full Stack Developer - Manuel Henriquez",
+    "profile": "Desarrollador web con más de 5 años de experiencia en el desarrollo de aplicaciones web modernas, tanto en front-end como en back-end. Cuento con experiencia en PHP, Node.js, JavaScript y TypeScript, trabajando con frameworks como Next.js, NestJS y Vue.js. Apasionado por el desarrollo de software, el aprendizaje continuo y el crecimiento profesional, con el objetivo constante de mejorar mis habilidades y crear soluciones cada vez más eficientes, escalables y de mayor calidad.",
+    "photo": "/img/mhenriquez.png",
+    "contact": {
+        "email": "mdhenriquez16@gmail.com",
+        "phone": "+504 9237-0288",
+        "website": "https://mhenriquezdev.com",
+        "linkedin": "https://www.linkedin.com/in/manuel-henriquez-a8541423a/"
+    },
+    "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Node.js",
+        "Vue.js",
+        "React",
+        "Next.js",
+        "NestJS",
+        "PHP",
+        "MySQL",
+        "MongoDB",
+        "Docker",
+        "Git"
+    ],
+    "experience": [
+        {
+            "position": "Desarrollador Back-End",
+            "company": "SENPRENDE",
+            "duration": "Enero 2025 - Actualidad",
+            "responsibilities": [
+                "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (SENPRENDE).",
+                "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+            ]
+        },
+        {
+            "position": "Consultoría Tecnológica",
+            "company": "CDE Mipyme Coordillera Nombre de Dios",
+            "duration": "Jul 2024 - Dic 2024",
+            "responsibilities": [
+                "Consultoría Tecnológica en CDE Mipyme Coordillera Nombre de Dios.",
+                "Análisis de sistemas, desarrollo de software, soporte técnico y capacitación."
+            ]
+        },
+        {
+            "position": "Desarrollador Back-End",
+            "company": "SENPRENDE",
+            "duration": "Nov 2023 - Jun 2024",
+            "responsibilities": [
+                "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (SENPRENDE).",
+                "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB."
+            ]
+        },
+        {
+            "position": "Web Developer",
+            "company": "CCS Consultores (Honduras)",
+            "duration": "2021 - 2022",
+            "responsibilities": [
+                "Desarrollador WEB en la empresa CCS Consultores (Honduras).",
+                "Tecnologías: CSS, HTML, JavaScript y PHP."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Ingeniería en Sistemas",
+            "institution": "UNAH",
+            "duration": "2015 - Actualidad",
+            "description": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
+        },
+        {
+            "degree": "NestJS de Cero a Experto",
+            "institution": "DevTalles",
+            "duration": "2022 - 2022",
+            "description": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
+        },
+        {
+            "degree": "PCAP - Programming Essentials in Python",
+            "institution": "CISCO Networking Academy",
+            "duration": "2021 - 2021",
+            "description": "Curso de desarrollo en Python, de CISCO Networking Academy."
+        },
+        {
+            "degree": "Introduction to Cybersecurity",
+            "institution": "CISCO Networking Academy",
+            "duration": "2020 - 2020",
+            "description": "Curso de introducción a la cyber seguridad de CISCO Networking Academy."
+        },
+        {
+            "degree": "NDG Linux Unhatched",
+            "institution": "CISCO Networking Academy",
+            "duration": "2020 - 2020",
+            "description": "Curso de introduccion LINUX de CISCO Networking Academy."
+        },
+        {
+            "degree": "Técnico en Computación",
+            "institution": "Bachillerato",
+            "duration": "2011 - 2014",
+            "description": "Bachillerato técnico en computación."
+        }
+    ],
+    "references":[
+        {
+            "name": "Ing. Erick Lobo",
+            "tel": "+504 3302-7852"
+        },
+        {
+            "name": "Jonathan Martinez",
+            "tel": "+504 9903-6400"
+        },
+        {
+            "name": "Ing. Angel Mendez",
+            "tel": "+504 9795-5444"
+        },
+        {
+            "name": "Lic. Brayan Medina",
+            "tel": "+504 9669-1771"
+        },
+        {
+            "name": "Ing. Alin Rodriguez",
+            "tel": "+504 9776-4422"
+        }
+    ],
+    "languages": [
+        {
+            "language": "Español",
+            "level": "Nativo"
+        },
+        {
+            "language": "Inglés",
+            "level": "Básico"
+        }
+    ],
+    "hobbies": [
+        "Programación",
+        "Videojuegos",
+        "Tecnología",
+        "Cine"
+    ],
+    "projects": [
+        {
+            "name": "ComerciaHN",
+            "description": "Plataforma de comercio electrónico desarrollada para SENPRENDE que conecta a más de 900 emprendedores hondureños con compradores. Ofrece productos 100% locales con visibilidad nacional e internacional y registro gratuito para vendedores.",
+            "technologies": "NestJS, TypeScript, PostgreSQL, VueJS",
+            "link": ""
+        },
+        {
+            "name": "ATKi Software",
+            "description": "Sistema diseñado para administrar las operaciones diarias de empresas en tiempo real de forma eficiente, segura y muy sencilla. Solución para micro, pequeñas y medianas empresas.",
+            "link": "https://atki.online/"
+        },
+        {
+            "name": "RapidRiders",
+            "description": "Proyecto Universitario de desarrollo full-stack para monitorear motoristas, clientes y administradores. Incluye todas las instancias, rutas y endpoints creados desde cero.",
+            "technologies": "NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap",
+            "link": ""
+        },
+        {
+            "name": "Salón Azul FFAA",
+            "description": "Apoyo brindado en el salón azul computacional (Desarrollo) de la Fuerza Aerea Hondureña",
+            "link": ""
+        },
+        {
+            "name": "POS para Restaurantes",
+            "description": "Punto de ventas para restaurantes diseñado para dar comodidad a los clientes y a los empleados. Sistema completo de gestión de órdenes y pagos.",
+            "technologies": "JavaScript, PHP, MySQL, jQuery, Bootstrap",
+            "link": "https://github.com/ManuelDHenriquez/Restaurante"
+        }
+    ]
+}

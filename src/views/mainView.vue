@@ -14,6 +14,9 @@
         </p>
         <div class="hero-cta">
           <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+          <button @click="openCvModal" class="btn-cv">
+            <i class="fas fa-file-pdf"></i> Ver CV
+          </button>
           <a href="#contacto" class="btn-secondary">Contactar</a>
         </div>
       </div>
@@ -285,6 +288,30 @@
       </div>
     </Transition>
 
+    <!-- Modal CV PDF -->
+    <Transition name="modal">
+      <div v-if="showModalCV" class="modal-overlay" @click="closeModalCV">
+        <div class="modal-container modal-cv" @click.stop>
+          <button class="modal-close" @click="closeModalCV">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="modal-header">
+            <h2>Curriculum Vitae</h2>
+            <button @click="downloadCV" class="btn-download">
+              <i class="fas fa-download"></i> Descargar CV
+            </button>
+          </div>
+          <div class="modal-content pdf-viewer">
+            <iframe v-if="pdfUrl" :src="pdfUrl" class="pdf-iframe"></iframe>
+            <div v-else class="loading-pdf">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Generando PDF...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
     <footer class="footer">
       <p>Copyright © 2025. All Rights Reserved</p>
     </footer>
@@ -294,6 +321,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import data from '../app/data/portfolio-data.json'
+import { useCreatePdf } from '@/composables/createPdf'
 
 defineProps<{
   isLightTheme: boolean
@@ -312,6 +340,31 @@ const comerciaHNProyectos = ComerciaHN
 
 const showModalRapidRiders = ref(false)
 const showModalComercia = ref(false)
+const showModalCV = ref(false)
+const pdfUrl = ref<string>('')
+
+const { generateCV, getPdfUrl } = useCreatePdf()
+
+const openCvModal = async () => {
+  showModalCV.value = true
+  document.body.style.overflow = 'hidden'
+  pdfUrl.value = '' // Reset URL
+  try {
+    pdfUrl.value = await getPdfUrl()
+  } catch (error) {
+    console.error('Error generando PDF:', error)
+  }
+}
+
+const closeModalCV = () => {
+  showModalCV.value = false
+  document.body.style.overflow = 'auto'
+  pdfUrl.value = ''
+}
+
+const downloadCV = () => {
+  generateCV()
+}
 
 const openModalRapidRiders = () => {
   showModalRapidRiders.value = true

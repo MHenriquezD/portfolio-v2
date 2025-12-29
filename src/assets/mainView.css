@@ -302,16 +302,23 @@
   gap: 1.5rem;
   justify-content: center;
   animation: fadeInUp 0.8s ease-out 0.8s backwards;
+  flex-wrap: wrap;
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-cv {
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-primary {
@@ -323,6 +330,17 @@
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(100, 181, 246, 0.5);
+}
+
+.btn-cv {
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+}
+
+.btn-cv:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.5);
 }
 
 .btn-secondary {
@@ -1273,5 +1291,101 @@ section {
     min-width: 50px;
     height: 50px;
     font-size: 1.5rem;
+  }
+}
+
+/* Modal CV Styles */
+.modal-cv {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 1200px;
+  height: 90vh;
+}
+
+.modal-cv .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(100, 181, 246, 0.2);
+}
+
+.modal-cv .modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn-download {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+  margin-right: 3rem;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.5);
+}
+
+.pdf-viewer {
+  padding: 0;
+  height: calc(90vh - 100px);
+  overflow: hidden;
+}
+
+.pdf-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+.loading-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+  color: #64b5f6;
+}
+
+.loading-pdf i {
+  font-size: 3rem;
+}
+
+.loading-pdf p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .modal-cv {
+    width: 100%;
+    height: 95vh;
+  }
+
+  .modal-cv .modal-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .btn-download {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pdf-viewer {
+    height: calc(95vh - 140px);
   }
 }

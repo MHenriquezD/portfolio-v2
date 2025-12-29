@@ -173,35 +173,35 @@
       "titulo": "POS para Restaurantes",
       "img": "https://i.postimg.cc/2SCV8xyZ/logo.jpg",
       "url": "https://github.com/ManuelDHenriquez/Restaurante",
-      "descripcion": "Punto de ventas para restaurantes, construido a base de JS, PHP y MySQl, con otras tenologías como HTML, CSS, Jquery, Bootstrap, etc. Este fue diseñado para dar comodidad a los clientes y a los empleados de los restaurantes."
+      "descripcion": "Sistema de punto de venta (POS) integral desarrollado específicamente para la gestión de restaurantes. Implementa funcionalidades completas de gestión de mesas, pedidos en tiempo real, control de inventario, facturación electrónica y reportes de ventas. La arquitectura del sistema facilita la comunicación entre meseros, cocina y caja, optimizando el flujo de trabajo y mejorando la experiencia del cliente. Desarrollado con JavaScript, PHP y MySQL, integrando tecnologías frontend como jQuery y Bootstrap para una interfaz responsiva e intuitiva."
     },
     {
       "id": 1,
       "titulo": "ATKi Software",
       "img": "https://atki.online/images/2023/05/10/atkisoftwaremascota.png",
       "url": "https://atki.online/",
-      "descripcion": "ATKi Software es un sistema diseñado para administrar las operaciones diarias de tu empresa en tiempo real de forma eficiente, segura y muy sencilla, si eres una micro, pequeña o mediana empresa, has llegado al lugar correcto aquí tenemos una solución para tu negocio."
+      "descripcion": "Plataforma empresarial SaaS diseñada para la administración integral de operaciones diarias en tiempo real. El sistema proporciona módulos completos de gestión financiera, control de inventario, facturación electrónica, recursos humanos y análisis de datos mediante dashboards interactivos. Orientado específicamente a micro, pequeñas y medianas empresas, combina seguridad robusta, escalabilidad y una interfaz amigable que permite a los usuarios gestionar sus negocios de manera eficiente sin requerir conocimientos técnicos avanzados."
     },
     {
       "id": 2,
       "titulo": "RapidRiders",
       "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
       "url": "",
-      "descripcion": "Proyecto Universitario en el cual tuve que desarrollar back-end y fron-end, este fue desarrollado para monitorear motoristas, clientes y administradores, fueron creadas todas las instancias desde cero, así como las rutas y los endpoits. Creado con NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap."
+      "descripcion": "Aplicación web full-stack desarrollada como proyecto universitario para la gestión de servicios de delivery. El sistema implementa una arquitectura completa con tres interfaces especializadas: panel administrativo para supervisión y reportes, aplicación de clientes para realizar pedidos, y sistema para motoristas que gestiona las entregas en tiempo real. Desarrollado desde cero con arquitectura RESTful, incluye autenticación JWT, geolocalización en tiempo real, sistema de notificaciones y gestión de estados de órdenes. Stack tecnológico: Node.js, TypeScript, Express, MongoDB para el backend, con frontend en Bootstrap y JavaScript."
     },
     {
       "id": 3,
       "titulo": "Salón Azul FFAA",
       "img": "https://i.postimg.cc/wM3C9MRP/ffaa.png",
       "url": "",
-      "descripcion": "Apoyo brindado en el salón azul computacional (Desarrollo) de la Fuerza Aerea Hondureña"
+      "descripcion": "Colaboración técnica en el Salón Azul Computacional de la Fuerza Aérea Hondureña, proporcionando soporte en desarrollo de software y sistemas institucionales. El trabajo incluyó análisis de requerimientos, desarrollo de soluciones tecnológicas personalizadas, mantenimiento de sistemas críticos y capacitación técnica al personal. Experiencia en entorno gubernamental con altos estándares de seguridad y cumplimiento de protocolos institucionales."
     },
     {
       "id": 4,
       "titulo": "ComerciaHN",
       "img": "/img/comerciahn.png",
       "url": "",
-      "descripcion": "Plataforma de comercio electrónico desarrollada para SENPRENDE que conecta a más de 900 emprendedores hondureños con compradores. Ofrece productos 100% locales con visibilidad nacional e internacional y registro gratuito para vendedores. Desarrollado con NestJS, TypeScript, PostgreSQL y VueJS."
+      "descripcion": "Plataforma de comercio electrónico a nivel nacional desarrollada para SENPRENDE, diseñada para impulsar el emprendimiento hondureño conectando más de 900 emprendedores con consumidores locales e internacionales. El sistema incluye marketplace completo con catálogo de productos, carrito de compras, pasarelas de pago, sistema de gestión de inventario, panel administrativo avanzado con analytics, gestión de tiendas virtuales y CRM para vendedores. Arquitectura escalable construida con NestJS y TypeScript en el backend, PostgreSQL para persistencia de datos, Prisma como ORM, y Vue.js 3 con Composition API en el frontend, garantizando alto rendimiento y mantenibilidad."
     }
   ],
   "rapidRidersProyectos": [

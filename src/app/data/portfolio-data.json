@@ -1,0 +1,261 @@
+{
+  "contacto": [
+    {
+      "tipo": "facebook",
+      "url": "https://www.facebook.com/ManuelD.Jesus8/",
+      "icon": "fab fa-facebook",
+      "texto": null
+    },
+    {
+      "tipo": "linkedin",
+      "url": "https://www.linkedin.com/in/manuel-henriquez-a8541423a/",
+      "icon": "fab fa-linkedin",
+      "texto": null
+    },
+    {
+      "tipo": "github",
+      "url": "https://github.com/MHenriquezD",
+      "icon": "fab fa-github-square",
+      "texto": null
+    },
+    {
+      "tipo": "email",
+      "url": "mailto:mdhenriquez16@gmail.com",
+      "icon": "fas fa-envelope",
+      "texto": "mdhenriquez16@gmail.com"
+    },
+    {
+      "tipo": "telefono",
+      "url": "https://wa.me/50492370288?text=Hola%20Manuel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte.",
+      "icon": "fas fa-phone",
+      "texto": "+504 9237-0288"
+    }
+  ],
+  "habilidades": [
+    {
+      "id": 1,
+      "titulo": "HTML",
+      "img": "/img/html.svg"
+    },
+    {
+      "id": 2,
+      "titulo": "CSS",
+      "img": "/img/css.svg"
+    },
+    {
+      "id": 3,
+      "titulo": "JavaScript",
+      "img": "/img/javascript.svg"
+    },
+    {
+      "id": 4,
+      "titulo": "JQuery",
+      "img": "/img/jquery.svg"
+    },
+    {
+      "id": 5,
+      "titulo": "NodeJS",
+      "img": "/img/node.svg"
+    },
+    {
+      "id": 6,
+      "titulo": "typescript",
+      "img": "/img/typescript.svg"
+    },
+    {
+      "id": 7,
+      "titulo": "Express",
+      "img": "/img/express.svg"
+    },
+    {
+      "id": 8,
+      "titulo": "PHP",
+      "img": "/img/php.svg"
+    },
+    {
+      "id": 9,
+      "titulo": "PostgreSQL",
+      "img": "/img/postgresql.svg"
+    },
+    {
+      "id": 10,
+      "titulo": "MySQL",
+      "img": "/img/mysql.svg"
+    },
+    {
+      "id": 11,
+      "titulo": "SQLite",
+      "img": "/img/sqlite.svg"
+    },
+    {
+      "id": 12,
+      "titulo": "MongoDB",
+      "img": "/img/mongo.svg"
+    },
+    {
+      "id": 13,
+      "titulo": "VueJS",
+      "img": "/img/vuelogo.svg"
+    },
+    {
+      "id": 14,
+      "titulo": "NestJS",
+      "img": "img/nestjslogo.svg"
+    }
+  ],
+  "experiencia": [
+    {
+      "id": 1,
+      "titulo": "Desarrollador Back-End",
+      "periodo": "Enero 2025 - Actualidad",
+      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+    },
+    {
+      "id": 2,
+      "titulo": "Consultoría Tecnológica",
+      "periodo": "Jul 2024 - Dic 2024",
+      "descripcion": "Consultoría Tecnológica en CDE Mipyme Coordillera Nombre de Dios. <br> Análisis de sistemas, desarrollo de software, soporte técnico y capacitación."
+    },
+    {
+      "id": 3,
+      "titulo": "Desarrollador Back-End",
+      "periodo": "Nov 2023 - Jun 2024",
+      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br> NestJS, TypeScript, PostgreSQL, MongoDB."
+    },
+    {
+      "id": 4,
+      "titulo": "Web Developer",
+      "periodo": "2021 - 2022",
+      "descripcion": "Desarrollador WEB en la empresa CCS Consultores (Honduras).<br>Utilizando CSS, HTML, JavaScrip y PHP."
+    }
+  ],
+  "educacion":[
+    {
+      "id": 0,
+      "titulo": "Ingeniería en Sistemas",
+      "periodo": "2015 - Actualidad",
+      "descripcion": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
+    },
+    {
+        "id": 2,
+        "titulo": "NestJS de Cero a Experto",
+        "periodo": "2022 - 2022",
+        "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
+    },
+    {
+      "id": 1,
+      "titulo": "PCAP - Programming Essentials in Python",
+      "periodo": "2021 - 2021",
+      "descripcion": "Curso de desarrollo en Python, de CISCO Networking Academy."
+    },
+    {
+      "id": 2,
+      "titulo": "Introduction to Cybersecurity",
+      "periodo": "2020 - 2020",
+      "descripcion": "Curso de introducción a la cyber seguridad de CISCO Networking Academy."
+    },
+    {
+      "id": 3,
+      "titulo": "NDG Linux Unhatched",
+      "periodo": "2020 - 2020",
+      "descripcion": "Curso de introduccion LINUX de CISCO Networking Academy."
+    },
+    {
+      "id": 4,
+      "titulo": "Técnico en Computación",
+      "periodo": "2011 - 2014",
+      "descripcion": "Bachillerato técnico en computación."
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 0,
+      "titulo": "POS para Restaurantes",
+      "img": "https://i.postimg.cc/2SCV8xyZ/logo.jpg",
+      "url": "https://github.com/ManuelDHenriquez/Restaurante",
+      "descripcion": "Punto de ventas para restaurantes, construido a base de JS, PHP y MySQl, con otras tenologías como HTML, CSS, Jquery, Bootstrap, etc. Este fue diseñado para dar comodidad a los clientes y a los empleados de los restaurantes."
+    },
+    {
+      "id": 1,
+      "titulo": "ATKi Software",
+      "img": "https://atki.online/images/2023/05/10/atkisoftwaremascota.png",
+      "url": "https://atki.online/",
+      "descripcion": "ATKi Software es un sistema diseñado para administrar las operaciones diarias de tu empresa en tiempo real de forma eficiente, segura y muy sencilla, si eres una micro, pequeña o mediana empresa, has llegado al lugar correcto aquí tenemos una solución para tu negocio."
+    },
+    {
+      "id": 2,
+      "titulo": "RapidRiders",
+      "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
+      "url": "",
+      "descripcion": "Proyecto Universitario en el cual tuve que desarrollar back-end y fron-end, este fue desarrollado para monitorear motoristas, clientes y administradores, fueron creadas todas las instancias desde cero, así como las rutas y los endpoits. Creado con NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap."
+    },
+    {
+      "id": 3,
+      "titulo": "Salón Azul FFAA",
+      "img": "https://i.postimg.cc/wM3C9MRP/ffaa.png",
+      "url": "",
+      "descripcion": "Apoyo brindado en el salón azul computacional (Desarrollo) de la Fuerza Aerea Hondureña"
+    },
+    {
+      "id": 4,
+      "titulo": "ComerciaHN",
+      "img": "/img/comerciahn.png",
+      "url": "",
+      "descripcion": "Plataforma de comercio electrónico desarrollada para SENPRENDE que conecta a más de 900 emprendedores hondureños con compradores. Ofrece productos 100% locales con visibilidad nacional e internacional y registro gratuito para vendedores. Desarrollado con NestJS, TypeScript, PostgreSQL y VueJS."
+    }
+  ],
+  "rapidRidersProyectos": [
+    {
+      "id": 1,
+      "titulo": "RapidRiders Admins",
+      "url": "https://github.com/ManuelDHenriquez/RapidRiders-Admins",
+      "icon": "fa-solid fa-user-shield",
+      "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
+      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Administradores desempeñen su papel sin problema alguno."
+    },
+    {
+      "id": 2,
+      "titulo": "RapidRiders Clientes",
+      "url": "https://github.com/ManuelDHenriquez/RapidRiders-Clientes",
+      "icon": "fa-solid fa-users",
+      "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
+      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Clientes puedan hacer sus órdenes sin inconvenientes."
+    },
+    {
+      "id": 3,
+      "titulo": "RapidRiders Motoristas",
+      "url": "https://github.com/ManuelDHenriquez/RapidRiders-Motorista",
+      "icon": "fa-solid fa-motorcycle",
+      "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
+      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Motoristas puedan ver sus órdenes y entregarlas sin inconvenientes."
+    },
+    {
+      "id": 4,
+      "titulo": "RapidRiders Back-End (server)",
+      "url": "https://github.com/ManuelDHenriquez/RapidRiders-Backend",
+      "icon": "fa-solid fa-server",
+      "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
+      "descripcion": "Back-end del proyecto RapidRiders, en este se encuentra todo el cuerpo central de la aplicación ya que están las rutas, conexiones, esquemas, modelos, endpoints, etc. Este fue diseñado para contribuir con el funcionamiento de la aplicación y que sea lo más eficiente posible."
+    }
+  ],
+  "ComerciaHN": [
+    {
+        "id": 1,
+        "titulo": "ComerciaHN Clientes",
+        "url": "https://comercia.hn/",
+        "icon": "fa-solid fa-shopping-cart",
+        "img": "/img/comerciahn.png",
+        "descripcion": "Front-end del proyecto ComerciaHN, diseñado para que los clientes puedan explorar más de 300 productos de emprendedores hondureños, realizar compras y gestionar sus órdenes de manera intuitiva y segura."
+    },
+    {
+        "id": 2,
+        "titulo": "ComerciaHN Admin",
+        "url": "https://admin.comercia.hn/",
+        "icon": "fa-solid fa-user-shield",
+        "img": "/img/comerciahn.png",
+        "descripcion": "Panel administrativo del proyecto ComerciaHN, diseñado para que los emprendedores y administradores puedan gestionar tiendas, productos, órdenes, inventario y usuarios con un sistema completo de analytics y reportes."
+    }
+  ]
+}
+
+

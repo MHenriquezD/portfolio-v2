@@ -101,35 +101,46 @@
       "id": 14,
       "titulo": "NestJS",
       "img": "img/nestjslogo.svg"
+    },
+    {
+      "id": 15,
+      "titulo": "React",
+      "img": "img/react.svg"
     }
   ],
   "experiencia": [
     {
       "id": 1,
-      "titulo": "Desarrollador Back-End",
-      "periodo": "Enero 2025 - Actualidad",
-      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+      "titulo": "Desarrollador Semi-Senior",
+      "periodo": "Frebrero 2026 - Actualidad",
+      "descripcion": "Desarrollador Semi-Senior en INFATLAN. <br>React, TypeScript, PostgreSQL, AWS"
     },
     {
       "id": 2,
+      "titulo": "Desarrollador Back-End",
+      "periodo": "Enero 2025 - Febrero 2026",
+      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+    },
+    {
+      "id": 3,
       "titulo": "Consultoría Tecnológica",
       "periodo": "Jul 2024 - Dic 2024",
       "descripcion": "Consultoría Tecnológica en CDE Mipyme Coordillera Nombre de Dios. <br> Análisis de sistemas, desarrollo de software, soporte técnico y capacitación."
     },
     {
-      "id": 3,
+      "id": 4,
       "titulo": "Desarrollador Back-End",
       "periodo": "Nov 2023 - Jun 2024",
       "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br> NestJS, TypeScript, PostgreSQL, MongoDB."
     },
     {
-      "id": 4,
+      "id": 5,
       "titulo": "Web Developer",
       "periodo": "2021 - 2022",
       "descripcion": "Desarrollador WEB en la empresa CCS Consultores (Honduras).<br>Utilizando CSS, HTML, JavaScrip y PHP."
     }
   ],
-  "educacion":[
+  "educacion": [
     {
       "id": 0,
       "titulo": "Ingeniería en Sistemas",
@@ -137,10 +148,10 @@
       "descripcion": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
     },
     {
-        "id": 2,
-        "titulo": "NestJS de Cero a Experto",
-        "periodo": "2022 - 2022",
-        "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
+      "id": 2,
+      "titulo": "NestJS de Cero a Experto",
+      "periodo": "2022 - 2022",
+      "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
     },
     {
       "id": 1,
@@ -240,22 +251,20 @@
   ],
   "ComerciaHN": [
     {
-        "id": 1,
-        "titulo": "ComerciaHN Clientes",
-        "url": "https://comercia.hn/",
-        "icon": "fa-solid fa-shopping-cart",
-        "img": "/img/comerciahn.png",
-        "descripcion": "Front-end del proyecto ComerciaHN, diseñado para que los clientes puedan explorar más de 300 productos de emprendedores hondureños, realizar compras y gestionar sus órdenes de manera intuitiva y segura."
+      "id": 1,
+      "titulo": "ComerciaHN Clientes",
+      "url": "https://comercia.hn/",
+      "icon": "fa-solid fa-shopping-cart",
+      "img": "/img/comerciahn.png",
+      "descripcion": "Front-end del proyecto ComerciaHN, diseñado para que los clientes puedan explorar más de 300 productos de emprendedores hondureños, realizar compras y gestionar sus órdenes de manera intuitiva y segura."
     },
     {
-        "id": 2,
-        "titulo": "ComerciaHN Admin",
-        "url": "https://admin.comercia.hn/",
-        "icon": "fa-solid fa-user-shield",
-        "img": "/img/comerciahn.png",
-        "descripcion": "Panel administrativo del proyecto ComerciaHN, diseñado para que los emprendedores y administradores puedan gestionar tiendas, productos, órdenes, inventario y usuarios con un sistema completo de analytics y reportes."
+      "id": 2,
+      "titulo": "ComerciaHN Admin",
+      "url": "https://admin.comercia.hn/",
+      "icon": "fa-solid fa-user-shield",
+      "img": "/img/comerciahn.png",
+      "descripcion": "Panel administrativo del proyecto ComerciaHN, diseñado para que los emprendedores y administradores puedan gestionar tiendas, productos, órdenes, inventario y usuarios con un sistema completo de analytics y reportes."
     }
   ]
 }
-
-

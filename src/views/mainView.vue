@@ -414,7 +414,7 @@ const startTypingEffect = () => {
   let isDeleting = false
 
   const type = () => {
-    const current = typingPhrases[phraseIndex]
+    const current = typingPhrases[phraseIndex]!
     if (!typingEl.value) return
 
     if (!isDeleting) {

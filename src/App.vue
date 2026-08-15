@@ -11,7 +11,7 @@ const toggleTheme = () => {
   localStorage.setItem('theme', isLightTheme.value ? 'light' : 'dark')
 }
 
-const sectionIds = ['inicio', 'habilidades', 'trayectoria', 'proyectos', 'contacto']
+const sectionIds: string[] = ['inicio', 'habilidades', 'trayectoria', 'proyectos', 'contacto']
 
 const updateActiveSection = () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -25,16 +25,17 @@ const updateActiveSection = () => {
   const docHeight = document.documentElement.scrollHeight
 
   if (windowBottom >= docHeight - 100) {
-    activeSection.value = sectionIds[sectionIds.length - 1]
+    activeSection.value = sectionIds[sectionIds.length - 1]!
     return
   }
 
   for (let i = sectionIds.length - 1; i >= 0; i--) {
-    const el = document.getElementById(sectionIds[i])
+    const id = sectionIds[i]!
+    const el = document.getElementById(id)
     if (!el) continue
     const rect = el.getBoundingClientRect()
     if (rect.top <= window.innerHeight * 0.4) {
-      activeSection.value = sectionIds[i]
+      activeSection.value = id
       return
     }
   }

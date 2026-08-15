@@ -35,67 +35,67 @@
     {
       "id": 1,
       "titulo": "HTML",
-      "img": "/img/html.svg"
+      "img": "img/html.svg"
     },
     {
       "id": 2,
       "titulo": "CSS",
-      "img": "/img/css.svg"
+      "img": "img/css.svg"
     },
     {
       "id": 3,
       "titulo": "JavaScript",
-      "img": "/img/javascript.svg"
+      "img": "img/javascript.svg"
     },
     {
       "id": 4,
       "titulo": "JQuery",
-      "img": "/img/jquery.svg"
+      "img": "img/jquery.svg"
     },
     {
       "id": 5,
       "titulo": "NodeJS",
-      "img": "/img/node.svg"
+      "img": "img/node.svg"
     },
     {
       "id": 6,
       "titulo": "typescript",
-      "img": "/img/typescript.svg"
+      "img": "img/typescript.svg"
     },
     {
       "id": 7,
       "titulo": "Express",
-      "img": "/img/express.svg"
+      "img": "img/express.svg"
     },
     {
       "id": 8,
       "titulo": "PHP",
-      "img": "/img/php.svg"
+      "img": "img/php.svg"
     },
     {
       "id": 9,
       "titulo": "PostgreSQL",
-      "img": "/img/postgresql.svg"
+      "img": "img/postgresql.svg"
     },
     {
       "id": 10,
       "titulo": "MySQL",
-      "img": "/img/mysql.svg"
+      "img": "img/mysql.svg"
     },
     {
       "id": 11,
       "titulo": "SQLite",
-      "img": "/img/sqlite.svg"
+      "img": "img/sqlite.svg"
     },
     {
       "id": 12,
       "titulo": "MongoDB",
-      "img": "/img/mongo.svg"
+      "img": "img/mongo.svg"
     },
     {
       "id": 13,
       "titulo": "VueJS",
-      "img": "/img/vuelogo.svg"
+      "img": "img/vuelogo.svg"
     },
     {
       "id": 14,
@@ -210,7 +210,7 @@
     {
       "id": 4,
       "titulo": "ComerciaHN",
-      "img": "/img/comerciahn.png",
+      "img": "img/comerciahn.png",
       "url": "",
       "descripcion": "Plataforma de comercio electrónico a nivel nacional desarrollada para SENPRENDE, diseñada para impulsar el emprendimiento hondureño conectando más de 900 emprendedores con consumidores locales e internacionales. El sistema incluye marketplace completo con catálogo de productos, carrito de compras, pasarelas de pago, sistema de gestión de inventario, panel administrativo avanzado con analytics, gestión de tiendas virtuales y CRM para vendedores. Arquitectura escalable construida con NestJS y TypeScript en el backend, PostgreSQL para persistencia de datos, Prisma como ORM, y Vue.js 3 con Composition API en el frontend, garantizando alto rendimiento y mantenibilidad."
     }
@@ -255,7 +255,7 @@
       "titulo": "ComerciaHN Clientes",
       "url": "https://comercia.hn/",
       "icon": "fa-solid fa-shopping-cart",
-      "img": "/img/comerciahn.png",
+      "img": "img/comerciahn.png",
       "descripcion": "Front-end del proyecto ComerciaHN, diseñado para que los clientes puedan explorar más de 300 productos de emprendedores hondureños, realizar compras y gestionar sus órdenes de manera intuitiva y segura."
     },
     {
@@ -263,7 +263,7 @@
       "titulo": "ComerciaHN Admin",
       "url": "https://admin.comercia.hn/",
       "icon": "fa-solid fa-user-shield",
-      "img": "/img/comerciahn.png",
+      "img": "img/comerciahn.png",
       "descripcion": "Panel administrativo del proyecto ComerciaHN, diseñado para que los emprendedores y administradores puedan gestionar tiendas, productos, órdenes, inventario y usuarios con un sistema completo de analytics y reportes."
     }
   ]

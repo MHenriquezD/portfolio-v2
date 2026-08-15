@@ -27,8 +27,8 @@ const getImageBase64 = async (url: string): Promise<string> => {
 export const useCreatePdf = () => {
     // Función centralizada para generar la definición del documento
     const getDocDefinition = async () => {
-        const photoBase64 = await getImageBase64('/img/mhenriquez_rounded.png');
-        const backgroundImage = await getImageBase64('/img/bg_cv3.jpeg');
+        const photoBase64 = await getImageBase64(`${import.meta.env.BASE_URL}img/mhenriquez_rounded.png`);
+        const backgroundImage = await getImageBase64(`${import.meta.env.BASE_URL}img/bg_cv3.jpeg`);
         // Generar QR code desde API pública
         const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mhenriquezdev.com/';
         const qrCodeBase64 = await getImageBase64(qrUrl);

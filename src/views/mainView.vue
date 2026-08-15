@@ -34,7 +34,7 @@
         <div class="about-content">
           <div class="about-image" data-aos="fade-right">
             <div class="image-wrapper">
-              <img src="/img/mhenriquez.png" alt="Perfil" />
+              <img :src="resolveImg('img/mhenriquez.png')" alt="Perfil" />
               <div class="image-overlay"></div>
             </div>
           </div>
@@ -89,7 +89,7 @@
           >
             <div class="skill-glow"></div>
             <div class="skill-image">
-              <img :src="skill.img" :alt="skill.titulo" />
+              <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
             </div>
             <h3>{{ skill.titulo }}</h3>
           </div>
@@ -162,7 +162,7 @@
             :data-aos-delay="index * 100"
           >
             <div class="project-image">
-              <img :src="proyecto.img" :alt="proyecto.titulo" />
+              <img :src="resolveImg(proyecto.img)" :alt="proyecto.titulo" />
               <div class="project-overlay">
                 <a v-if="proyecto.url" :href="proyecto.url" target="_blank" class="overlay-btn">
                   Ver Proyecto
@@ -337,6 +337,14 @@ const {
   ComerciaHN,
 } = data
 const comerciaHNProyectos = ComerciaHN
+
+// Resuelve rutas de imágenes locales respetando el "base" configurado en Vite
+// (necesario porque en GitHub Pages el sitio se sirve desde una subruta, ej. /portfolio-v2/)
+const resolveImg = (path: string): string => {
+  if (!path) return path
+  if (/^https?:\/\//.test(path)) return path
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+}
 
 const showModalRapidRiders = ref(false)
 const showModalComercia = ref(false)

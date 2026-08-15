@@ -3,98 +3,34 @@
     <!-- Partículas de fondo -->
     <div class="particles-bg"></div>
 
-    <!-- Sección Hero/Inicio con About integrado -->
+    <!-- Sección Hero/Inicio -->
     <section id="inicio" class="hero-section">
       <div class="hero-content">
-        <div class="hero-top">
-          <div class="hero-info">
-            <div class="hero-badge">
-              <svg class="badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              Hola, Bienvenido
-            </div>
-            <h2 class="hero-subtitle animate-text">Soy</h2>
-            <h1 class="hero-title animate-text">Manuel Henriquez</h1>
-            <p class="hero-role animate-text">
-              <span class="typing-effect" ref="typingEl"></span>
-            </p>
-            <p class="hero-description">
-              Desarrollador Full Stack apasionado por crear soluciones tecnológicas robustas
-              y escalables. Combino creatividad y lógica para construir aplicaciones
-              <span class="highlight">WEB</span> completas y eficientes.
-            </p>
-            <div class="hero-cta">
-              <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
-              <button @click="openCvModal" class="btn-cv">
-                <i class="fas fa-file-pdf"></i> Ver CV
-              </button>
-              <a href="#contacto" class="btn-secondary">Contactar</a>
-            </div>
-          </div>
-          <div class="hero-image">
-            <div class="image-wrapper">
-              <img :src="resolveImg('img/mhenriquez.png')" alt="Manuel Henriquez" />
-              <div class="image-overlay"></div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-highlights">
-          <div class="highlight-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            <span>Full Stack</span>
-          </div>
-          <div class="highlight-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            <span>Bases de Datos</span>
-          </div>
-          <div class="highlight-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            <span>UI/UX</span>
-          </div>
-          <div class="highlight-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>Arquitecturas Escalables</span>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </section>
-
-    <!-- Sección Habilidades -->
-    <section id="habilidades" class="skills-section">
-      <div class="container">
-        <h2 class="section-title scroll-reveal">Habilidades Técnicas</h2>
-        <p class="section-description scroll-reveal">
-          Stack tecnológico con el que he trabajado. Siempre aprendiendo nuevas herramientas.
+        <h2 class="hero-subtitle animate-text">Soy</h2>
+        <h1 class="hero-title animate-text">Manuel Henriquez</h1>
+        <p class="hero-role animate-text">
+          <span class="typing-effect" ref="typingEl"></span>
         </p>
-        <div
-          v-for="categoria in skillCategories"
-          :key="categoria"
-          class="skills-category scroll-reveal"
-        >
-          <h3 class="category-title">{{ categoria }}</h3>
-          <div class="skills-grid">
-            <div
-              v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
-              :key="skill.id"
-              class="skill-card"
-            >
-              <div class="skill-glow"></div>
-              <div class="skill-image">
-                <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
-              </div>
-              <h3>{{ skill.titulo }}</h3>
-            </div>
-          </div>
+        <div class="hero-contact-info">
+          <a href="mailto:mdhenriquez16@gmail.com" class="hero-contact-link">
+            <i class="fas fa-envelope"></i> mdhenriquez16@gmail.com
+          </a>
+          <a href="https://wa.me/50492370288" target="_blank" class="hero-contact-link">
+            <i class="fas fa-phone"></i> +504 9237-0288
+          </a>
+          <a href="https://www.linkedin.com/in/manuel-henriquez-a8541423a/" target="_blank" class="hero-contact-link">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/MHenriquezD" target="_blank" class="hero-contact-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
-        <SkillsPhysics
-          :skills="habilidades"
-          :resolveImg="resolveImg"
-          :isLightTheme="isLightTheme"
-        />
+        <div class="hero-cta">
+          <button @click="openCvModal" class="btn-primary">
+            <i class="fas fa-file-pdf"></i> Descargar CV
+          </button>
+          <a href="#proyectos" class="btn-secondary">Ver Proyectos</a>
+        </div>
       </div>
     </section>
 
@@ -231,12 +167,77 @@
       </div>
     </section>
 
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="skills-section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">Habilidades Técnicas</h2>
+        <p class="section-description scroll-reveal">
+          Stack tecnológico con el que he trabajado. Siempre aprendiendo nuevas herramientas.
+        </p>
+        <div
+          v-for="categoria in skillCategories"
+          :key="categoria"
+          class="skills-category scroll-reveal"
+        >
+          <h3 class="category-title">{{ categoria }}</h3>
+          <div class="skills-grid">
+            <div
+              v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
+              :key="skill.id"
+              class="skill-card"
+            >
+              <div class="skill-glow"></div>
+              <div class="skill-image">
+                <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+              </div>
+              <h3>{{ skill.titulo }}</h3>
+            </div>
+          </div>
+        </div>
+        <SkillsPhysics
+          :skills="habilidades"
+          :resolveImg="resolveImg"
+          :isLightTheme="isLightTheme"
+        />
+      </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about-section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">Sobre Mí</h2>
+        <div class="about-content scroll-reveal">
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img :src="resolveImg('img/mhenriquez.png')" alt="Manuel Henriquez" />
+            </div>
+          </div>
+          <div class="about-text">
+            <p>
+              Soy un desarrollador web con más de 5 años de experiencia construyendo aplicaciones completas,
+              desde el frontend hasta el backend. Empecé con curiosidad por entender cómo funcionaban las cosas
+              y terminé convirtiendo esa curiosidad en mi profesión.
+            </p>
+            <p>
+              He trabajado con equipos de diferentes tamaños, enfrentando retos que me han obligado a aprender
+              rápido y adaptarme constantemente. Cada proyecto ha sido una oportunidad para mejorar y entregar
+              soluciones que realmente funcionan.
+            </p>
+            <p>
+              Me apasiona mantenerme al día con las tecnologías, buscar siempre la mejor manera de resolver
+              problemas y crear software que haga la diferencia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sección Contacto -->
     <section id="contacto" class="contact-section">
       <div class="container">
-        <h2 class="section-title">Contacto</h2>
-        <p class="section-description">
-          Mi información de contacto es la siguiente. Pueden encontrarme de las siguientes formas.
+        <h2 class="section-title scroll-reveal">Contacto</h2>
+        <p class="section-description scroll-reveal">
+          Gracias por visitar mi portafolio. Si te interesa trabajar juntos, no dudes en contactarme.
         </p>
         <div class="contact-info">
           <a

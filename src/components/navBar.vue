@@ -54,9 +54,10 @@ defineEmits<{
 
 const navItems = [
   { id: 'inicio', label: 'Inicio' },
-  { id: 'habilidades', label: 'Habilidades' },
   { id: 'trayectoria', label: 'Trayectoria' },
   { id: 'proyectos', label: 'Proyectos' },
+  { id: 'habilidades', label: 'Habilidades' },
+  { id: 'sobre-mi', label: 'Sobre Mí' },
   { id: 'contacto', label: 'Contacto' },
 ]
 

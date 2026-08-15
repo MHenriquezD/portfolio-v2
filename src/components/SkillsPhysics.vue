@@ -108,16 +108,33 @@ const init = async () => {
   mouse.element.removeEventListener('wheel', (mouse as any).mousewheel)
   mouse.element.removeEventListener('DOMMouseScroll', (mouse as any).mousewheel)
 
+  mouse.element.removeEventListener('touchstart', (mouse as any).mousedown)
   mouse.element.removeEventListener('touchmove', (mouse as any).mousemove)
+  mouse.element.removeEventListener('touchend', (mouse as any).mouseup)
+
+  mouse.element.addEventListener('touchstart', (e: Event) => {
+    const touch = (e as TouchEvent).touches[0]
+    if (!touch) return
+    const rect = render.canvas.getBoundingClientRect()
+    mouse.position.x = touch.clientX - rect.left
+    mouse.position.y = touch.clientY - rect.top
+    mouse.button = 0
+  }, { passive: true })
+
   mouse.element.addEventListener('touchmove', (e: Event) => {
+    const touch = (e as TouchEvent).touches[0]
+    if (!touch) return
+    const rect = render.canvas.getBoundingClientRect()
+    mouse.position.x = touch.clientX - rect.left
+    mouse.position.y = touch.clientY - rect.top
     if (mouseConstraint.body) {
       e.preventDefault()
     }
-    const touch = (e as TouchEvent).touches[0]
-    if (!touch) return
-    mouse.position.x = touch.clientX - render.canvas.getBoundingClientRect().left
-    mouse.position.y = touch.clientY - render.canvas.getBoundingClientRect().top
   }, { passive: false })
+
+  mouse.element.addEventListener('touchend', () => {
+    mouse.button = -1
+  }, { passive: true })
 
   runner = Matter.Runner.create()
   Matter.Runner.run(runner, engine)

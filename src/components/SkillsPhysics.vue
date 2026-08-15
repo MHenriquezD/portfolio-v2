@@ -57,6 +57,7 @@ const init = async () => {
 
   const wallThickness = 60
   const walls = [
+    Matter.Bodies.rectangle(width / 2, -wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(width / 2, height + wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
@@ -71,7 +72,7 @@ const init = async () => {
 
   const bodies = props.skills.map((skill, i) => {
     const x = Math.random() * (width - bodySize * 2) + bodySize
-    const y = -(Math.random() * height + bodySize)
+    const y = bodySize + Math.random() * (height * 0.3)
 
     return Matter.Bodies.circle(x, y, bodySize / 2, {
       restitution: 0.5,
@@ -103,6 +104,20 @@ const init = async () => {
 
   Matter.Composite.add(engine.world, mouseConstraint)
   render.mouse = mouse
+
+  mouse.element.removeEventListener('wheel', (mouse as any).mousewheel)
+  mouse.element.removeEventListener('DOMMouseScroll', (mouse as any).mousewheel)
+
+  mouse.element.removeEventListener('touchmove', (mouse as any).mousemove)
+  mouse.element.addEventListener('touchmove', (e: Event) => {
+    if (mouseConstraint.body) {
+      e.preventDefault()
+    }
+    const touch = (e as TouchEvent).touches[0]
+    if (!touch) return
+    mouse.position.x = touch.clientX - render.canvas.getBoundingClientRect().left
+    mouse.position.y = touch.clientY - render.canvas.getBoundingClientRect().top
+  }, { passive: false })
 
   runner = Matter.Runner.create()
   Matter.Runner.run(runner, engine)
@@ -155,6 +170,7 @@ const handleResize = () => {
 
   const wallThickness = 60
   Matter.Composite.add(engine.world, [
+    Matter.Bodies.rectangle(width / 2, -wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(width / 2, height + wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
     Matter.Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),

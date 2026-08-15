@@ -7,7 +7,7 @@
   "contact": {
     "email": "mdhenriquez16@gmail.com",
     "phone": "+504 9237-0288",
-    "website": "https://mhenriquezdev.com",
+    "website": "https://mhenriquezd.github.io/portfolio-v2/",
     "linkedin": "https://www.linkedin.com/in/manuel-henriquez-a8541423a/"
   },
   "skills": [
@@ -73,9 +73,15 @@
   ],
   "education": [
     {
+      "degree": "Ingeniería Informática",
+      "institution": "UNIMETRO",
+      "duration": "2026 - Actualidad",
+      "description": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO."
+    },
+    {
       "degree": "Ingeniería en Sistemas",
       "institution": "UNAH",
-      "duration": "2015 - Actualidad",
+      "duration": "2015 - 2023",
       "description": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
     },
     {

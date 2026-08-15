@@ -144,6 +144,8 @@
                 v-for="edu in educacion"
                 :key="edu.id"
                 class="education-card"
+                :class="{ 'education-clickable': edu.certificado }"
+                @click="edu.certificado && openCertificado(edu)"
               >
                 <div class="education-icon">
                   <i class="fas fa-graduation-cap"></i>
@@ -152,6 +154,9 @@
                   <h3 class="education-title">{{ edu.titulo }}</h3>
                   <p class="education-period">{{ edu.periodo }}</p>
                   <p class="education-description">{{ edu.descripcion }}</p>
+                  <span v-if="edu.certificado" class="ver-certificado">
+                    <i class="fas fa-certificate"></i> Ver certificado
+                  </span>
                 </div>
               </div>
             </div>
@@ -336,12 +341,21 @@
             </button>
           </div>
           <div class="modal-content pdf-viewer">
-            <iframe v-if="pdfUrl" :src="pdfUrl" class="pdf-iframe"></iframe>
-            <div v-else class="loading-pdf">
-              <i class="fas fa-spinner fa-spin"></i>
-              <p>Generando PDF...</p>
-            </div>
+            <iframe :src="pdfUrl" class="pdf-iframe"></iframe>
           </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- Modal Certificado -->
+    <Transition name="modal">
+      <div v-if="showCertificado" class="modal-overlay" @click="closeCertificado">
+        <div class="modal-certificado" @click.stop>
+          <button class="modal-close" @click="closeCertificado">
+            <i class="fas fa-times"></i>
+          </button>
+          <h3 class="modal-certificado-title">{{ certificadoTitle }}</h3>
+          <img :src="resolveImg(certificadoImg)" :alt="certificadoTitle" class="modal-certificado-img" />
         </div>
       </div>
     </Transition>
@@ -367,7 +381,6 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
-import { useCreatePdf } from '@/composables/createPdf'
 
 defineProps<{
   isLightTheme: boolean
@@ -470,32 +483,43 @@ onUnmounted(() => {
 
 const activeTab = ref('experiencia')
 
+const showCertificado = ref(false)
+const certificadoImg = ref('')
+const certificadoTitle = ref('')
+
+const openCertificado = (edu: { titulo: string; certificado?: string }) => {
+  if (!edu.certificado) return
+  certificadoImg.value = edu.certificado
+  certificadoTitle.value = edu.titulo
+  showCertificado.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+const closeCertificado = () => {
+  showCertificado.value = false
+  document.body.style.overflow = 'auto'
+}
+
 const showModalRapidRiders = ref(false)
 const showModalComercia = ref(false)
 const showModalCV = ref(false)
-const pdfUrl = ref<string>('')
+const pdfUrl = resolveImg('CV_Manuel_Henriquez.pdf')
 
-const { generateCV, getPdfUrl } = useCreatePdf()
-
-const openCvModal = async () => {
+const openCvModal = () => {
   showModalCV.value = true
   document.body.style.overflow = 'hidden'
-  pdfUrl.value = '' // Reset URL
-  try {
-    pdfUrl.value = await getPdfUrl()
-  } catch (error) {
-    console.error('Error generando PDF:', error)
-  }
 }
 
 const closeModalCV = () => {
   showModalCV.value = false
   document.body.style.overflow = 'auto'
-  pdfUrl.value = ''
 }
 
 const downloadCV = () => {
-  generateCV()
+  const link = document.createElement('a')
+  link.href = pdfUrl
+  link.download = 'CV_Manuel_Henriquez.pdf'
+  link.click()
 }
 
 const openModalRapidRiders = () => {

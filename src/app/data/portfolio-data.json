@@ -115,31 +115,36 @@
       "id": 2,
       "titulo": "NestJS de Cero a Experto",
       "periodo": "2022 - 2022",
-      "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
+      "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles.",
+      "certificado": "img/cv/Nest.jpg"
     },
     {
       "id": 3,
       "titulo": "PCAP - Programming Essentials in Python",
       "periodo": "2021 - 2021",
-      "descripcion": "Curso de desarrollo en Python, de CISCO Networking Academy."
+      "descripcion": "Curso de desarrollo en Python, de CISCO Networking Academy.",
+      "certificado": "img/cv/ProgrammingEssentialsPython.jpg"
     },
     {
       "id": 4,
       "titulo": "Introduction to Cybersecurity",
       "periodo": "2020 - 2020",
-      "descripcion": "Curso de introducción a la cyber seguridad de CISCO Networking Academy."
+      "descripcion": "Curso de introducción a la cyber seguridad de CISCO Networking Academy.",
+      "certificado": "img/cv/IntroductionCybersecurity.jpg"
     },
     {
       "id": 5,
       "titulo": "NDG Linux Unhatched",
       "periodo": "2020 - 2020",
-      "descripcion": "Curso de introduccion LINUX de CISCO Networking Academy."
+      "descripcion": "Curso de introduccion LINUX de CISCO Networking Academy.",
+      "certificado": "img/cv/NDGLinuxUnhatched.jpg"
     },
     {
       "id": 6,
       "titulo": "Técnico en Computación",
       "periodo": "2011 - 2014",
-      "descripcion": "Bachillerato técnico en computación."
+      "descripcion": "Bachillerato técnico en computación.",
+      "certificado": "img/cv/titulo_cecnico_computacion.jpg"
     }
   ],
   "proyectos": [

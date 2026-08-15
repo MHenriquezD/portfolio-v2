@@ -3,21 +3,57 @@
     <!-- Partículas de fondo -->
     <div class="particles-bg"></div>
 
-    <!-- Sección Hero/Inicio -->
+    <!-- Sección Hero/Inicio con About integrado -->
     <section id="inicio" class="hero-section">
       <div class="hero-content">
-        <div class="hero-badge">👋 Hola, Bienvenido</div>
-        <h2 class="hero-subtitle animate-text">Soy</h2>
-        <h1 class="hero-title animate-text">Manuel Henriquez</h1>
-        <p class="hero-role animate-text">
-          <span class="typing-effect">Desarrollador Full Stack</span>
-        </p>
-        <div class="hero-cta">
-          <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
-          <button @click="openCvModal" class="btn-cv">
-            <i class="fas fa-file-pdf"></i> Ver CV
-          </button>
-          <a href="#contacto" class="btn-secondary">Contactar</a>
+        <div class="hero-top">
+          <div class="hero-info">
+            <div class="hero-badge">
+              <svg class="badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              Hola, Bienvenido
+            </div>
+            <h2 class="hero-subtitle animate-text">Soy</h2>
+            <h1 class="hero-title animate-text">Manuel Henriquez</h1>
+            <p class="hero-role animate-text">
+              <span class="typing-effect" ref="typingEl"></span>
+            </p>
+            <p class="hero-description">
+              Desarrollador Full Stack apasionado por crear soluciones tecnológicas robustas
+              y escalables. Combino creatividad y lógica para construir aplicaciones
+              <span class="highlight">WEB</span> completas y eficientes.
+            </p>
+            <div class="hero-cta">
+              <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+              <button @click="openCvModal" class="btn-cv">
+                <i class="fas fa-file-pdf"></i> Ver CV
+              </button>
+              <a href="#contacto" class="btn-secondary">Contactar</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="image-wrapper">
+              <img :src="resolveImg('img/mhenriquez.png')" alt="Manuel Henriquez" />
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Full Stack</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <span>Bases de Datos</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            <span>UI/UX</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Arquitecturas Escalables</span>
+          </div>
         </div>
       </div>
       <div class="scroll-indicator">
@@ -27,143 +63,145 @@
       </div>
     </section>
 
-    <!-- Sección Sobre Mí -->
-    <section id="sobre-mi" class="about-section">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Acerca de Mí</h2>
-        <div class="about-content">
-          <div class="about-image" data-aos="fade-right">
-            <div class="image-wrapper">
-              <img :src="resolveImg('img/mhenriquez.png')" alt="Perfil" />
-              <div class="image-overlay"></div>
-            </div>
-          </div>
-          <div class="about-text" data-aos="fade-left">
-            <p class="about-intro">
-              Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas robustas
-              y escalables. Mi enfoque está en el <span class="highlight">"Desarrollo WEB"</span>,
-              donde combino creatividad y lógica para construir aplicaciones completas y eficientes.
-            </p>
-            <p>
-              Con experiencia en proyectos reales y una sólida formación técnica, he desarrollado
-              habilidades que abarcan todo el ciclo de desarrollo de software. Mi experiencia
-              incluye:
-            </p>
-            <div class="achievements">
-              <div class="achievement-item">
-                <span class="achievement-icon">🎯</span>
-                <p>Desarrollo Full Stack con dominio de front-end y back-end</p>
-              </div>
-              <div class="achievement-item">
-                <span class="achievement-icon">🗄️</span>
-                <p>Diseño y gestión de bases de datos relacionales y NoSQL</p>
-              </div>
-              <div class="achievement-item">
-                <span class="achievement-icon">🎨</span>
-                <p>Implementación de principios UI/UX en interfaces modernas</p>
-              </div>
-              <div class="achievement-item">
-                <span class="achievement-icon">⚡</span>
-                <p>Optimización de rendimiento y arquitecturas escalables</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Sección Habilidades -->
     <section id="habilidades" class="skills-section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Habilidades Técnicas</h2>
-        <p class="section-description" data-aos="fade-up">
+        <h2 class="section-title scroll-reveal">Habilidades Técnicas</h2>
+        <p class="section-description scroll-reveal">
           Stack tecnológico con el que he trabajado. Siempre aprendiendo nuevas herramientas.
         </p>
-        <div class="skills-grid">
-          <div
-            v-for="(skill, index) in habilidades"
-            :key="skill.id"
-            class="skill-card"
-            :data-aos="'zoom-in'"
-            :data-aos-delay="index * 50"
-          >
-            <div class="skill-glow"></div>
-            <div class="skill-image">
-              <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+        <div
+          v-for="categoria in skillCategories"
+          :key="categoria"
+          class="skills-category scroll-reveal"
+        >
+          <h3 class="category-title">{{ categoria }}</h3>
+          <div class="skills-grid">
+            <div
+              v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
+              :key="skill.id"
+              class="skill-card"
+            >
+              <div class="skill-glow"></div>
+              <div class="skill-image">
+                <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+              </div>
+              <h3>{{ skill.titulo }}</h3>
             </div>
-            <h3>{{ skill.titulo }}</h3>
           </div>
         </div>
+        <SkillsPhysics
+          :skills="habilidades"
+          :resolveImg="resolveImg"
+          :isLightTheme="isLightTheme"
+        />
       </div>
     </section>
 
-    <!-- Sección Educación -->
-    <section id="educacion" class="education-section">
+    <!-- Sección Trayectoria (Experiencia + Educación) -->
+    <section id="trayectoria" class="trajectory-section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Educación y Certificaciones</h2>
-        <p class="section-description" data-aos="fade-up">
-          Mi formación académica y certificaciones profesionales que respaldan mi experiencia.
+        <h2 class="section-title scroll-reveal">Trayectoria</h2>
+        <p class="section-description scroll-reveal">
+          Mi recorrido profesional y formación académica.
         </p>
-        <div class="education-grid">
-          <div
-            v-for="(edu, index) in educacion"
-            :key="edu.id"
-            class="education-card"
-            :data-aos="'fade-up'"
-            :data-aos-delay="index * 100"
+        <div class="trajectory-tabs">
+          <button
+            class="tab-btn"
+            :class="{ 'tab-active': activeTab === 'experiencia' }"
+            @click="activeTab = 'experiencia'"
           >
-            <div class="education-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="education-content">
-              <h3 class="education-title">{{ edu.titulo }}</h3>
-              <p class="education-period">{{ edu.periodo }}</p>
-              <p class="education-description">{{ edu.descripcion }}</p>
-            </div>
-          </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Experiencia
+          </button>
+          <button
+            class="tab-btn"
+            :class="{ 'tab-active': activeTab === 'educacion' }"
+            @click="activeTab = 'educacion'"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
+            Educación
+          </button>
         </div>
-      </div>
-    </section>
 
-    <!-- Sección Experiencia -->
-    <section id="experiencia" class="experience-section">
-      <div class="container">
-        <h2 class="section-title">Experiencia</h2>
-        <p class="section-description">
-          A lo largo de los años, he alcanzado ciertos logros y aprendido algunas habilidades.
-          Siempre dispuesto a aprender mucho más.
-        </p>
-        <div class="timeline">
-          <div v-for="exp in experiencia" :key="exp.id" class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h3 class="timeline-title">{{ exp.titulo }}</h3>
-              <p class="timeline-period">{{ exp.periodo }}</p>
-              <p class="timeline-description" v-html="exp.descripcion"></p>
+        <Transition name="tab-fade" mode="out-in">
+          <div v-if="activeTab === 'experiencia'" key="experiencia" class="tab-content">
+            <div class="timeline">
+              <div v-for="exp in experiencia" :key="exp.id" class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="timeline-title">{{ exp.titulo }}</h3>
+                  <p class="timeline-period">{{ exp.periodo }}</p>
+                  <p class="timeline-description" v-html="exp.descripcion"></p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div v-else key="educacion" class="tab-content">
+            <div class="education-grid">
+              <div
+                v-for="edu in educacion"
+                :key="edu.id"
+                class="education-card"
+              >
+                <div class="education-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="education-content">
+                  <h3 class="education-title">{{ edu.titulo }}</h3>
+                  <p class="education-period">{{ edu.periodo }}</p>
+                  <p class="education-description">{{ edu.descripcion }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Transition>
       </div>
     </section>
 
     <!-- Sección Proyectos -->
     <section id="proyectos" class="projects-section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Proyectos Destacados</h2>
-        <p class="section-description" data-aos="fade-up">
+        <h2 class="section-title scroll-reveal">Proyectos Destacados</h2>
+        <p class="section-description scroll-reveal">
           Una selección de mis trabajos más recientes y relevantes.
         </p>
+
+        <!-- Proyecto Featured -->
+        <div
+          v-if="featuredProject"
+          class="featured-project scroll-reveal"
+        >
+          <div class="featured-image">
+            <img :src="resolveImg(featuredProject.img)" :alt="featuredProject.titulo" />
+            <div class="featured-badge">Destacado</div>
+            <div class="project-overlay">
+              <button @click="openModalComercia" class="overlay-btn">Ver Detalles</button>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3>{{ featuredProject.titulo }}</h3>
+            <p>{{ featuredProject.descripcion }}</p>
+            <div class="project-tags">
+              <span v-for="tag in featuredProject.tags" :key="tag" class="project-tag">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid de proyectos -->
         <div class="projects-grid">
           <div
-            v-for="(proyecto, index) in proyectos"
+            v-for="proyecto in regularProjects"
             :key="proyecto.id"
-            class="project-card"
-            :data-aos="'fade-up'"
-            :data-aos-delay="index * 100"
+            class="project-card scroll-reveal"
           >
             <div class="project-image">
               <img :src="resolveImg(proyecto.img)" :alt="proyecto.titulo" />
-              <div class="project-overlay">
+              <div
+                v-if="proyecto.url || proyecto.id === 2"
+                class="project-overlay"
+              >
                 <a v-if="proyecto.url" :href="proyecto.url" target="_blank" class="overlay-btn">
                   Ver Proyecto
                 </a>
@@ -174,18 +212,14 @@
                 >
                   Ver Detalles
                 </button>
-                <button
-                  v-else-if="proyecto.id === 4"
-                  @click="openModalComercia"
-                  class="overlay-btn"
-                >
-                  Ver Detalles
-                </button>
               </div>
             </div>
             <div class="project-content">
               <h3>{{ proyecto.titulo }}</h3>
               <p>{{ proyecto.descripcion }}</p>
+              <div v-if="proyecto.tags" class="project-tags">
+                <span v-for="tag in proyecto.tags" :key="tag" class="project-tag">{{ tag }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -313,14 +347,26 @@
     </Transition>
 
     <footer class="footer">
-      <p>Copyright © 2025. All Rights Reserved</p>
+      <p>© {{ new Date().getFullYear() }} Manuel Henriquez. All Rights Reserved</p>
+      <div class="footer-links">
+        <a
+          v-for="social in contacto.filter((c) => !c.texto)"
+          :key="social.tipo"
+          :href="social.url"
+          target="_blank"
+          class="footer-social"
+        >
+          <i :class="social.icon"></i>
+        </a>
+      </div>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import data from '../app/data/portfolio-data.json'
+import SkillsPhysics from '@/components/SkillsPhysics.vue'
 import { useCreatePdf } from '@/composables/createPdf'
 
 defineProps<{
@@ -338,6 +384,18 @@ const {
 } = data
 const comerciaHNProyectos = ComerciaHN
 
+const skillCategories = computed(() =>
+  [...new Set(habilidades.map((s: { categoria: string }) => s.categoria))]
+)
+
+const featuredProject = computed(() =>
+  proyectos.find((p: { featured?: boolean }) => p.featured)
+)
+
+const regularProjects = computed(() =>
+  proyectos.filter((p: { featured?: boolean }) => !p.featured)
+)
+
 // Resuelve rutas de imágenes locales respetando el "base" configurado en Vite
 // (necesario porque en GitHub Pages el sitio se sirve desde una subruta, ej. /portfolio-v2/)
 const resolveImg = (path: string): string => {
@@ -345,6 +403,72 @@ const resolveImg = (path: string): string => {
   if (/^https?:\/\//.test(path)) return path
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 }
+
+const typingEl = ref<HTMLElement | null>(null)
+const typingPhrases = ['Desarrollador Full Stack', 'Backend Developer', 'Frontend Developer']
+let typingTimeout: ReturnType<typeof setTimeout> | null = null
+
+const startTypingEffect = () => {
+  let phraseIndex = 0
+  let charIndex = 0
+  let isDeleting = false
+
+  const type = () => {
+    const current = typingPhrases[phraseIndex]
+    if (!typingEl.value) return
+
+    if (!isDeleting) {
+      typingEl.value.textContent = current.slice(0, charIndex + 1)
+      charIndex++
+      if (charIndex === current.length) {
+        isDeleting = true
+        typingTimeout = setTimeout(type, 2000)
+        return
+      }
+      typingTimeout = setTimeout(type, 80)
+    } else {
+      typingEl.value.textContent = current.slice(0, charIndex - 1)
+      charIndex--
+      if (charIndex === 0) {
+        isDeleting = false
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length
+        typingTimeout = setTimeout(type, 500)
+        return
+      }
+      typingTimeout = setTimeout(type, 40)
+    }
+  }
+  type()
+}
+
+let scrollObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  startTypingEffect()
+
+  scrollObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+          scrollObserver?.unobserve(entry.target)
+        }
+      }
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  )
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    scrollObserver?.observe(el)
+  })
+})
+
+onUnmounted(() => {
+  if (typingTimeout) clearTimeout(typingTimeout)
+  scrollObserver?.disconnect()
+})
+
+const activeTab = ref('experiencia')
 
 const showModalRapidRiders = ref(false)
 const showModalComercia = ref(false)

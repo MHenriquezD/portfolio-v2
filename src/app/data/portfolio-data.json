@@ -32,81 +32,39 @@
     }
   ],
   "habilidades": [
-    {
-      "id": 1,
-      "titulo": "HTML",
-      "img": "img/html.svg"
-    },
-    {
-      "id": 2,
-      "titulo": "CSS",
-      "img": "img/css.svg"
-    },
-    {
-      "id": 3,
-      "titulo": "JavaScript",
-      "img": "img/javascript.svg"
-    },
-    {
-      "id": 4,
-      "titulo": "JQuery",
-      "img": "img/jquery.svg"
-    },
-    {
-      "id": 5,
-      "titulo": "NodeJS",
-      "img": "img/node.svg"
-    },
-    {
-      "id": 6,
-      "titulo": "typescript",
-      "img": "img/typescript.svg"
-    },
-    {
-      "id": 7,
-      "titulo": "Express",
-      "img": "img/express.svg"
-    },
-    {
-      "id": 8,
-      "titulo": "PHP",
-      "img": "img/php.svg"
-    },
-    {
-      "id": 9,
-      "titulo": "PostgreSQL",
-      "img": "img/postgresql.svg"
-    },
-    {
-      "id": 10,
-      "titulo": "MySQL",
-      "img": "img/mysql.svg"
-    },
-    {
-      "id": 11,
-      "titulo": "SQLite",
-      "img": "img/sqlite.svg"
-    },
-    {
-      "id": 12,
-      "titulo": "MongoDB",
-      "img": "img/mongo.svg"
-    },
-    {
-      "id": 13,
-      "titulo": "VueJS",
-      "img": "img/vuelogo.svg"
-    },
-    {
-      "id": 14,
-      "titulo": "NestJS",
-      "img": "img/nestjslogo.svg"
-    },
-    {
-      "id": 15,
-      "titulo": "React",
-      "img": "img/react.svg"
-    }
+    { "id": 1, "titulo": "JavaScript", "img": "img/javascript.svg", "categoria": "Lenguajes" },
+    { "id": 2, "titulo": "TypeScript", "img": "img/typescript.svg", "categoria": "Lenguajes" },
+    { "id": 3, "titulo": "Python", "img": "img/python.svg", "categoria": "Lenguajes" },
+    { "id": 4, "titulo": "Java", "img": "img/java.svg", "categoria": "Lenguajes" },
+    { "id": 5, "titulo": "C#", "img": "img/csharp.svg", "categoria": "Lenguajes" },
+    { "id": 6, "titulo": "C++", "img": "img/cplusplus.svg", "categoria": "Lenguajes" },
+    { "id": 7, "titulo": "PHP", "img": "img/php.svg", "categoria": "Lenguajes" },
+
+    { "id": 8, "titulo": "React", "img": "img/react.svg", "categoria": "Frontend" },
+    { "id": 9, "titulo": "VueJS", "img": "img/vuelogo.svg", "categoria": "Frontend" },
+    { "id": 10, "titulo": "HTML", "img": "img/html.svg", "categoria": "Frontend" },
+    { "id": 11, "titulo": "CSS", "img": "img/css.svg", "categoria": "Frontend" },
+    { "id": 12, "titulo": "TailwindCSS", "img": "img/tailwind.svg", "categoria": "Frontend" },
+    { "id": 13, "titulo": "Bootstrap", "img": "img/bootstrap.svg", "categoria": "Frontend" },
+    { "id": 14, "titulo": "JQuery", "img": "img/jquery.svg", "categoria": "Frontend" },
+
+    { "id": 15, "titulo": "NodeJS", "img": "img/node.svg", "categoria": "Backend" },
+    { "id": 16, "titulo": "NestJS", "img": "img/nestjslogo.svg", "categoria": "Backend" },
+    { "id": 17, "titulo": "Express", "img": "img/express.svg", "categoria": "Backend" },
+    { "id": 18, "titulo": "Spring Boot", "img": "img/spring.svg", "categoria": "Backend" },
+    { "id": 19, "titulo": "Laravel", "img": "img/laravel.svg", "categoria": "Backend" },
+    { "id": 20, "titulo": "Prisma", "img": "img/prisma.svg", "categoria": "Backend" },
+
+    { "id": 21, "titulo": "PostgreSQL", "img": "img/postgresql.svg", "categoria": "Bases de Datos" },
+    { "id": 22, "titulo": "MySQL", "img": "img/mysql.svg", "categoria": "Bases de Datos" },
+    { "id": 23, "titulo": "MongoDB", "img": "img/mongo.svg", "categoria": "Bases de Datos" },
+    { "id": 24, "titulo": "SQLite", "img": "img/sqlite.svg", "categoria": "Bases de Datos" },
+
+    { "id": 25, "titulo": "Git", "img": "img/git.svg", "categoria": "DevOps y Herramientas" },
+    { "id": 26, "titulo": "Docker", "img": "img/docker.svg", "categoria": "DevOps y Herramientas" },
+    { "id": 27, "titulo": "AWS", "img": "img/aws.svg", "categoria": "DevOps y Herramientas" },
+    { "id": 28, "titulo": "Linux", "img": "img/linux.svg", "categoria": "DevOps y Herramientas" },
+    { "id": 29, "titulo": "Ubuntu", "img": "img/ubuntu.svg", "categoria": "DevOps y Herramientas" }
   ],
   "experiencia": [
     {
@@ -143,8 +101,14 @@
   "educacion": [
     {
       "id": 0,
+      "titulo": "Ingeniería Informática",
+      "periodo": "2026 - Actualidad",
+      "descripcion": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO."
+    },
+    {
+      "id": 1,
       "titulo": "Ingeniería en Sistemas",
-      "periodo": "2015 - Actualidad",
+      "periodo": "2015 - 2023",
       "descripcion": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
     },
     {
@@ -154,25 +118,25 @@
       "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
     },
     {
-      "id": 1,
+      "id": 3,
       "titulo": "PCAP - Programming Essentials in Python",
       "periodo": "2021 - 2021",
       "descripcion": "Curso de desarrollo en Python, de CISCO Networking Academy."
     },
     {
-      "id": 2,
+      "id": 4,
       "titulo": "Introduction to Cybersecurity",
       "periodo": "2020 - 2020",
       "descripcion": "Curso de introducción a la cyber seguridad de CISCO Networking Academy."
     },
     {
-      "id": 3,
+      "id": 5,
       "titulo": "NDG Linux Unhatched",
       "periodo": "2020 - 2020",
       "descripcion": "Curso de introduccion LINUX de CISCO Networking Academy."
     },
     {
-      "id": 4,
+      "id": 6,
       "titulo": "Técnico en Computación",
       "periodo": "2011 - 2014",
       "descripcion": "Bachillerato técnico en computación."
@@ -180,39 +144,45 @@
   ],
   "proyectos": [
     {
-      "id": 0,
-      "titulo": "POS para Restaurantes",
-      "img": "https://i.postimg.cc/2SCV8xyZ/logo.jpg",
-      "url": "https://github.com/ManuelDHenriquez/Restaurante",
-      "descripcion": "Sistema de punto de venta (POS) integral desarrollado específicamente para la gestión de restaurantes. Implementa funcionalidades completas de gestión de mesas, pedidos en tiempo real, control de inventario, facturación electrónica y reportes de ventas. La arquitectura del sistema facilita la comunicación entre meseros, cocina y caja, optimizando el flujo de trabajo y mejorando la experiencia del cliente. Desarrollado con JavaScript, PHP y MySQL, integrando tecnologías frontend como jQuery y Bootstrap para una interfaz responsiva e intuitiva."
-    },
-    {
-      "id": 1,
-      "titulo": "ATKi Software",
-      "img": "https://atki.online/images/2023/05/10/atkisoftwaremascota.png",
-      "url": "https://atki.online/",
-      "descripcion": "Plataforma empresarial SaaS diseñada para la administración integral de operaciones diarias en tiempo real. El sistema proporciona módulos completos de gestión financiera, control de inventario, facturación electrónica, recursos humanos y análisis de datos mediante dashboards interactivos. Orientado específicamente a micro, pequeñas y medianas empresas, combina seguridad robusta, escalabilidad y una interfaz amigable que permite a los usuarios gestionar sus negocios de manera eficiente sin requerir conocimientos técnicos avanzados."
+      "id": 4,
+      "titulo": "ComerciaHN",
+      "img": "img/comerciahn.png",
+      "url": "",
+      "featured": true,
+      "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "VueJS"],
+      "descripcion": "Plataforma de comercio electrónico a nivel nacional desarrollada para SENPRENDE, diseñada para impulsar el emprendimiento hondureño conectando más de 900 emprendedores con consumidores locales e internacionales. El sistema incluye marketplace completo con catálogo de productos, carrito de compras, pasarelas de pago, sistema de gestión de inventario, panel administrativo avanzado con analytics, gestión de tiendas virtuales y CRM para vendedores. Arquitectura escalable construida con NestJS y TypeScript en el backend, PostgreSQL para persistencia de datos, Prisma como ORM, y Vue.js 3 con Composition API en el frontend, garantizando alto rendimiento y mantenibilidad."
     },
     {
       "id": 2,
       "titulo": "RapidRiders",
       "img": "https://i.postimg.cc/LsgBFZTw/rapid-riders-admins.png",
       "url": "",
+      "tags": ["NodeJS", "TypeScript", "Express", "MongoDB", "Bootstrap"],
       "descripcion": "Aplicación web full-stack desarrollada como proyecto universitario para la gestión de servicios de delivery. El sistema implementa una arquitectura completa con tres interfaces especializadas: panel administrativo para supervisión y reportes, aplicación de clientes para realizar pedidos, y sistema para motoristas que gestiona las entregas en tiempo real. Desarrollado desde cero con arquitectura RESTful, incluye autenticación JWT, geolocalización en tiempo real, sistema de notificaciones y gestión de estados de órdenes. Stack tecnológico: Node.js, TypeScript, Express, MongoDB para el backend, con frontend en Bootstrap y JavaScript."
+    },
+    {
+      "id": 1,
+      "titulo": "ATKi Software",
+      "img": "https://atki.online/images/2023/05/10/atkisoftwaremascota.png",
+      "url": "https://atki.online/",
+      "tags": ["JavaScript", "PHP", "MySQL", "Bootstrap"],
+      "descripcion": "Plataforma empresarial SaaS diseñada para la administración integral de operaciones diarias en tiempo real. El sistema proporciona módulos completos de gestión financiera, control de inventario, facturación electrónica, recursos humanos y análisis de datos mediante dashboards interactivos. Orientado específicamente a micro, pequeñas y medianas empresas, combina seguridad robusta, escalabilidad y una interfaz amigable que permite a los usuarios gestionar sus negocios de manera eficiente sin requerir conocimientos técnicos avanzados."
+    },
+    {
+      "id": 0,
+      "titulo": "POS para Restaurantes",
+      "img": "https://i.postimg.cc/2SCV8xyZ/logo.jpg",
+      "url": "https://github.com/ManuelDHenriquez/Restaurante",
+      "tags": ["JavaScript", "PHP", "MySQL", "JQuery", "Bootstrap"],
+      "descripcion": "Sistema de punto de venta (POS) integral desarrollado específicamente para la gestión de restaurantes. Implementa funcionalidades completas de gestión de mesas, pedidos en tiempo real, control de inventario, facturación electrónica y reportes de ventas. La arquitectura del sistema facilita la comunicación entre meseros, cocina y caja, optimizando el flujo de trabajo y mejorando la experiencia del cliente. Desarrollado con JavaScript, PHP y MySQL, integrando tecnologías frontend como jQuery y Bootstrap para una interfaz responsiva e intuitiva."
     },
     {
       "id": 3,
       "titulo": "Salón Azul FFAA",
       "img": "https://i.postimg.cc/wM3C9MRP/ffaa.png",
       "url": "",
+      "tags": ["Soporte Técnico", "Análisis de Sistemas"],
       "descripcion": "Colaboración técnica en el Salón Azul Computacional de la Fuerza Aérea Hondureña, proporcionando soporte en desarrollo de software y sistemas institucionales. El trabajo incluyó análisis de requerimientos, desarrollo de soluciones tecnológicas personalizadas, mantenimiento de sistemas críticos y capacitación técnica al personal. Experiencia en entorno gubernamental con altos estándares de seguridad y cumplimiento de protocolos institucionales."
-    },
-    {
-      "id": 4,
-      "titulo": "ComerciaHN",
-      "img": "img/comerciahn.png",
-      "url": "",
-      "descripcion": "Plataforma de comercio electrónico a nivel nacional desarrollada para SENPRENDE, diseñada para impulsar el emprendimiento hondureño conectando más de 900 emprendedores con consumidores locales e internacionales. El sistema incluye marketplace completo con catálogo de productos, carrito de compras, pasarelas de pago, sistema de gestión de inventario, panel administrativo avanzado con analytics, gestión de tiendas virtuales y CRM para vendedores. Arquitectura escalable construida con NestJS y TypeScript en el backend, PostgreSQL para persistencia de datos, Prisma como ORM, y Vue.js 3 con Composition API en el frontend, garantizando alto rendimiento y mantenibilidad."
     }
   ],
   "rapidRidersProyectos": [

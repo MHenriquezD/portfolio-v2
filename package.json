@@ -16,11 +16,13 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "matter-js": "^0.20.0",
     "pdfmake": "^0.2.21",
     "vue": "^3.5.26"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.3",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^24.10.4",
     "@types/pdfmake": "^0.2.12",
     "@vitejs/plugin-vue": "^6.0.3",

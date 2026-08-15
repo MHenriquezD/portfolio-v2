@@ -14,6 +14,10 @@ const props = defineProps<{
   isLightTheme: boolean
 }>()
 
+const emit = defineEmits<{
+  'skill-click': [titulo: string]
+}>()
+
 const containerRef = ref<HTMLDivElement>()
 const canvasRef = ref<HTMLCanvasElement>()
 
@@ -104,6 +108,27 @@ const init = async () => {
 
   Matter.Composite.add(engine.world, mouseConstraint)
   render.mouse = mouse
+
+  let clickStart: { x: number; y: number; time: number } | null = null
+
+  Matter.Events.on(mouseConstraint, 'mousedown', () => {
+    clickStart = { x: mouse.position.x, y: mouse.position.y, time: Date.now() }
+  })
+
+  Matter.Events.on(mouseConstraint, 'mouseup', () => {
+    if (!clickStart) return
+    const dx = mouse.position.x - clickStart.x
+    const dy = mouse.position.y - clickStart.y
+    const dist = Math.sqrt(dx * dx + dy * dy)
+    const elapsed = Date.now() - clickStart.time
+    if (dist < 10 && elapsed < 300) {
+      const clickedBody = Matter.Query.point(bodies, mouse.position)[0]
+      if (clickedBody) {
+        emit('skill-click', clickedBody.label)
+      }
+    }
+    clickStart = null
+  })
 
   mouse.element.removeEventListener('wheel', (mouse as any).mousewheel)
   mouse.element.removeEventListener('DOMMouseScroll', (mouse as any).mousewheel)

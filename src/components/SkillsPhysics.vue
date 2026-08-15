@@ -137,13 +137,18 @@ const init = async () => {
   mouse.element.removeEventListener('touchmove', (mouse as any).mousemove)
   mouse.element.removeEventListener('touchend', (mouse as any).mouseup)
 
+  let touchStart: { x: number; y: number; time: number } | null = null
+
   mouse.element.addEventListener('touchstart', (e: Event) => {
     const touch = (e as TouchEvent).touches[0]
     if (!touch) return
     const rect = render.canvas.getBoundingClientRect()
-    mouse.position.x = touch.clientX - rect.left
-    mouse.position.y = touch.clientY - rect.top
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
+    mouse.position.x = x
+    mouse.position.y = y
     mouse.button = 0
+    touchStart = { x, y, time: Date.now() }
   }, { passive: true })
 
   mouse.element.addEventListener('touchmove', (e: Event) => {
@@ -159,6 +164,19 @@ const init = async () => {
 
   mouse.element.addEventListener('touchend', () => {
     mouse.button = -1
+    if (touchStart) {
+      const dx = mouse.position.x - touchStart.x
+      const dy = mouse.position.y - touchStart.y
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      const elapsed = Date.now() - touchStart.time
+      if (dist < 15 && elapsed < 400) {
+        const clickedBody = Matter.Query.point(bodies, { x: touchStart.x, y: touchStart.y })[0]
+        if (clickedBody) {
+          emit('skill-click', clickedBody.label)
+        }
+      }
+      touchStart = null
+    }
   }, { passive: true })
 
   runner = Matter.Runner.create()

@@ -71,31 +71,31 @@
       "id": 1,
       "titulo": "Desarrollador Semi-Senior",
       "periodo": "Frebrero 2026 - Actualidad",
-      "descripcion": "Desarrollador Semi-Senior en INFATLAN. <br>React, TypeScript, PostgreSQL, AWS"
+      "descripcion": "Refactorización y mejora continua de una aplicación heredada en <b>React</b>, implementando animaciones, buenas prácticas UX/UI y patrones escalables. Incremento significativo en la productividad del equipo y la mantenibilidad del código.<br><b>React, TypeScript, PostgreSQL, AWS</b>"
     },
     {
       "id": 2,
       "titulo": "Desarrollador Back-End",
       "periodo": "Enero 2025 - Febrero 2026",
-      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+      "descripcion": "Optimización y desarrollo backend con <b>NestJS</b> para múltiples plataformas: SSE, SIS (internas), <b>ComerciaHN</b> y <b>MIEL</b> (públicas). Lideré la migración a versiones actualizadas, mejorando legibilidad y rendimiento. En ComerciaHN, contribuí al crecimiento de ~300 a más de <b>1,000 emprendedores</b> registrados. Frontend con Nuxt (clientes) y Angular (admin).<br><b>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma</b>"
     },
     {
       "id": 3,
       "titulo": "Consultoría Tecnológica",
       "periodo": "Jul 2024 - Dic 2024",
-      "descripcion": "Consultoría Tecnológica en CDE Mipyme Coordillera Nombre de Dios. <br> Análisis de sistemas, desarrollo de software, soporte técnico y capacitación."
+      "descripcion": "Desarrollo backend y soporte de <b>Mi Empresa en Línea (MIEL 3.0)</b>, plataforma pública que ayuda a pymes a constituirse de forma gratuita con asesoría legal completa. Contribuí al crecimiento de ~100 a más de <b>3,000 usuarios activos</b>, con cientos de empresas consolidadas al mes.<br><b>NestJS, TypeScript, PostgreSQL</b>"
     },
     {
       "id": 4,
       "titulo": "Desarrollador Back-End",
       "periodo": "Nov 2023 - Jun 2024",
-      "descripcion": "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (<b>SENPRENDE</b>). <br> NestJS, TypeScript, PostgreSQL, MongoDB."
+      "descripcion": "Desarrollo backend centrado en el <b>SIS</b> (Sistema Integral de Servicios), gestión de bases de datos y migración a TypeScript. Mejoramiento de sistemas internos, optimización de consultas y estabilización de la arquitectura del proyecto.<br><b>NestJS, TypeScript, PostgreSQL, MongoDB</b>"
     },
     {
       "id": 5,
       "titulo": "Web Developer",
       "periodo": "2021 - 2022",
-      "descripcion": "Desarrollador WEB en la empresa CCS Consultores (Honduras).<br>Utilizando CSS, HTML, JavaScrip y PHP."
+      "descripcion": "Desarrollo y mejoramiento de <b>ATKi POS</b>, sistema punto de venta para pequeñas, medianas y grandes empresas. Mi primer trabajo profesional, donde aprendí trabajo en equipo y comunicación efectiva. Sistema con cálculo de ISV y contabilidad integrada.<br><b>PHP, jQuery, CSS, HTML</b>"
     }
   ],
   "educacion": [
@@ -151,11 +151,20 @@
     {
       "id": 4,
       "titulo": "ComerciaHN",
-      "img": "img/comerciahn.png",
-      "url": "",
+      "img": "img/proyectos/comercia.png",
+      "url": "https://comercia.hn/",
       "featured": true,
       "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "VueJS"],
-      "descripcion": "Plataforma de comercio electrónico a nivel nacional desarrollada para SENPRENDE, diseñada para impulsar el emprendimiento hondureño conectando más de 900 emprendedores con consumidores locales e internacionales. El sistema incluye marketplace completo con catálogo de productos, carrito de compras, pasarelas de pago, sistema de gestión de inventario, panel administrativo avanzado con analytics, gestión de tiendas virtuales y CRM para vendedores. Arquitectura escalable construida con NestJS y TypeScript en el backend, PostgreSQL para persistencia de datos, Prisma como ORM, y Vue.js 3 con Composition API en el frontend, garantizando alto rendimiento y mantenibilidad."
+      "descripcion": "Marketplace nacional del Gobierno de Honduras que conecta a más de 1,000 emprendedores hondureños con consumidores locales e internacionales. El sistema incluye catálogo de productos, carrito de compras, pasarelas de pago, gestión de inventario, panel administrativo con analytics y CRM para vendedores. Crecimiento de ~300 a más de 1,000 emprendedores registrados durante mi participación. Backend con NestJS y TypeScript, PostgreSQL con Prisma como ORM, y frontend con Nuxt (clientes) y Angular (administración)."
+    },
+    {
+      "id": 5,
+      "titulo": "Mi Empresa en Línea (MIEL)",
+      "img": "img/proyectos/miel.png",
+      "url": "https://miempresaenlinea.org/",
+      "featured": true,
+      "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma"],
+      "descripcion": "Plataforma digital del Gobierno de Honduras que facilita la creación y constitución de empresas de forma 100% en línea, gratuita y disponible 24/7, conforme a la Ley de Generación de Empleo. El sistema guía al usuario paso a paso desde el registro hasta la obtención de documentos legales, integrando validaciones con instituciones gubernamentales. Más de 3,000 usuarios activos con cientos de empresas constituidas mensualmente. Arquitectura backend robusta con NestJS y TypeScript, PostgreSQL para persistencia, y Prisma como ORM."
     },
     {
       "id": 2,
@@ -230,16 +239,16 @@
       "titulo": "ComerciaHN Clientes",
       "url": "https://comercia.hn/",
       "icon": "fa-solid fa-shopping-cart",
-      "img": "img/comerciahn.png",
-      "descripcion": "Front-end del proyecto ComerciaHN, diseñado para que los clientes puedan explorar más de 300 productos de emprendedores hondureños, realizar compras y gestionar sus órdenes de manera intuitiva y segura."
+      "img": "img/proyectos/comercia.png",
+      "descripcion": "Marketplace público con más de 465 productos de 981+ emprendedores hondureños en 15 departamentos. Catálogo con búsqueda, carrito de compras, pasarelas de pago y sistema de tiendas virtuales. Desarrollado con Nuxt 3."
     },
     {
       "id": 2,
       "titulo": "ComerciaHN Admin",
       "url": "https://admin.comercia.hn/",
       "icon": "fa-solid fa-user-shield",
-      "img": "img/comerciahn.png",
-      "descripcion": "Panel administrativo del proyecto ComerciaHN, diseñado para que los emprendedores y administradores puedan gestionar tiendas, productos, órdenes, inventario y usuarios con un sistema completo de analytics y reportes."
+      "img": "img/proyectos/comercia-admin.png",
+      "descripcion": "Panel administrativo para emprendedores y administradores. Gestión de tiendas, productos, órdenes, inventario, analytics y reportes. Más de 162 tiendas activas. Desarrollado con Angular."
     }
   ]
 }

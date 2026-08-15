@@ -47,7 +47,7 @@
       "company": "INFATLAN",
       "duration": "Febrero 2026 - Actualidad",
       "responsibilities": [
-        "Desarrollador Semi Senior en INFATLAN",
+        "Refactorización y mejora de aplicación heredada en React, implementando buenas prácticas UX/UI y patrones escalables.",
         "Tecnologías: React, TypeScript, PostgreSQL, AWS"
       ]
     },
@@ -56,8 +56,8 @@
       "company": "SENPRENDE",
       "duration": "Enero 2025 - Febrero 2026",
       "responsibilities": [
-        "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (SENPRENDE).",
-        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, VueJS"
+        "Optimización backend de ComerciaHN, MIEL, SSE y SIS con NestJS. Crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN.",
+        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma"
       ]
     },
     {
@@ -65,8 +65,8 @@
       "company": "CDE Mipyme Coordillera Nombre de Dios",
       "duration": "Jul 2024 - Dic 2024",
       "responsibilities": [
-        "Consultoría Tecnológica en CDE Mipyme Coordillera Nombre de Dios.",
-        "Análisis de sistemas, desarrollo de software, soporte técnico y capacitación."
+        "Desarrollo backend de MIEL 3.0, plataforma pública para constitución gratuita de pymes. Crecimiento de ~100 a más de 3,000 usuarios activos.",
+        "Tecnologías: NestJS, TypeScript, PostgreSQL"
       ]
     },
     {
@@ -74,8 +74,8 @@
       "company": "SENPRENDE",
       "duration": "Nov 2023 - Jun 2024",
       "responsibilities": [
-        "Desarrollador Back-End en la empresa SERVICIO NACIONAL DE EMPRENDIMIENTO Y DE PEQUEÑOS NEGOCIOS (SENPRENDE).",
-        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB."
+        "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios), gestión de bases de datos y migración a TypeScript.",
+        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB"
       ]
     },
     {
@@ -83,8 +83,8 @@
       "company": "CCS Consultores (Honduras)",
       "duration": "2021 - 2022",
       "responsibilities": [
-        "Desarrollador WEB en la empresa CCS Consultores (Honduras).",
-        "Tecnologías: CSS, HTML, JavaScript y PHP."
+        "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta con cálculo de ISV y contabilidad integrada.",
+        "Tecnologías: PHP, jQuery, CSS, HTML"
       ]
     }
   ],

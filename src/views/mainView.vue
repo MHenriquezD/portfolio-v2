@@ -109,23 +109,25 @@
           Una selección de mis trabajos más recientes y relevantes.
         </p>
 
-        <!-- Proyecto Featured -->
+        <!-- Proyectos Featured -->
         <div
-          v-if="featuredProject"
+          v-for="fp in featuredProjects"
+          :key="fp.id"
           class="featured-project scroll-reveal"
         >
           <div class="featured-image">
-            <img :src="resolveImg(featuredProject.img)" :alt="featuredProject.titulo" />
+            <img :src="resolveImg(fp.img)" :alt="fp.titulo" />
             <div class="featured-badge">Destacado</div>
             <div class="project-overlay">
-              <button @click="openModalComercia" class="overlay-btn">Ver Detalles</button>
+              <button v-if="fp.titulo === 'ComerciaHN'" @click="openModalComercia" class="overlay-btn">Ver Detalles</button>
+              <a v-else-if="fp.url" :href="fp.url" target="_blank" class="overlay-btn">Visitar Sitio →</a>
             </div>
           </div>
           <div class="featured-content">
-            <h3>{{ featuredProject.titulo }}</h3>
-            <p>{{ featuredProject.descripcion }}</p>
+            <h3>{{ fp.titulo }}</h3>
+            <p>{{ fp.descripcion }}</p>
             <div class="project-tags">
-              <span v-for="tag in featuredProject.tags" :key="tag" class="project-tag">{{ tag }}</span>
+              <span v-for="tag in fp.tags" :key="tag" class="project-tag">{{ tag }}</span>
             </div>
           </div>
         </div>
@@ -185,12 +187,19 @@
               v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
               :key="skill.id"
               class="skill-card"
+              :data-skill="skill.titulo"
+              @click="animateSkill(skill, $event)"
             >
               <div class="skill-glow"></div>
               <div class="skill-image">
                 <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
               </div>
               <h3>{{ skill.titulo }}</h3>
+              <Transition name="tooltip-fade">
+                <div v-if="activeSkillTooltip === skill.titulo" class="skill-tooltip">
+                  {{ skillDescriptions[skill.titulo] }}
+                </div>
+              </Transition>
             </div>
           </div>
         </div>
@@ -198,6 +207,7 @@
           :skills="habilidades"
           :resolveImg="resolveImg"
           :isLightTheme="isLightTheme"
+          @skill-click="scrollToSkill"
         />
       </div>
     </section>
@@ -314,13 +324,18 @@
           </div>
           <div class="modal-content">
             <div v-for="modulo in comerciaHNProyectos" :key="modulo.id" class="subproject-card">
-              <div class="subproject-icon">
-                <i :class="modulo.icon"></i>
+              <div class="subproject-screenshot">
+                <img :src="resolveImg(modulo.img)" :alt="modulo.titulo" />
               </div>
-              <div class="subproject-info">
-                <h3>{{ modulo.titulo }}</h3>
-                <p>{{ modulo.descripcion }}</p>
-                <a :href="modulo.url" target="_blank" class="subproject-link"> Visitar Sitio → </a>
+              <div class="subproject-body">
+                <div class="subproject-icon">
+                  <i :class="modulo.icon"></i>
+                </div>
+                <div class="subproject-info">
+                  <h3>{{ modulo.titulo }}</h3>
+                  <p>{{ modulo.descripcion }}</p>
+                  <a :href="modulo.url" target="_blank" class="subproject-link"> Visitar Sitio → </a>
+                </div>
               </div>
             </div>
           </div>
@@ -332,13 +347,13 @@
     <Transition name="modal">
       <div v-if="showModalCV" class="modal-overlay" @click="closeModalCV">
         <div class="modal-container modal-cv" @click.stop>
-          <button class="modal-close" @click="closeModalCV">
-            <i class="fas fa-times"></i>
-          </button>
           <div class="modal-header">
             <h2>Curriculum Vitae</h2>
             <button @click="downloadCV" class="btn-download">
               <i class="fas fa-download"></i> Descargar CV
+            </button>
+            <button class="modal-close" @click="closeModalCV">
+              <i class="fas fa-times"></i>
             </button>
           </div>
           <div class="modal-content pdf-viewer">
@@ -402,8 +417,42 @@ const skillCategories = computed(() =>
   [...new Set(habilidades.map((s: { categoria: string }) => s.categoria))]
 )
 
-const featuredProject = computed(() =>
-  proyectos.find((p: { featured?: boolean }) => p.featured)
+const skillDescriptions: Record<string, string> = {
+  'JavaScript': 'Lenguaje principal para desarrollo web interactivo y dinámico',
+  'TypeScript': 'Tipado estático sobre JavaScript para código más robusto',
+  'Python': 'Automatización, scripting y desarrollo backend',
+  'Java': 'Desarrollo de aplicaciones empresariales y multiplataforma',
+  'C#': 'Desarrollo de aplicaciones .NET y videojuegos con Unity',
+  'C++': 'Programación de sistemas y aplicaciones de alto rendimiento',
+  'PHP': 'Desarrollo web backend y sistemas CMS',
+  'React': 'Interfaces de usuario con componentes reutilizables',
+  'VueJS': 'Framework progresivo para construir SPAs reactivas',
+  'HTML': 'Estructura y semántica de páginas web',
+  'CSS': 'Estilos, animaciones y diseño responsive',
+  'TailwindCSS': 'Framework de utilidades CSS para diseño rápido',
+  'Bootstrap': 'Componentes UI y grid system responsive',
+  'JQuery': 'Manipulación del DOM y peticiones AJAX simplificadas',
+  'NodeJS': 'JavaScript en el servidor para APIs y microservicios',
+  'NestJS': 'Framework backend con arquitectura modular y escalable',
+  'Express': 'Framework minimalista para APIs REST en Node.js',
+  'Spring Boot': 'Framework Java para aplicaciones empresariales',
+  'Laravel': 'Framework PHP con ORM Eloquent y Blade templates',
+  'Prisma': 'ORM moderno con tipado automático para bases de datos',
+  'PostgreSQL': 'Base de datos relacional robusta y escalable',
+  'MySQL': 'Base de datos relacional ampliamente utilizada',
+  'MongoDB': 'Base de datos NoSQL orientada a documentos JSON',
+  'SQLite': 'Base de datos ligera embebida en la aplicación',
+  'Git': 'Control de versiones y colaboración en equipo',
+  'Docker': 'Contenedores para despliegue consistente de aplicaciones',
+  'AWS': 'Servicios cloud: EC2, S3, Lambda y más',
+  'Linux': 'Administración de servidores y entornos de desarrollo',
+  'Ubuntu': 'Distribución Linux para servidores y desarrollo',
+}
+
+const activeSkillTooltip = ref<string | null>(null)
+
+const featuredProjects = computed(() =>
+  proyectos.filter((p: { featured?: boolean }) => p.featured)
 )
 
 const regularProjects = computed(() =>
@@ -531,6 +580,39 @@ const openModalRapidRiders = () => {
 const closeModalRapidRiders = () => {
   showModalRapidRiders.value = false
   document.body.style.overflow = 'auto'
+}
+
+let tooltipTimeout: ReturnType<typeof setTimeout> | null = null
+
+const animateSkill = (skill: { titulo: string }, event: MouseEvent) => {
+  const card = (event.currentTarget as HTMLElement)
+  card.classList.remove('skill-clicked')
+  void card.offsetWidth
+  card.classList.add('skill-clicked')
+  card.addEventListener('animationend', () => card.classList.remove('skill-clicked'), { once: true })
+
+  if (activeSkillTooltip.value === skill.titulo) {
+    activeSkillTooltip.value = null
+    return
+  }
+  activeSkillTooltip.value = skill.titulo
+  if (tooltipTimeout) clearTimeout(tooltipTimeout)
+  tooltipTimeout = setTimeout(() => { activeSkillTooltip.value = null }, 5000)
+}
+
+const scrollToSkill = (titulo: string) => {
+  const el = document.querySelector(`[data-skill="${titulo}"]`) as HTMLElement | null
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    el.classList.add('skill-highlight')
+    setTimeout(() => el.classList.remove('skill-highlight'), 1500)
+
+    setTimeout(() => {
+      activeSkillTooltip.value = titulo
+      if (tooltipTimeout) clearTimeout(tooltipTimeout)
+      tooltipTimeout = setTimeout(() => { activeSkillTooltip.value = null }, 5000)
+    }, 600)
+  }
 }
 
 const openModalComercia = () => {

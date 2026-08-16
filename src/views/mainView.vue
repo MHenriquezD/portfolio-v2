@@ -1,5 +1,5 @@
 <template>
-  <div class="main-view" :class="{ 'light-theme': isLightTheme }">
+  <div class="main-view" :class="{ 'light-theme': isLightTheme }" @click="closeFlip">
     <!-- Partículas de fondo -->
     <div class="particles-bg"></div>
 
@@ -186,20 +186,27 @@
             <div
               v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
               :key="skill.id"
-              class="skill-card"
+              class="skill-card-wrapper"
+              :class="{ flipped: flippedSkill === skill.titulo }"
               :data-skill="skill.titulo"
-              @click="animateSkill(skill, $event)"
+              @click="toggleFlip(skill.titulo, $event)"
             >
-              <div class="skill-glow"></div>
-              <div class="skill-image">
-                <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
-              </div>
-              <h3>{{ skill.titulo }}</h3>
-              <Transition name="tooltip-fade">
-                <div v-if="activeSkillTooltip === skill.titulo" class="skill-tooltip">
-                  {{ skillDescriptions[skill.titulo] }}
+              <div class="skill-card-inner">
+                <div class="skill-card-front">
+                  <div class="skill-glow"></div>
+                  <div class="skill-image">
+                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+                  </div>
+                  <h3>{{ skill.titulo }}</h3>
                 </div>
-              </Transition>
+                <div class="skill-card-back">
+                  <div class="skill-image skill-image-small">
+                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+                  </div>
+                  <h3>{{ skill.titulo }}</h3>
+                  <p>{{ skillDescriptions[skill.titulo] }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -450,6 +457,16 @@ const skillDescriptions: Record<string, string> = {
 }
 
 const activeSkillTooltip = ref<string | null>(null)
+const flippedSkill = ref<string | null>(null)
+
+const toggleFlip = (titulo: string, event: Event) => {
+  event.stopPropagation()
+  flippedSkill.value = flippedSkill.value === titulo ? null : titulo
+}
+
+const closeFlip = () => {
+  flippedSkill.value = null
+}
 
 const featuredProjects = computed(() =>
   proyectos.filter((p: { featured?: boolean }) => p.featured)

@@ -151,7 +151,7 @@
     {
       "id": 4,
       "titulo": "ComerciaHN",
-      "img": "img/proyectos/comercia.png",
+      "img": "img/proyectos/comercia.jpg",
       "url": "https://comercia.hn/",
       "featured": true,
       "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "VueJS"],
@@ -160,7 +160,7 @@
     {
       "id": 5,
       "titulo": "Mi Empresa en Línea (MIEL)",
-      "img": "img/proyectos/miel.png",
+      "img": "img/proyectos/miel.jpg",
       "url": "https://miempresaenlinea.org/",
       "featured": true,
       "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma"],
@@ -239,7 +239,7 @@
       "titulo": "ComerciaHN Clientes",
       "url": "https://comercia.hn/",
       "icon": "fa-solid fa-shopping-cart",
-      "img": "img/proyectos/comercia.png",
+      "img": "img/proyectos/comercia.jpg",
       "descripcion": "Marketplace público con más de 465 productos de 981+ emprendedores hondureños en 15 departamentos. Catálogo con búsqueda, carrito de compras, pasarelas de pago y sistema de tiendas virtuales. Desarrollado con Nuxt 3."
     },
     {

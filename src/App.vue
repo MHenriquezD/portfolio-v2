@@ -11,7 +11,7 @@ const toggleTheme = () => {
   localStorage.setItem('theme', isLightTheme.value ? 'light' : 'dark')
 }
 
-const sectionIds: string[] = ['inicio', 'habilidades', 'trayectoria', 'proyectos', 'contacto']
+const sectionIds: string[] = ['inicio', 'trayectoria', 'proyectos', 'habilidades', 'sobre-mi', 'contacto']
 
 const updateActiveSection = () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop

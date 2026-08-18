@@ -67,8 +67,13 @@
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
                   <h3 class="timeline-title">{{ exp.titulo }}</h3>
-                  <p class="timeline-period">{{ exp.periodo }}</p>
-                  <p class="timeline-description" v-html="exp.descripcion"></p>
+                  <p class="timeline-period"><i class="fas fa-calendar-alt"></i> {{ exp.periodo }}</p>
+                  <ul class="timeline-responsibilities">
+                    <li v-for="(resp, i) in exp.responsabilidades" :key="i">{{ resp }}</li>
+                  </ul>
+                  <div class="timeline-techs">
+                    <span v-for="tech in exp.tecnologias" :key="tech" class="tech-chip">{{ tech }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,7 +144,7 @@
             :key="proyecto.id"
             class="project-card scroll-reveal"
           >
-            <div class="project-image">
+            <div class="project-image" :class="{ 'has-screenshot': proyecto.img.startsWith('img/proyectos/') }">
               <img :src="resolveImg(proyecto.img)" :alt="proyecto.titulo" />
               <div
                 v-if="proyecto.url || proyecto.id === 2"
@@ -176,6 +181,9 @@
         <p class="section-description scroll-reveal">
           Stack tecnológico con el que he trabajado. Siempre aprendiendo nuevas herramientas.
         </p>
+        <p class="skills-hint scroll-reveal">
+          <i class="fas fa-hand-pointer"></i> Toca una tarjeta para ver más detalles
+        </p>
         <div
           v-for="categoria in skillCategories"
           :key="categoria"
@@ -210,6 +218,9 @@
             </div>
           </div>
         </div>
+        <p class="physics-hint scroll-reveal">
+          <i class="fas fa-arrows-alt"></i> Arrastra las esferas &middot; toca una para ir a su tarjeta
+        </p>
         <SkillsPhysics
           :skills="habilidades"
           :resolveImg="resolveImg"
@@ -226,7 +237,7 @@
         <div class="about-content scroll-reveal">
           <div class="about-image">
             <div class="image-wrapper">
-              <img :src="resolveImg('img/mhenriquez.png')" alt="Manuel Henriquez" />
+              <img :src="resolveImg('img/mhenriquez.jpg')" alt="Manuel Henriquez" />
             </div>
           </div>
           <div class="about-text">
@@ -279,7 +290,7 @@
             class="social-link"
           >
             <i :class="social.icon"></i>
-            {{ social.tipo.charAt(0).toUpperCase() + social.tipo.slice(1) }}
+            <span>{{ social.tipo.charAt(0).toUpperCase() + social.tipo.slice(1) }}</span>
           </a>
         </div>
       </div>

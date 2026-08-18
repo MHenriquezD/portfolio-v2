@@ -71,31 +71,57 @@
       "id": 1,
       "titulo": "Desarrollador Semi-Senior",
       "periodo": "Marzo 2026 - Actualidad",
-      "descripcion": "Refactorización y mejora continua de una aplicación heredada en <b>React</b>, implementando animaciones, buenas prácticas UX/UI y patrones escalables. Incremento significativo en la productividad del equipo y la mantenibilidad del código.<br><b>React, TypeScript, PostgreSQL, AWS</b>"
+      "responsabilidades": [
+        "Refactorización y mejora continua de una aplicación heredada en React",
+        "Implementación de animaciones, buenas prácticas UX/UI y patrones escalables",
+        "Incremento significativo en la productividad del equipo y la mantenibilidad del código"
+      ],
+      "tecnologias": ["React", "TypeScript", "PostgreSQL", "AWS"]
     },
     {
       "id": 2,
       "titulo": "Desarrollador Back-End",
       "periodo": "Enero 2025 - Febrero 2026",
-      "descripcion": "Optimización y desarrollo backend con <b>NestJS</b> para múltiples plataformas: SSE, SIS (internas), <b>ComerciaHN</b> y <b>MIEL</b> (públicas). Lideré la migración a versiones actualizadas, mejorando legibilidad y rendimiento. En ComerciaHN, contribuí al crecimiento de ~300 a más de <b>1,000 emprendedores</b> registrados. Frontend con Nuxt (clientes) y Angular (admin).<br><b>NestJS, TypeScript, PostgreSQL, MongoDB, Prisma</b>"
+      "responsabilidades": [
+        "Optimización y desarrollo backend con NestJS para múltiples plataformas: SSE, SIS, ComerciaHN y MIEL",
+        "Lideré la migración a versiones actualizadas, mejorando legibilidad y rendimiento",
+        "Contribuí al crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN",
+        "Frontend con Nuxt (clientes) y Angular (admin)"
+      ],
+      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL", "MongoDB", "Prisma"]
     },
     {
       "id": 3,
       "titulo": "Consultoría Tecnológica",
       "periodo": "Jul 2024 - Dic 2024",
-      "descripcion": "Desarrollo backend y soporte de <b>Mi Empresa en Línea (MIEL 3.0)</b>, plataforma pública que ayuda a pymes a constituirse de forma gratuita con asesoría legal completa. Contribuí al crecimiento de ~100 a más de <b>3,000 usuarios activos</b>, con cientos de empresas consolidadas al mes.<br><b>NestJS, TypeScript, PostgreSQL</b>"
+      "responsabilidades": [
+        "Desarrollo backend y soporte de Mi Empresa en Línea (MIEL 3.0)",
+        "Plataforma pública que ayuda a pymes a constituirse de forma gratuita con asesoría legal completa",
+        "Contribuí al crecimiento de ~100 a más de 3,000 usuarios activos"
+      ],
+      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL"]
     },
     {
       "id": 4,
       "titulo": "Desarrollador Back-End",
       "periodo": "Nov 2023 - Jun 2024",
-      "descripcion": "Desarrollo backend centrado en el <b>SIS</b> (Sistema Integral de Servicios), gestión de bases de datos y migración a TypeScript. Mejoramiento de sistemas internos, optimización de consultas y estabilización de la arquitectura del proyecto.<br><b>NestJS, TypeScript, PostgreSQL, MongoDB</b>"
+      "responsabilidades": [
+        "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios)",
+        "Gestión de bases de datos y migración a TypeScript",
+        "Optimización de consultas y estabilización de la arquitectura del proyecto"
+      ],
+      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL", "MongoDB"]
     },
     {
       "id": 5,
       "titulo": "Web Developer",
       "periodo": "2021 - 2022",
-      "descripcion": "Desarrollo y mejoramiento de <b>ATKi POS</b>, sistema punto de venta para pequeñas, medianas y grandes empresas. Mi primer trabajo profesional, donde aprendí trabajo en equipo y comunicación efectiva. Sistema con cálculo de ISV y contabilidad integrada.<br><b>PHP, jQuery, CSS, HTML</b>"
+      "responsabilidades": [
+        "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta",
+        "Sistema con cálculo de ISV y contabilidad integrada",
+        "Primer trabajo profesional: aprendizaje de trabajo en equipo y comunicación efectiva"
+      ],
+      "tecnologias": ["PHP", "jQuery", "CSS", "HTML"]
     }
   ],
   "educacion": [
@@ -247,7 +273,7 @@
       "titulo": "ComerciaHN Admin",
       "url": "https://admin.comercia.hn/",
       "icon": "fa-solid fa-user-shield",
-      "img": "img/proyectos/comercia-admin.png",
+      "img": "img/proyectos/comercia-admin.jpg",
       "descripcion": "Panel administrativo para emprendedores y administradores. Gestión de tiendas, productos, órdenes, inventario, analytics y reportes. Más de 162 tiendas activas. Desarrollado con Angular."
     }
   ]

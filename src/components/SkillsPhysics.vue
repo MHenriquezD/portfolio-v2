@@ -69,7 +69,7 @@ const init = async () => {
 
   Matter.Composite.add(engine.world, walls)
 
-  const bodySize = Math.min(55, width / 12)
+  const bodySize = Math.min(65, width / 10)
   const images = await Promise.all(
     props.skills.map((s) => loadImage(props.resolveImg(s.img)))
   )
@@ -202,14 +202,15 @@ const init = async () => {
       ctx.arc(0, 0, bodySize / 2, 0, Math.PI * 2)
       ctx.fillStyle = props.isLightTheme
         ? 'rgba(255, 255, 255, 0.9)'
-        : 'rgba(26, 26, 26, 0.9)'
+        : 'rgba(200, 200, 200, 0.9)'
       ctx.fill()
-      ctx.strokeStyle = props.isLightTheme
-        ? 'rgba(100, 181, 246, 0.3)'
-        : 'rgba(100, 181, 246, 0.2)'
+      ctx.strokeStyle = 'rgba(100, 181, 246, 0.3)'
       ctx.lineWidth = 1.5
       ctx.stroke()
 
+      ctx.beginPath()
+      ctx.arc(0, 0, bodySize / 2 - 2, 0, Math.PI * 2)
+      ctx.clip()
       ctx.drawImage(img, -size / 2, -size / 2, size, size)
       ctx.restore()
     }

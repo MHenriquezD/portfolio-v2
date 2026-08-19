@@ -530,7 +530,7 @@ const profileImageRef = ref<HTMLElement | null>(null)
 const easterEggs = [
   { key: 'easter-egg-flip', name: 'Flip Secreto', desc: 'Haz click en una skill card', icon: 'mdi:rotate-3d-variant', hint: 'Las cartas siempre tienen dos caras...' },
   { key: 'easter-egg-konami', name: 'Konami Code', desc: '↑↑↓↓←→←→BA', icon: '', img: 'img/games/contra-logo.png', hint: '30 vidas extra, si sabes el código' },
-  { key: 'easter-egg-logo', name: 'Logo Secreto', desc: 'Toca el logo MH varias veces', icon: 'game-icons:dragon-balls', hint: 'Reúne las 7 esferas y pide un deseo' },
+  { key: 'easter-egg-logo', name: '¡Sal de ahí, Shenlong!', desc: 'Toca el logo MH varias veces', icon: 'game-icons:dragon-balls', hint: 'Reúne las 7 esferas y pide un deseo' },
   { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'Escribe "zelda"', icon: 'mdi:zelda', hint: 'La princesa necesita ser nombrada' },
   { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: 'mdi:account-eye', hint: 'A veces hay que bajar para encontrar algo' },
 ]

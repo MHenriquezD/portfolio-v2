@@ -178,14 +178,15 @@ const init = async (loadImages = true) => {
   mouse.element.addEventListener('touchend', () => {
     mouse.button = -1
     if (touchStart) {
-      const dx = mouse.position.x - touchStart.x
-      const dy = mouse.position.y - touchStart.y
+      const ts = touchStart
+      const dx = mouse.position.x - ts.x
+      const dy = mouse.position.y - ts.y
       const dist = Math.sqrt(dx * dx + dy * dy)
-      const elapsed = Date.now() - touchStart.time
+      const elapsed = Date.now() - ts.time
       if (dist < 15 && elapsed < 400) {
         const hitBody = bodies.find(b => {
-          const cdx = touchStart.x - b.position.x
-          const cdy = touchStart.y - b.position.y
+          const cdx = ts.x - b.position.x
+          const cdy = ts.y - b.position.y
           return Math.sqrt(cdx * cdx + cdy * cdy) <= bodySize / 2
         })
         if (hitBody) emit('skill-click', hitBody.label)

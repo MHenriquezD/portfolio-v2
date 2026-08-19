@@ -408,6 +408,17 @@
         </a>
       </div>
     </footer>
+
+    <!-- Easter Egg Toast -->
+    <Transition name="achievement">
+      <div v-if="showAchievement" class="achievement-toast">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-text">
+          <span class="achievement-title">Easter Egg Desbloqueado</span>
+          <span class="achievement-desc">Descubriste el flip secreto</span>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -469,10 +480,21 @@ const skillDescriptions: Record<string, string> = {
 
 const activeSkillTooltip = ref<string | null>(null)
 const flippedSkill = ref<string | null>(null)
+const showAchievement = ref(false)
+
+const supportsHover = window.matchMedia('(hover: hover)').matches
+
+const triggerAchievement = () => {
+  if (localStorage.getItem('easter-egg-flip')) return
+  localStorage.setItem('easter-egg-flip', '1')
+  showAchievement.value = true
+  setTimeout(() => { showAchievement.value = false }, 4000)
+}
 
 const toggleFlip = (titulo: string, event: Event) => {
   event.stopPropagation()
   flippedSkill.value = flippedSkill.value === titulo ? null : titulo
+  if (supportsHover) triggerAchievement()
 }
 
 const closeFlip = () => {

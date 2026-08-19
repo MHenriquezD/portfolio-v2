@@ -24,8 +24,8 @@ const canvasRef = ref<HTMLCanvasElement>()
 let engine: Matter.Engine
 let render: Matter.Render
 let runner: Matter.Runner
-let mouse: Matter.Mouse
-let mouseConstraint: Matter.MouseConstraint
+let bodySize = 0
+let imagesCache: HTMLImageElement[] = []
 
 const loadImage = (src: string): Promise<HTMLImageElement> => {
   return new Promise((resolve) => {
@@ -37,7 +37,16 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
   })
 }
 
-const init = async () => {
+const destroy = () => {
+  if (render) Matter.Render.stop(render)
+  if (runner) Matter.Runner.stop(runner)
+  if (engine) {
+    Matter.Engine.clear(engine)
+    Matter.Composite.clear(engine.world, false)
+  }
+}
+
+const init = async (loadImages = true) => {
   if (!containerRef.value || !canvasRef.value) return
 
   const width = containerRef.value.clientWidth
@@ -59,20 +68,21 @@ const init = async () => {
     },
   })
 
-  const wallThickness = 60
-  const walls = [
-    Matter.Bodies.rectangle(width / 2, -wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(width / 2, height + wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
-  ]
+  const t = 60
+  Matter.Composite.add(engine.world, [
+    Matter.Bodies.rectangle(width / 2, -t / 2, width + t * 2, t, { isStatic: true, render: { visible: false } }),
+    Matter.Bodies.rectangle(width / 2, height + t / 2, width + t * 2, t, { isStatic: true, render: { visible: false } }),
+    Matter.Bodies.rectangle(-t / 2, height / 2, t, height * 2, { isStatic: true, render: { visible: false } }),
+    Matter.Bodies.rectangle(width + t / 2, height / 2, t, height * 2, { isStatic: true, render: { visible: false } }),
+  ])
 
-  Matter.Composite.add(engine.world, walls)
+  bodySize = Math.min(65, width / 10)
 
-  const bodySize = Math.min(65, width / 10)
-  const images = await Promise.all(
-    props.skills.map((s) => loadImage(props.resolveImg(s.img)))
-  )
+  if (loadImages) {
+    imagesCache = await Promise.all(
+      props.skills.map((s) => loadImage(props.resolveImg(s.img)))
+    )
+  }
 
   const bodies = props.skills.map((skill, i) => {
     const x = Math.random() * (width - bodySize * 2) + bodySize
@@ -84,11 +94,7 @@ const init = async () => {
       frictionAir: 0.01,
       density: 0.002,
       render: {
-        sprite: {
-          texture: '',
-          xScale: 1,
-          yScale: 1,
-        },
+        sprite: { texture: '', xScale: 1, yScale: 1 },
       },
       label: skill.titulo,
       plugin: { imageIndex: i },
@@ -97,8 +103,9 @@ const init = async () => {
 
   Matter.Composite.add(engine.world, bodies)
 
-  mouse = Matter.Mouse.create(render.canvas)
-  mouseConstraint = Matter.MouseConstraint.create(engine, {
+  const mouse = Matter.Mouse.create(render.canvas)
+  mouse.pixelRatio = window.devicePixelRatio || 1
+  const mouseConstraint = Matter.MouseConstraint.create(engine, {
     mouse,
     constraint: {
       stiffness: 0.2,
@@ -187,7 +194,7 @@ const init = async () => {
     const ctx = render.context
     for (const body of bodies) {
       const idx = (body.plugin as { imageIndex: number }).imageIndex
-      const img = images[idx]
+      const img = imagesCache[idx]
       if (!img || !img.complete || !img.naturalWidth) continue
 
       const pos = body.position
@@ -217,25 +224,14 @@ const init = async () => {
   })
 }
 
+let resizeTimeout: ReturnType<typeof setTimeout> | null = null
+
 const handleResize = () => {
-  if (!containerRef.value || !render) return
-  const width = containerRef.value.clientWidth
-  const height = containerRef.value.clientHeight
-  render.canvas.width = width * (window.devicePixelRatio || 1)
-  render.canvas.height = height * (window.devicePixelRatio || 1)
-  render.options.width = width
-  render.options.height = height
-
-  const walls = Matter.Composite.allBodies(engine.world).filter((b) => b.isStatic)
-  for (const w of walls) Matter.Composite.remove(engine.world, w)
-
-  const wallThickness = 60
-  Matter.Composite.add(engine.world, [
-    Matter.Bodies.rectangle(width / 2, -wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(width / 2, height + wallThickness / 2, width + wallThickness * 2, wallThickness, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
-    Matter.Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, render: { visible: false } }),
-  ])
+  if (resizeTimeout) clearTimeout(resizeTimeout)
+  resizeTimeout = setTimeout(() => {
+    destroy()
+    init(false)
+  }, 200)
 }
 
 let resizeObserver: ResizeObserver | null = null
@@ -248,9 +244,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   resizeObserver?.disconnect()
-  if (render) Matter.Render.stop(render)
-  if (runner) Matter.Runner.stop(runner)
-  if (engine) Matter.Engine.clear(engine)
+  if (resizeTimeout) clearTimeout(resizeTimeout)
+  destroy()
 })
 
 watch(() => props.isLightTheme, () => {

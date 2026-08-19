@@ -129,10 +129,12 @@ const init = async (loadImages = true) => {
     const dist = Math.sqrt(dx * dx + dy * dy)
     const elapsed = Date.now() - clickStart.time
     if (dist < 10 && elapsed < 300) {
-      const clickedBody = Matter.Query.point(bodies, mouse.position)[0]
-      if (clickedBody) {
-        emit('skill-click', clickedBody.label)
-      }
+      const hitBody = bodies.find(b => {
+        const cdx = mouse.position.x - b.position.x
+        const cdy = mouse.position.y - b.position.y
+        return Math.sqrt(cdx * cdx + cdy * cdy) <= bodySize / 2
+      })
+      if (hitBody) emit('skill-click', hitBody.label)
     }
     clickStart = null
   })
@@ -145,6 +147,10 @@ const init = async (loadImages = true) => {
   mouse.element.removeEventListener('touchend', (mouse as any).mouseup)
 
   let touchStart: { x: number; y: number; time: number } | null = null
+
+  mouse.element.addEventListener('contextmenu', (e: Event) => {
+    e.preventDefault()
+  })
 
   mouse.element.addEventListener('touchstart', (e: Event) => {
     const touch = (e as TouchEvent).touches[0]
@@ -177,10 +183,12 @@ const init = async (loadImages = true) => {
       const dist = Math.sqrt(dx * dx + dy * dy)
       const elapsed = Date.now() - touchStart.time
       if (dist < 15 && elapsed < 400) {
-        const clickedBody = Matter.Query.point(bodies, { x: touchStart.x, y: touchStart.y })[0]
-        if (clickedBody) {
-          emit('skill-click', clickedBody.label)
-        }
+        const hitBody = bodies.find(b => {
+          const cdx = touchStart.x - b.position.x
+          const cdy = touchStart.y - b.position.y
+          return Math.sqrt(cdx * cdx + cdy * cdy) <= bodySize / 2
+        })
+        if (hitBody) emit('skill-click', hitBody.label)
       }
       touchStart = null
     }
@@ -236,15 +244,24 @@ const handleResize = () => {
 
 let resizeObserver: ResizeObserver | null = null
 
+const handleFlipGravity = () => {
+  if (!engine) return
+  const g = engine.gravity
+  g.y = -g.y
+  setTimeout(() => { if (engine) engine.gravity.y = -g.y }, 5000)
+}
+
 onMounted(() => {
   init()
   resizeObserver = new ResizeObserver(handleResize)
   if (containerRef.value) resizeObserver.observe(containerRef.value)
+  window.addEventListener('flip-gravity', handleFlipGravity)
 })
 
 onUnmounted(() => {
   resizeObserver?.disconnect()
   if (resizeTimeout) clearTimeout(resizeTimeout)
+  window.removeEventListener('flip-gravity', handleFlipGravity)
   destroy()
 })
 
@@ -273,6 +290,10 @@ watch(() => props.isLightTheme, () => {
   width: 100% !important;
   height: 100% !important;
   display: block;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 @media (max-width: 768px) {

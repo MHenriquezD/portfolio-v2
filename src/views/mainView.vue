@@ -235,9 +235,14 @@
       <div class="container">
         <h2 class="section-title scroll-reveal">Sobre Mí</h2>
         <div class="about-content scroll-reveal">
-          <div class="about-image">
+          <div class="about-image" ref="profileImageRef">
             <div class="image-wrapper">
               <img :src="resolveImg('img/perfil/mhenriquez.webp')" alt="Manuel Henriquez" />
+              <Transition name="badge-pop">
+                <div v-if="easterEggCount > 0" class="easter-badge" :title="easterEggCount < easterEggs.length ? '¿Te falta alguno?' : '¡Los encontraste todos!'" @click.stop="showSecretPanel = true">
+                  <Icon icon="mdi:trophy" width="16" /> {{ easterEggCount }}/{{ easterEggs.length }}
+                </div>
+              </Transition>
             </div>
           </div>
           <div class="about-text">
@@ -409,24 +414,46 @@
       </div>
     </footer>
 
+    <!-- Badge flotante (cuando la foto de perfil no es visible) -->
+    <Transition name="badge-pop">
+      <div v-if="easterEggCount > 0 && !profileImageVisible" class="easter-badge-floating" :title="easterEggCount < easterEggs.length ? '¿Te falta alguno?' : '¡Los encontraste todos!'" @click.stop="showSecretPanel = true">
+        <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggs.length }}
+      </div>
+    </Transition>
+
     <!-- Easter Egg Toast -->
     <Transition name="achievement">
       <div v-if="showAchievement" class="achievement-toast">
-        <div class="achievement-icon">🏆</div>
+        <div class="achievement-icon">
+          <Icon :icon="achievementIcon" width="28" />
+        </div>
         <div class="achievement-text">
-          <span class="achievement-title">Easter Egg Desbloqueado</span>
-          <span class="achievement-desc">Descubriste el flip secreto</span>
+          <span class="achievement-title">{{ achievementTitle }}</span>
+          <span class="achievement-desc">{{ achievementDesc }}</span>
         </div>
       </div>
     </Transition>
 
-    <!-- Konami Reset Toast -->
+    <!-- Panel Secreto -->
     <Transition name="achievement">
-      <div v-if="showKonamiReset" class="achievement-toast konami-toast">
-        <div class="achievement-icon">🔄</div>
-        <div class="achievement-text">
-          <span class="achievement-title">System Reset</span>
-          <span class="achievement-desc">Easter eggs reseteados — Konami Code</span>
+      <div v-if="showSecretPanel" class="secret-panel-overlay" @click.self="showSecretPanel = false">
+        <div class="secret-panel">
+          <button class="secret-panel-close" @click="showSecretPanel = false">&times;</button>
+          <h3 class="secret-panel-title"><Icon icon="mdi:gamepad-variant" width="24" /> Panel Secreto</h3>
+          <p class="secret-panel-subtitle">Easter Eggs: {{ easterEggCount }}/{{ easterEggs.length }}</p>
+          <div class="secret-panel-list">
+            <div v-for="egg in easterEggs" :key="egg.key" class="secret-panel-item" :class="{ 'discovered': discoveredKeys.has(egg.key) }" @click="discoveredKeys.has(egg.key) && replayEasterEgg(egg)">
+              <span class="secret-panel-icon">
+                <img v-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" />
+                <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" />
+              </span>
+              <div class="secret-panel-info">
+                <span class="secret-panel-name">{{ discoveredKeys.has(egg.key) ? egg.name : '???' }}</span>
+                <span class="secret-panel-desc">{{ discoveredKeys.has(egg.key) ? egg.desc : egg.hint }}</span>
+              </div>
+              <Icon v-if="discoveredKeys.has(egg.key)" icon="mdi:check-circle" width="22" color="#4caf50" />
+            </div>
+          </div>
         </div>
       </div>
     </Transition>
@@ -435,6 +462,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { Icon } from '@iconify/vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
 
@@ -492,24 +520,67 @@ const skillDescriptions: Record<string, string> = {
 const activeSkillTooltip = ref<string | null>(null)
 const flippedSkill = ref<string | null>(null)
 const showAchievement = ref(false)
-const showKonamiReset = ref(false)
+const achievementTitle = ref('')
+const achievementDesc = ref('')
+const achievementIcon = ref('mdi:trophy')
+const showSecretPanel = ref(false)
+const profileImageVisible = ref(false)
+const profileImageRef = ref<HTMLElement | null>(null)
+
+const easterEggs = [
+  { key: 'easter-egg-flip', name: 'Flip Secreto', desc: 'Haz click en una skill card', icon: 'mdi:rotate-3d-variant', hint: 'Las cartas siempre tienen dos caras...' },
+  { key: 'easter-egg-konami', name: 'Konami Code', desc: '↑↑↓↓←→←→BA', icon: '', img: 'img/games/contra-logo.png', hint: '30 vidas extra, si sabes el código' },
+  { key: 'easter-egg-logo', name: 'Logo Secreto', desc: 'Toca el logo MH varias veces', icon: 'game-icons:dragon-balls', hint: 'Reúne las 7 esferas y pide un deseo' },
+  { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'Escribe "zelda"', icon: 'mdi:zelda', hint: 'La princesa necesita ser nombrada' },
+  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: 'mdi:account-eye', hint: 'A veces hay que bajar para encontrar algo' },
+]
+
+const discoveredKeys = ref(new Set(easterEggs.filter(e => localStorage.getItem(e.key)).map(e => e.key)))
+const easterEggCount = computed(() => discoveredKeys.value.size)
 
 const supportsHover = window.matchMedia('(hover: hover)').matches
 
 const achievementSound = new Audio(`${import.meta.env.BASE_URL}sounds/achievement-mp3-sound.mp3`)
+const zeldaSound = new Audio(`${import.meta.env.BASE_URL}sounds/zelda-secret.mp3`)
+const naviSound = new Audio(`${import.meta.env.BASE_URL}sounds/zelda-navi-watch-out.mp3`)
+const dragonBallSound = new Audio(`${import.meta.env.BASE_URL}sounds/dragon_ball_radar.mp3`)
+const oneUpSound = new Audio(`${import.meta.env.BASE_URL}sounds/1-up.mp3`)
+const pauseSound = new Audio(`${import.meta.env.BASE_URL}sounds/pause.mp3`)
 
-const triggerAchievement = () => {
-  if (localStorage.getItem('easter-egg-flip')) return
-  localStorage.setItem('easter-egg-flip', '1')
+const eggSounds: Record<string, HTMLAudioElement> = {
+  'easter-egg-flip': pauseSound,
+  'easter-egg-zelda': zeldaSound,
+  'easter-egg-profile': naviSound,
+  'easter-egg-logo': dragonBallSound,
+  'easter-egg-konami': oneUpSound,
+}
+
+const showToast = (icon: string, title: string, desc: string, sound?: HTMLAudioElement) => {
+  achievementIcon.value = icon
+  achievementTitle.value = title
+  achievementDesc.value = desc
   showAchievement.value = true
-  achievementSound.play().catch(() => {})
+  ;(sound || achievementSound).play().catch(() => {})
   setTimeout(() => { showAchievement.value = false }, 4000)
+}
+
+const triggerEasterEgg = (key: string) => {
+  const egg = easterEggs.find(e => e.key === key)
+  if (!egg) return
+  if (localStorage.getItem(key)) return
+  localStorage.setItem(key, '1')
+  discoveredKeys.value = new Set([...discoveredKeys.value, key])
+  showToast('mdi:trophy', 'Easter Egg Desbloqueado', egg.name, eggSounds[key])
+}
+
+const replayEasterEgg = (egg: typeof easterEggs[number]) => {
+  showToast(egg.icon || 'mdi:trophy', 'Ya desbloqueado', `"${egg.name}" — ya lo encontraste`, eggSounds[egg.key])
 }
 
 const toggleFlip = (titulo: string, event: Event) => {
   event.stopPropagation()
   flippedSkill.value = flippedSkill.value === titulo ? null : titulo
-  if (supportsHover) triggerAchievement()
+  triggerEasterEgg('easter-egg-flip')
 }
 
 const closeFlip = () => {
@@ -573,25 +644,119 @@ let scrollObserver: IntersectionObserver | null = null
 
 const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
 let konamiIndex = 0
+const zeldaWord = 'zelda'
+let zeldaIndex = 0
 
-const handleKonami = (e: KeyboardEvent) => {
+let logoClickCount = 0
+let logoClickTimer: ReturnType<typeof setTimeout> | null = null
+
+const handleLogoClick = () => {
+  logoClickCount++
+  if (logoClickTimer) clearTimeout(logoClickTimer)
+  logoClickTimer = setTimeout(() => { logoClickCount = 0 }, 1000)
+  if (logoClickCount >= 7) {
+    logoClickCount = 0
+    triggerEasterEgg('easter-egg-logo')
+  }
+}
+
+const handleKeydown = (e: KeyboardEvent) => {
   if (e.key === konamiSequence[konamiIndex]) {
     konamiIndex++
     if (konamiIndex === konamiSequence.length) {
       konamiIndex = 0
-      localStorage.removeItem('easter-egg-flip')
-      showKonamiReset.value = true
-      achievementSound.play().catch(() => {})
-      setTimeout(() => { showKonamiReset.value = false }, 4000)
+      triggerEasterEgg('easter-egg-konami')
+      flipGravity()
     }
   } else {
     konamiIndex = 0
   }
+
+  const key = e.key.toLowerCase()
+  if (key === zeldaWord[zeldaIndex]) {
+    zeldaIndex++
+    if (zeldaIndex === zeldaWord.length) {
+      zeldaIndex = 0
+      triggerEasterEgg('easter-egg-zelda')
+    }
+  } else {
+    zeldaIndex = key === zeldaWord[0] ? 1 : 0
+  }
+}
+
+// Mobile Konami: swipe ↑↑↓↓←→←→ then tap B(right) A(left) within 2s
+const mobileKonamiSwipes = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right']
+let mSwipeIndex = 0
+let mTouchStartX = 0
+let mTouchStartY = 0
+let mWaitingBA = false
+let mBaTimer: ReturnType<typeof setTimeout> | null = null
+let mBPressed = false
+
+const handleMobileTouchStart = (e: TouchEvent) => {
+  const touch = e.touches[0]!
+  mTouchStartX = touch.clientX
+  mTouchStartY = touch.clientY
+}
+
+const handleMobileTouchEnd = (e: Event) => {
+  const touch = (e as TouchEvent).changedTouches[0]!
+  const dx = touch.clientX - mTouchStartX
+  const dy = touch.clientY - mTouchStartY
+  const absDx = Math.abs(dx)
+  const absDy = Math.abs(dy)
+
+  if (mWaitingBA) {
+    const isTap = absDx < 15 && absDy < 15
+    if (!isTap) return
+    const midX = window.innerWidth / 2
+    if (!mBPressed && touch.clientX > midX) {
+      mBPressed = true
+    } else if (mBPressed && touch.clientX <= midX) {
+      mBPressed = false
+      mWaitingBA = false
+      if (mBaTimer) clearTimeout(mBaTimer)
+      triggerEasterEgg('easter-egg-konami')
+      flipGravity()
+    }
+    return
+  }
+
+  if (absDx < 40 && absDy < 40) return
+  let dir: string
+  if (absDx > absDy) dir = dx > 0 ? 'right' : 'left'
+  else dir = dy > 0 ? 'down' : 'up'
+
+  if (dir === mobileKonamiSwipes[mSwipeIndex]) {
+    mSwipeIndex++
+    if (mSwipeIndex === mobileKonamiSwipes.length) {
+      mSwipeIndex = 0
+      mWaitingBA = true
+      mBPressed = false
+      mBaTimer = setTimeout(() => { mWaitingBA = false; mBPressed = false }, 2000)
+    }
+  } else {
+    mSwipeIndex = 0
+  }
+}
+
+const flipGravity = () => {
+  const section = document.querySelector('.physics-container')
+  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  setTimeout(() => window.dispatchEvent(new Event('flip-gravity')), 600)
+}
+
+const openSecretPanel = () => {
+  showSecretPanel.value = true
 }
 
 onMounted(() => {
   startTypingEffect()
-  window.addEventListener('keydown', handleKonami)
+  window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('logo-click', handleLogoClick)
+  window.addEventListener('open-secret-panel', openSecretPanel)
+  window.addEventListener('touchstart', handleMobileTouchStart, { passive: true })
+  window.addEventListener('touchend', handleMobileTouchEnd, { passive: true })
 
   scrollObserver = new IntersectionObserver(
     (entries) => {
@@ -608,12 +773,30 @@ onMounted(() => {
   document.querySelectorAll('.scroll-reveal').forEach((el) => {
     scrollObserver?.observe(el)
   })
+
+  if (profileImageRef.value) {
+    const profileObserver = new IntersectionObserver(
+      ([entry]) => {
+        profileImageVisible.value = entry!.isIntersecting
+        if (entry!.isIntersecting) {
+          triggerEasterEgg('easter-egg-profile')
+        }
+      },
+      { threshold: 0.5 }
+    )
+    profileObserver.observe(profileImageRef.value)
+  }
 })
 
 onUnmounted(() => {
   if (typingTimeout) clearTimeout(typingTimeout)
   scrollObserver?.disconnect()
-  window.removeEventListener('keydown', handleKonami)
+  window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('logo-click', handleLogoClick)
+  window.removeEventListener('open-secret-panel', openSecretPanel)
+  window.removeEventListener('touchstart', handleMobileTouchStart)
+  window.removeEventListener('touchend', handleMobileTouchEnd)
+  if (mBaTimer) clearTimeout(mBaTimer)
 })
 
 const activeTab = ref('experiencia')

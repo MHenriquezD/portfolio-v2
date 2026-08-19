@@ -4,7 +4,7 @@
     <nav class="navbar" :class="{ 'light-navbar': isLightTheme, 'navbar-scrolled': isScrolled }">
       <div class="navbar-container">
         <div class="navbar-logo">
-          <a href="#inicio" class="logo-link">
+          <a href="#inicio" class="logo-link" @click="onLogoClick">
             <img :src="logoOpen" alt="MH" class="logo-img" />
           </a>
         </div>
@@ -83,6 +83,10 @@ const navItems = [
 const base = import.meta.env.BASE_URL
 const logoOpen = `${base}img/logo/png/4A_mh-code-blue_transparent_512.webp`
 const logoClose = `${base}img/logo/png/5A_angles-blue_transparent_512.webp`
+
+const onLogoClick = () => {
+  window.dispatchEvent(new Event('logo-click'))
+}
 
 const menuOpen = ref(false)
 const isScrolled = ref(false)

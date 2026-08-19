@@ -81,8 +81,8 @@ const navItems = [
 ]
 
 const base = import.meta.env.BASE_URL
-const logoOpen = `${base}img/logo/png/4A_mh-code-blue_transparent_512.png`
-const logoClose = `${base}img/logo/png/5A_angles-blue_transparent_512.png`
+const logoOpen = `${base}img/logo/png/4A_mh-code-blue_transparent_512.webp`
+const logoClose = `${base}img/logo/png/5A_angles-blue_transparent_512.webp`
 
 const menuOpen = ref(false)
 const isScrolled = ref(false)

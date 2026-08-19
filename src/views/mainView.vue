@@ -144,8 +144,8 @@
             :key="proyecto.id"
             class="project-card scroll-reveal"
           >
-            <div class="project-image" :class="{ 'has-screenshot': proyecto.img.startsWith('img/proyectos/') }">
-              <img :src="resolveImg(proyecto.img)" :alt="proyecto.titulo" />
+            <div class="project-image" :class="{ 'has-screenshot': !proyecto.isLogo }">
+              <img :src="resolveImg(proyecto.img)" :alt="proyecto.titulo" loading="lazy" />
               <div
                 v-if="proyecto.url || proyecto.id === 2"
                 class="project-overlay"
@@ -203,13 +203,13 @@
                 <div class="skill-card-front">
                   <div class="skill-glow"></div>
                   <div class="skill-image">
-                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" loading="lazy" />
                   </div>
                   <h3>{{ skill.titulo }}</h3>
                 </div>
                 <div class="skill-card-back">
                   <div class="skill-image skill-image-small">
-                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" />
+                    <img :src="resolveImg(skill.img)" :alt="skill.titulo" loading="lazy" />
                   </div>
                   <h3>{{ skill.titulo }}</h3>
                   <p>{{ skillDescriptions[skill.titulo] }}</p>
@@ -237,7 +237,7 @@
         <div class="about-content scroll-reveal">
           <div class="about-image">
             <div class="image-wrapper">
-              <img :src="resolveImg('img/mhenriquez.jpg')" alt="Manuel Henriquez" />
+              <img :src="resolveImg('img/perfil/mhenriquez.webp')" alt="Manuel Henriquez" />
             </div>
           </div>
           <div class="about-text">
@@ -343,7 +343,7 @@
           <div class="modal-content">
             <div v-for="modulo in comerciaHNProyectos" :key="modulo.id" class="subproject-card">
               <div class="subproject-screenshot">
-                <img :src="resolveImg(modulo.img)" :alt="modulo.titulo" />
+                <img :src="resolveImg(modulo.img)" :alt="modulo.titulo" loading="lazy" />
               </div>
               <div class="subproject-body">
                 <div class="subproject-icon">
@@ -389,7 +389,7 @@
             <i class="fas fa-times"></i>
           </button>
           <h3 class="modal-certificado-title">{{ certificadoTitle }}</h3>
-          <img :src="resolveImg(certificadoImg)" :alt="certificadoTitle" class="modal-certificado-img" />
+          <img :src="resolveImg(certificadoImg)" :alt="certificadoTitle" class="modal-certificado-img" loading="lazy" />
         </div>
       </div>
     </Transition>
@@ -416,6 +416,17 @@
         <div class="achievement-text">
           <span class="achievement-title">Easter Egg Desbloqueado</span>
           <span class="achievement-desc">Descubriste el flip secreto</span>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- Konami Reset Toast -->
+    <Transition name="achievement">
+      <div v-if="showKonamiReset" class="achievement-toast konami-toast">
+        <div class="achievement-icon">🔄</div>
+        <div class="achievement-text">
+          <span class="achievement-title">System Reset</span>
+          <span class="achievement-desc">Easter eggs reseteados — Konami Code</span>
         </div>
       </div>
     </Transition>
@@ -481,13 +492,17 @@ const skillDescriptions: Record<string, string> = {
 const activeSkillTooltip = ref<string | null>(null)
 const flippedSkill = ref<string | null>(null)
 const showAchievement = ref(false)
+const showKonamiReset = ref(false)
 
 const supportsHover = window.matchMedia('(hover: hover)').matches
+
+const achievementSound = new Audio(`${import.meta.env.BASE_URL}sounds/achievement-mp3-sound.mp3`)
 
 const triggerAchievement = () => {
   if (localStorage.getItem('easter-egg-flip')) return
   localStorage.setItem('easter-egg-flip', '1')
   showAchievement.value = true
+  achievementSound.play().catch(() => {})
   setTimeout(() => { showAchievement.value = false }, 4000)
 }
 
@@ -556,8 +571,27 @@ const startTypingEffect = () => {
 
 let scrollObserver: IntersectionObserver | null = null
 
+const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+let konamiIndex = 0
+
+const handleKonami = (e: KeyboardEvent) => {
+  if (e.key === konamiSequence[konamiIndex]) {
+    konamiIndex++
+    if (konamiIndex === konamiSequence.length) {
+      konamiIndex = 0
+      localStorage.removeItem('easter-egg-flip')
+      showKonamiReset.value = true
+      achievementSound.play().catch(() => {})
+      setTimeout(() => { showKonamiReset.value = false }, 4000)
+    }
+  } else {
+    konamiIndex = 0
+  }
+}
+
 onMounted(() => {
   startTypingEffect()
+  window.addEventListener('keydown', handleKonami)
 
   scrollObserver = new IntersectionObserver(
     (entries) => {
@@ -579,6 +613,7 @@ onMounted(() => {
 onUnmounted(() => {
   if (typingTimeout) clearTimeout(typingTimeout)
   scrollObserver?.disconnect()
+  window.removeEventListener('keydown', handleKonami)
 })
 
 const activeTab = ref('experiencia')

@@ -156,6 +156,10 @@
   color: #666;
 }
 
+.light-theme .timeline-company {
+  color: #1565c0;
+}
+
 .light-theme .contact-item {
   background: rgba(100, 181, 246, 0.08);
   border-color: rgba(100, 181, 246, 0.3);
@@ -988,9 +992,57 @@ section {
   padding-right: 3rem;
 }
 
-.modal-certificado-img {
-  width: 100%;
+/* Caja de alto fijo: los certificados vienen en horizontal (~1.48) y
+   vertical (~0.65), así que se reserva el espacio antes de cargar y la
+   imagen se ajusta dentro sin provocar saltos de layout. */
+.modal-certificado-figure {
+  height: min(70vh, 620px);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.04) 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.04) 70%
+  );
+  background-size: 200% 100%;
+  animation: certificado-skeleton 1.2s ease-in-out infinite;
+}
+
+.modal-certificado-figure.loaded {
+  background: none;
+  animation: none;
+}
+
+@keyframes certificado-skeleton {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.light-theme .modal-certificado-figure:not(.loaded) {
+  background: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.05) 30%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.05) 70%
+  );
+  background-size: 200% 100%;
+}
+
+.modal-certificado-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-certificado-figure.loaded .modal-certificado-img {
+  opacity: 1;
 }
 
 .light-theme .modal-certificado {
@@ -1000,6 +1052,12 @@ section {
 
 .light-theme .modal-certificado-title {
   color: #1a1a1a;
+}
+
+.light-theme .modal-close {
+  background: rgba(21, 101, 192, 0.08);
+  border-color: rgba(21, 101, 192, 0.35);
+  color: #1565c0;
 }
 
 .light-theme .ver-certificado {
@@ -1183,6 +1241,13 @@ section {
   color: #64b5f6;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
+}
+
+.timeline-company {
+  color: #64b5f6;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
 .timeline-period {

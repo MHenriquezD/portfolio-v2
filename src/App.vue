@@ -82,6 +82,12 @@ onUnmounted(() => {
   box-sizing: border-box;
 }
 
+/* Reserva el canal del scrollbar siempre, para que abrir un modal
+   (que pone overflow:hidden en el body) no ensanche la página. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -67,6 +67,7 @@
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
                   <h3 class="timeline-title">{{ exp.titulo }}</h3>
+                  <p v-if="exp.empresa" class="timeline-company"><i class="fas fa-building"></i> {{ exp.empresa }}</p>
                   <p class="timeline-period"><i class="fas fa-calendar-alt"></i> {{ exp.periodo }}</p>
                   <ul class="timeline-responsibilities">
                     <li v-for="(resp, i) in exp.responsabilidades" :key="i">{{ resp }}</li>
@@ -390,7 +391,14 @@
             <i class="fas fa-times"></i>
           </button>
           <h3 class="modal-certificado-title">{{ certificadoTitle }}</h3>
-          <img :src="resolveImg(certificadoImg)" :alt="certificadoTitle" class="modal-certificado-img" loading="lazy" />
+          <div class="modal-certificado-figure" :class="{ loaded: certificadoLoaded }">
+            <img
+              :src="resolveImg(certificadoImg)"
+              :alt="certificadoTitle"
+              class="modal-certificado-img"
+              @load="certificadoLoaded = true"
+            />
+          </div>
         </div>
       </div>
     </Transition>
@@ -856,9 +864,11 @@ const activeTab = ref('experiencia')
 const showCertificado = ref(false)
 const certificadoImg = ref('')
 const certificadoTitle = ref('')
+const certificadoLoaded = ref(false)
 
 const openCertificado = (edu: { titulo: string; certificado?: string }) => {
   if (!edu.certificado) return
+  certificadoLoaded.value = false
   certificadoImg.value = edu.certificado
   certificadoTitle.value = edu.titulo
   showCertificado.value = true

@@ -70,6 +70,7 @@
     {
       "id": 1,
       "titulo": "Desarrollador Semi-Senior",
+      "empresa": "INFATLAN",
       "periodo": "Marzo 2026 - Actualidad",
       "responsabilidades": [
         "Refactorización y mejora continua de una aplicación heredada en React",
@@ -81,6 +82,7 @@
     {
       "id": 2,
       "titulo": "Desarrollador Back-End",
+      "empresa": "SENPRENDE",
       "periodo": "Enero 2025 - Febrero 2026",
       "responsabilidades": [
         "Optimización y desarrollo backend con NestJS para múltiples plataformas: SSE, SIS, ComerciaHN y MIEL",
@@ -93,6 +95,7 @@
     {
       "id": 3,
       "titulo": "Consultoría Tecnológica",
+      "empresa": "CDE Mipyme Cordillera Nombre de Dios",
       "periodo": "Jul 2024 - Dic 2024",
       "responsabilidades": [
         "Desarrollo backend y soporte de Mi Empresa en Línea (MIEL 3.0)",
@@ -104,6 +107,7 @@
     {
       "id": 4,
       "titulo": "Desarrollador Back-End",
+      "empresa": "SENPRENDE",
       "periodo": "Nov 2023 - Jun 2024",
       "responsabilidades": [
         "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios)",
@@ -115,6 +119,7 @@
     {
       "id": 5,
       "titulo": "Web Developer",
+      "empresa": "CCS Consultores",
       "periodo": "2021 - 2022",
       "responsabilidades": [
         "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta",

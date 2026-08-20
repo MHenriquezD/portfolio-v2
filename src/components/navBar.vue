@@ -7,6 +7,9 @@
           <a href="#inicio" class="logo-link" @click="onLogoClick">
             <img :src="logoOpen" alt="MH" class="logo-img" />
           </a>
+          <span v-if="easterEggCount && easterEggCount > 0" class="navbar-badge" @click.stop="$emit('openSecretPanel')">
+            <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggTotal }}
+          </span>
         </div>
 
         <ul class="navbar-menu">
@@ -33,42 +36,57 @@
 
     <!-- Mobile floating menu -->
     <div class="mobile-fab" :class="{ 'light-fab': isLightTheme }">
-      <button class="fab-btn" @click.stop="menuOpen = !menuOpen" aria-label="Menú">
-        <img :src="menuOpen ? logoClose : logoOpen" alt="MH" class="fab-logo" :class="{ 'fab-logo-close': menuOpen }" />
-      </button>
-
-      <Transition name="fab-menu">
-        <div v-if="menuOpen" class="fab-dropdown" @click.stop>
-          <a
-            v-for="item in navItems"
-            :key="item.id"
-            :href="'#' + item.id"
-            class="fab-link"
-            :class="{ 'fab-link-active': activeSection === item.id }"
-            @click="menuOpen = false"
-          >
-            {{ item.label }}
-          </a>
-          <button class="fab-theme-toggle" @click="$emit('toggleTheme')">
-            <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
-            <span>{{ isLightTheme ? 'Modo Oscuro' : 'Modo Claro' }}</span>
-          </button>
-        </div>
-      </Transition>
+      <div class="mobile-fab-bar">
+        <a href="#inicio" class="fab-logo-link" @click="onLogoClick">
+          <img :src="logoOpen" alt="MH" class="fab-logo" />
+        </a>
+        <span v-if="easterEggCount && easterEggCount > 0" class="navbar-badge" @click.stop="$emit('openSecretPanel')">
+          <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggTotal }}
+        </span>
+        <div class="mobile-fab-spacer"></div>
+        <button class="fab-hamburger" @click.stop="menuOpen = !menuOpen" aria-label="Menú">
+          <span class="hamburger-line" :class="{ 'open': menuOpen }"></span>
+          <span class="hamburger-line" :class="{ 'open': menuOpen }"></span>
+          <span class="hamburger-line" :class="{ 'open': menuOpen }"></span>
+        </button>
+      </div>
     </div>
+
+    <Transition name="fab-menu">
+      <div v-if="menuOpen" class="fab-dropdown" :class="{ 'light-fab-dropdown': isLightTheme }" @click.self="menuOpen = false">
+        <a
+          v-for="item in navItems"
+          :key="item.id"
+          :href="'#' + item.id"
+          class="fab-link"
+          :class="{ 'fab-link-active': activeSection === item.id }"
+          @click="menuOpen = false"
+        >
+          {{ item.label }}
+        </a>
+        <button class="fab-theme-toggle" @click="$emit('toggleTheme')">
+          <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
+          <span>{{ isLightTheme ? 'Modo Oscuro' : 'Modo Claro' }}</span>
+        </button>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { Icon } from '@iconify/vue'
 
 defineProps<{
   isLightTheme: boolean
   activeSection: string
+  easterEggCount?: number
+  easterEggTotal?: number
 }>()
 
 defineEmits<{
   toggleTheme: []
+  openSecretPanel: []
 }>()
 
 const navItems = [

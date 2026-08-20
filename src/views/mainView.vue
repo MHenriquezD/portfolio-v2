@@ -226,6 +226,7 @@
           :resolveImg="resolveImg"
           :isLightTheme="isLightTheme"
           @skill-click="scrollToSkill"
+          @sphere-escaped="triggerEasterEgg('easter-egg-sphere')"
         />
       </div>
     </section>
@@ -237,12 +238,7 @@
         <div class="about-content scroll-reveal">
           <div class="about-image" ref="profileImageRef">
             <div class="image-wrapper">
-              <img :src="resolveImg('img/perfil/mhenriquez.webp')" alt="Manuel Henriquez" />
-              <Transition name="badge-pop">
-                <div v-if="easterEggCount > 0" class="easter-badge" :title="easterEggCount < easterEggs.length ? '¿Te falta alguno?' : '¡Los encontraste todos!'" @click.stop="showSecretPanel = true">
-                  <Icon icon="mdi:trophy" width="16" /> {{ easterEggCount }}/{{ easterEggs.length }}
-                </div>
-              </Transition>
+              <img :src="resolveImg('img/perfil/mhenriquez-profile.webp')" alt="Manuel Henriquez" loading="lazy" />
             </div>
           </div>
           <div class="about-text">
@@ -414,13 +410,6 @@
       </div>
     </footer>
 
-    <!-- Badge flotante (cuando la foto de perfil no es visible) -->
-    <Transition name="badge-pop">
-      <div v-if="easterEggCount > 0 && !profileImageVisible" class="easter-badge-floating" :title="easterEggCount < easterEggs.length ? '¿Te falta alguno?' : '¡Los encontraste todos!'" @click.stop="showSecretPanel = true">
-        <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggs.length }}
-      </div>
-    </Transition>
-
     <!-- Easter Egg Toast -->
     <Transition name="achievement">
       <div v-if="showAchievement" class="achievement-toast">
@@ -435,7 +424,7 @@
     </Transition>
 
     <!-- Panel Secreto -->
-    <Transition name="achievement">
+    <Transition name="secret-panel">
       <div v-if="showSecretPanel" class="secret-panel-overlay" @click.self="showSecretPanel = false">
         <div class="secret-panel">
           <button class="secret-panel-close" @click="showSecretPanel = false">&times;</button>
@@ -444,8 +433,8 @@
           <div class="secret-panel-list">
             <div v-for="egg in easterEggs" :key="egg.key" class="secret-panel-item" :class="{ 'discovered': discoveredKeys.has(egg.key) }" @click="discoveredKeys.has(egg.key) && replayEasterEgg(egg)">
               <span class="secret-panel-icon">
-                <img v-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" />
-                <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" />
+                <img v-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
+                <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" :color="discoveredKeys.has(egg.key) ? egg.color : undefined" />
               </span>
               <div class="secret-panel-info">
                 <span class="secret-panel-name">{{ discoveredKeys.has(egg.key) ? egg.name : '???' }}</span>
@@ -461,7 +450,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
@@ -527,16 +516,32 @@ const showSecretPanel = ref(false)
 const profileImageVisible = ref(false)
 const profileImageRef = ref<HTMLElement | null>(null)
 
-const easterEggs = [
+interface EasterEgg {
+  key: string
+  name: string
+  desc: string
+  icon: string
+  hint: string
+  img?: string
+  color?: string
+}
+
+const easterEggs: EasterEgg[] = [
   { key: 'easter-egg-flip', name: 'Flip Secreto', desc: 'Haz click en una skill card', icon: 'mdi:rotate-3d-variant', hint: 'Las cartas siempre tienen dos caras...' },
   { key: 'easter-egg-konami', name: 'Konami Code', desc: '↑↑↓↓←→←→BA', icon: '', img: 'img/games/contra-logo.png', hint: '30 vidas extra, si sabes el código' },
-  { key: 'easter-egg-logo', name: '¡Sal de ahí, Shenlong!', desc: 'Toca el logo MH varias veces', icon: 'game-icons:dragon-balls', hint: 'Reúne las 7 esferas y pide un deseo' },
-  { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'Escribe "zelda"', icon: 'mdi:zelda', hint: 'La princesa necesita ser nombrada' },
-  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: 'mdi:account-eye', hint: 'A veces hay que bajar para encontrar algo' },
+  { key: 'easter-egg-logo', name: '¡Sal de ahí, Shenlong!', desc: 'Toca el logo MH varias veces', icon: '', img: 'img/games/dragon-ball.svg', hint: 'Invoca a Shenlong tocando 7 veces donde empieza todo' },
+  { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'La Trifuerza se invoca: escribe "zelda" en PC o traza la Z en móvil', icon: 'mdi:zelda', color: '#ffd700', hint: 'Nombra a la princesa con el teclado, o dibuja su inicial con el dedo' },
+  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: '', img: 'img/logo/trimmed/4A_mh-code-blue_transparent_512.webp', hint: 'A veces hay que bajar para encontrar algo' },
+  { key: 'easter-egg-sphere', name: 'Hasta la Vista', desc: 'Lanza una esfera fuera del canvas', icon: 'mdi:orbit', hint: 'Algunas cosas se rompen si las empujas fuerte...' },
 ]
 
 const discoveredKeys = ref(new Set(easterEggs.filter(e => localStorage.getItem(e.key)).map(e => e.key)))
 const easterEggCount = computed(() => discoveredKeys.value.size)
+
+const emitEggUpdate = () => {
+  window.dispatchEvent(new CustomEvent('easter-egg-update', { detail: { count: easterEggCount.value, total: easterEggs.length } }))
+}
+watch(easterEggCount, emitEggUpdate)
 
 const supportsHover = window.matchMedia('(hover: hover)').matches
 
@@ -746,17 +751,62 @@ const flipGravity = () => {
   setTimeout(() => window.dispatchEvent(new Event('flip-gravity')), 600)
 }
 
+// Z gesture: right → diagonal down-left → right
+let zStrokes: string[] = []
+let zGestureStart: { x: number; y: number } | null = null
+let zLastStrokeTime = 0
+
+const handleZTouchStart = (e: TouchEvent) => {
+  const touch = e.touches[0]
+  if (!touch) return
+  zGestureStart = { x: touch.clientX, y: touch.clientY }
+}
+
+const handleZTouchEnd = (e: TouchEvent) => {
+  if (!zGestureStart) return
+  const touch = e.changedTouches[0]
+  if (!touch) return
+  const dx = touch.clientX - zGestureStart.x
+  const dy = touch.clientY - zGestureStart.y
+  const absDx = Math.abs(dx)
+  const absDy = Math.abs(dy)
+  if (absDx < 40 && absDy < 40) return
+
+  const now = Date.now()
+  if (now - zLastStrokeTime > 2000) zStrokes = []
+  zLastStrokeTime = now
+
+  let dir = ''
+  if (absDx > absDy * 2 && dx > 0) dir = 'right'
+  else if (absDy > absDx * 0.5 && dy > 0 && dx < 0) dir = 'down-left'
+
+  const expected = ['right', 'down-left', 'right']
+  if (dir === expected[zStrokes.length]) {
+    zStrokes.push(dir)
+    if (zStrokes.length === 3) {
+      zStrokes = []
+      triggerEasterEgg('easter-egg-zelda')
+    }
+  } else {
+    zStrokes = dir === 'right' ? ['right'] : []
+  }
+  zGestureStart = null
+}
+
 const openSecretPanel = () => {
   showSecretPanel.value = true
 }
 
 onMounted(() => {
   startTypingEffect()
+  setTimeout(emitEggUpdate, 100)
   window.addEventListener('keydown', handleKeydown)
   window.addEventListener('logo-click', handleLogoClick)
   window.addEventListener('open-secret-panel', openSecretPanel)
   window.addEventListener('touchstart', handleMobileTouchStart, { passive: true })
   window.addEventListener('touchend', handleMobileTouchEnd, { passive: true })
+  window.addEventListener('touchstart', handleZTouchStart, { passive: true })
+  window.addEventListener('touchend', handleZTouchEnd, { passive: true })
 
   scrollObserver = new IntersectionObserver(
     (entries) => {
@@ -796,6 +846,8 @@ onUnmounted(() => {
   window.removeEventListener('open-secret-panel', openSecretPanel)
   window.removeEventListener('touchstart', handleMobileTouchStart)
   window.removeEventListener('touchend', handleMobileTouchEnd)
+  window.removeEventListener('touchstart', handleZTouchStart)
+  window.removeEventListener('touchend', handleZTouchEnd)
   if (mBaTimer) clearTimeout(mBaTimer)
 })
 

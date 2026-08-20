@@ -5,6 +5,8 @@ import MainView from './views/mainView.vue'
 
 const isLightTheme = ref(false)
 const activeSection = ref('inicio')
+const easterEggCount = ref(0)
+const easterEggTotal = ref(0)
 
 const toggleTheme = () => {
   isLightTheme.value = !isLightTheme.value
@@ -43,21 +45,33 @@ const updateActiveSection = () => {
   activeSection.value = 'inicio'
 }
 
+const openSecretPanel = () => {
+  window.dispatchEvent(new Event('open-secret-panel'))
+}
+
+const handleEggUpdate = (e: Event) => {
+  const detail = (e as CustomEvent).detail
+  easterEggCount.value = detail.count
+  easterEggTotal.value = detail.total
+}
+
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
   isLightTheme.value = savedTheme === 'light'
 
   window.addEventListener('scroll', updateActiveSection, { passive: true })
+  window.addEventListener('easter-egg-update', handleEggUpdate)
   updateActiveSection()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', updateActiveSection)
+  window.removeEventListener('easter-egg-update', handleEggUpdate)
 })
 </script>
 
 <template>
-  <NavBar :isLightTheme="isLightTheme" :activeSection="activeSection" @toggleTheme="toggleTheme" />
+  <NavBar :isLightTheme="isLightTheme" :activeSection="activeSection" :easterEggCount="easterEggCount" :easterEggTotal="easterEggTotal" @toggleTheme="toggleTheme" @openSecretPanel="openSecretPanel" />
   <MainView :isLightTheme="isLightTheme" />
 </template>
 

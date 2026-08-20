@@ -16,6 +16,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   'skill-click': [titulo: string]
+  'sphere-escaped': []
 }>()
 
 const containerRef = ref<HTMLDivElement>()
@@ -26,6 +27,8 @@ let render: Matter.Render
 let runner: Matter.Runner
 let bodySize = 0
 let imagesCache: HTMLImageElement[] = []
+const respawning = new Set<Matter.Body>()
+const respawnTimers = new Set<ReturnType<typeof setTimeout>>()
 
 const loadImage = (src: string): Promise<HTMLImageElement> => {
   return new Promise((resolve) => {
@@ -38,6 +41,9 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
 }
 
 const destroy = () => {
+  for (const timer of respawnTimers) clearTimeout(timer)
+  respawnTimers.clear()
+  respawning.clear()
   if (render) Matter.Render.stop(render)
   if (runner) Matter.Runner.stop(runner)
   if (engine) {
@@ -51,6 +57,7 @@ const init = async (loadImages = true) => {
 
   const width = containerRef.value.clientWidth
   const height = containerRef.value.clientHeight
+  if (width <= 0 || height <= 0) return
 
   engine = Matter.Engine.create({
     gravity: { x: 0, y: 0.8, scale: 0.001 },
@@ -199,9 +206,57 @@ const init = async (loadImages = true) => {
   Matter.Runner.run(runner, engine)
   Matter.Render.run(render)
 
+  let sphereEscaped = false
+  const initTime = Date.now()
+  Matter.Events.on(engine, 'beforeUpdate', () => {
+    const margin = bodySize * 2
+    // Ignora los primeros instantes: al montar o tras un resize las esferas
+    // pueden quedar fuera de los nuevos límites sin que nadie las lance.
+    const settling = Date.now() - initTime < 1500
+    for (const body of bodies) {
+      if (respawning.has(body)) continue
+      const pos = body.position
+      if (pos.x < -margin || pos.x > width + margin || pos.y < -margin || pos.y > height + margin) {
+        if (settling) {
+          Matter.Body.setPosition(body, {
+            x: Math.random() * (width - bodySize * 2) + bodySize,
+            y: bodySize,
+          })
+          Matter.Body.setVelocity(body, { x: 0, y: 0 })
+          continue
+        }
+        respawning.add(body)
+        Matter.Body.setStatic(body, true)
+        Matter.Body.setVelocity(body, { x: 0, y: 0 })
+        Matter.Body.setPosition(body, { x: -width * 4, y: -height * 4 })
+
+        const timer = setTimeout(() => {
+          respawnTimers.delete(timer)
+          Matter.Body.setStatic(body, false)
+          // Dentro del canvas: el muro superior ocupa de -60 a 0, así que
+          // reaparecer más arriba la empujaría fuera otra vez.
+          Matter.Body.setPosition(body, {
+            x: Math.random() * (width - bodySize * 2) + bodySize,
+            y: bodySize + Math.random() * (height * 0.3),
+          })
+          Matter.Body.setVelocity(body, { x: 0, y: 0 })
+          Matter.Body.setAngularVelocity(body, 0)
+          respawning.delete(body)
+        }, 3000 + Math.random() * 7000)
+        respawnTimers.add(timer)
+
+        if (!sphereEscaped) {
+          sphereEscaped = true
+          emit('sphere-escaped')
+        }
+      }
+    }
+  })
+
   Matter.Events.on(render, 'afterRender', () => {
     const ctx = render.context
     for (const body of bodies) {
+      if (respawning.has(body)) continue
       const idx = (body.plugin as { imageIndex: number }).imageIndex
       const img = imagesCache[idx]
       if (!img || !img.complete || !img.naturalWidth) continue
@@ -291,7 +346,7 @@ watch(() => props.isLightTheme, () => {
   width: 100% !important;
   height: 100% !important;
   display: block;
-  touch-action: none;
+  touch-action: pan-y;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;

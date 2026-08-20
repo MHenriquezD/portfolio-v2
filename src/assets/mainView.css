@@ -496,6 +496,14 @@
   width: 250px;
   border-radius: 20px;
   display: block;
+  filter: grayscale(0.6);
+  transition: filter 0.4s ease;
+}
+
+@media (hover: hover) {
+  .about-image .image-wrapper:hover img {
+    filter: grayscale(0);
+  }
 }
 
 .about-text {
@@ -2170,9 +2178,10 @@ section {
 }
 
 .easter-badge-floating {
+  display: none;
   position: fixed;
   top: 18px;
-  left: 140px;
+  left: 180px;
   background: rgba(0, 0, 0, 0.75);
   color: #ffd700;
   padding: 4px 10px;
@@ -2197,12 +2206,14 @@ section {
 .secret-panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .secret-panel {
@@ -2282,14 +2293,21 @@ section {
 
 .secret-panel-icon {
   font-size: 1.5rem;
-  min-width: 36px;
-  text-align: center;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .secret-panel-img {
-  width: 28px;
+  width: auto;
+  max-width: 44px;
   height: 28px;
   object-fit: contain;
+}
+
+.light-theme .secret-panel-img.easter-egg-profile {
+  filter: brightness(0.6) saturate(1.4);
 }
 
 .secret-panel-info {
@@ -2325,6 +2343,26 @@ section {
 .badge-pop-leave-to {
   opacity: 0;
   transform: scale(0);
+}
+
+.secret-panel-enter-active,
+.secret-panel-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.secret-panel-enter-from,
+.secret-panel-leave-to {
+  opacity: 0;
+}
+
+.secret-panel-enter-active .secret-panel,
+.secret-panel-leave-active .secret-panel {
+  transition: transform 0.25s ease;
+}
+
+.secret-panel-enter-from .secret-panel,
+.secret-panel-leave-to .secret-panel {
+  transform: scale(0.94);
 }
 
 .achievement-enter-active {

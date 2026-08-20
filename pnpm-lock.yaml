@@ -14,9 +14,6 @@ importers:
       matter-js:
         specifier: ^0.20.0
         version: 0.20.0
-      pdfmake:
-        specifier: ^0.2.21
-        version: 0.2.23
       vue:
         specifier: ^3.5.26
         version: 3.5.41(typescript@5.9.3)
@@ -57,6 +54,9 @@ importers:
       npm-run-all2:
         specifier: ^8.0.4
         version: 8.0.4
+      pdfmake:
+        specifier: ^0.2.21
+        version: 0.2.23
       prettier:
         specifier: 3.7.4
         version: 3.7.4

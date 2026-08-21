@@ -25,8 +25,8 @@ const docDefinition = {
     subject: 'Curriculum Vitae'
   },
   content: [
-    { text: 'Manuel Henriquez', style: 'name' },
-    { text: cvData.title, style: 'subtitle' },
+    { text: cvData.title, style: 'name' },
+    { text: 'Manuel Henriquez', style: 'subtitle' },
     {
       text: `${cvData.contact.email}  |  ${cvData.contact.phone}  |  ${cvData.contact.website}`,
       style: 'contactLine',

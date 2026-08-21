@@ -441,7 +441,8 @@
           <div class="secret-panel-list">
             <div v-for="egg in easterEggs" :key="egg.key" class="secret-panel-item" :class="{ 'discovered': discoveredKeys.has(egg.key) }" @click="discoveredKeys.has(egg.key) && replayEasterEgg(egg)">
               <span class="secret-panel-icon">
-                <img v-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
+                <span v-if="discoveredKeys.has(egg.key) && egg.mark" class="logo-mark secret-panel-mark"><span class="logo-angle">&lt;</span>MH<span class="logo-angle">/&gt;</span></span>
+                <img v-else-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
                 <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" :color="discoveredKeys.has(egg.key) ? egg.color : undefined" />
               </span>
               <div class="secret-panel-info">
@@ -532,6 +533,7 @@ interface EasterEgg {
   hint: string
   img?: string
   color?: string
+  mark?: boolean
 }
 
 const easterEggs: EasterEgg[] = [
@@ -539,7 +541,7 @@ const easterEggs: EasterEgg[] = [
   { key: 'easter-egg-konami', name: 'Konami Code', desc: '↑↑↓↓←→←→BA', icon: '', img: 'img/games/contra-logo.png', hint: '30 vidas extra, si sabes el código' },
   { key: 'easter-egg-logo', name: '¡Sal de ahí, Shenlong!', desc: 'Toca el logo MH varias veces', icon: '', img: 'img/games/dragon-ball.svg', hint: 'Invoca a Shenlong tocando 7 veces donde empieza todo' },
   { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'La Trifuerza se invoca: escribe "zelda" en PC o traza la Z en móvil', icon: 'mdi:zelda', color: '#ffd700', hint: 'Nombra a la princesa con el teclado, o dibuja su inicial con el dedo' },
-  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: '', img: 'img/logo/trimmed/4A_mh-code-blue_transparent_512.webp', hint: 'A veces hay que bajar para encontrar algo' },
+  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: '', mark: true, hint: 'A veces hay que bajar para encontrar algo' },
   { key: 'easter-egg-sphere', name: 'Hasta la Vista', desc: 'Lanza una esfera fuera del canvas', icon: 'mdi:orbit', hint: 'Algunas cosas se rompen si las empujas fuerte...' },
 ]
 

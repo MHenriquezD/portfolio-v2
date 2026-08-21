@@ -38,8 +38,8 @@ html {
   color: #42a5f5;
 }
 
-.light-navbar .logo-img {
-  filter: brightness(0.6) saturate(1.4);
+.light-navbar .logo-angle {
+  color: #1565c0;
 }
 
 .light-navbar .nav-link-active {
@@ -94,15 +94,22 @@ html {
   align-items: center;
 }
 
-.logo-img {
-  height: 120px;
-  width: auto;
-  margin: -38px 0;
-  clip-path: inset(38px 0);
+.logo-mark {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
   transition: transform 0.3s ease;
+  display: inline-block;
 }
 
-.logo-link:hover .logo-img {
+.logo-angle {
+  color: #64b5f6;
+}
+
+.logo-link:hover .logo-mark,
+.fab-logo-link:hover .logo-mark {
   transform: scale(1.05);
 }
 
@@ -213,6 +220,8 @@ html {
   .fab-logo-link {
     display: flex;
     align-items: center;
+    color: #fff;
+    text-decoration: none;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -268,22 +277,16 @@ html {
     transform: scale(0.92);
   }
 
-  .fab-logo {
-    height: 80px;
-    width: auto;
-    margin: -25px 0;
-    clip-path: inset(25px 0);
-    transition: height 0.2s ease;
+  .fab-logo-link .logo-mark {
+    font-size: 1.3rem;
   }
 
-  .fab-logo-close {
-    height: 36px;
-    margin: 0;
-    clip-path: none;
+  .light-fab .logo-mark {
+    color: #1a1a1a;
   }
 
-  .light-fab .fab-logo {
-    filter: brightness(0.6) saturate(1.4);
+  .light-fab .logo-angle {
+    color: #1565c0;
   }
 
   .fab-dropdown {

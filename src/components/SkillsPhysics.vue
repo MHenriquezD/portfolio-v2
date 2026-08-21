@@ -44,6 +44,7 @@ const destroy = () => {
   for (const timer of respawnTimers) clearTimeout(timer)
   respawnTimers.clear()
   respawning.clear()
+  running = false
   if (render) Matter.Render.stop(render)
   if (runner) Matter.Runner.stop(runner)
   if (engine) {
@@ -61,6 +62,7 @@ const init = async (loadImages = true) => {
 
   engine = Matter.Engine.create({
     gravity: { x: 0, y: 0.8, scale: 0.001 },
+    enableSleeping: true,
   })
 
   render = Matter.Render.create({
@@ -159,6 +161,9 @@ const init = async (loadImages = true) => {
     e.preventDefault()
   })
 
+  mouse.element.addEventListener('mousedown', wake)
+  mouse.element.addEventListener('touchstart', wake, { passive: true })
+
   mouse.element.addEventListener('touchstart', (e: Event) => {
     const touch = (e as TouchEvent).touches[0]
     if (!touch) return
@@ -203,8 +208,19 @@ const init = async (loadImages = true) => {
   }, { passive: true })
 
   runner = Matter.Runner.create()
-  Matter.Runner.run(runner, engine)
-  Matter.Render.run(render)
+  running = false
+  syncRunning()
+
+  // Si todas duermen y no hay nada agarrado, se detiene el loop.
+  Matter.Events.on(engine, 'afterUpdate', () => {
+    if (idle || mouseConstraint.body) return
+    // Las que esperan respawn están en static y nunca reportan isSleeping,
+    // así que se excluyen o el canvas no volvería a quedarse quieto.
+    if (bodies.every((b) => b.isStatic || b.isSleeping)) {
+      idle = true
+      syncRunning()
+    }
+  })
 
   let sphereEscaped = false
   const initTime = Date.now()
@@ -241,7 +257,9 @@ const init = async (loadImages = true) => {
           })
           Matter.Body.setVelocity(body, { x: 0, y: 0 })
           Matter.Body.setAngularVelocity(body, 0)
+          Matter.Sleeping.set(body, false)
           respawning.delete(body)
+          wake()
         }, 3000 + Math.random() * 7000)
         respawnTimers.add(timer)
 
@@ -300,23 +318,82 @@ const handleResize = () => {
 
 let resizeObserver: ResizeObserver | null = null
 
+// El motor y el render corrían a 60fps toda la sesión, aunque el canvas
+// estuviera fuera de pantalla o tapado por un modal. Un canvas repintando
+// bajo un overlay con backdrop-filter obliga a recalcular el desenfoque en
+// cada frame, así que se pausa cuando no se ve.
+let visible = false
+let running = false
+// Cuando todas las esferas se duermen no hay nada que animar, así que se
+// corta el loop hasta que el usuario interactúe.
+let idle = false
+
+const syncRunning = () => {
+  const shouldRun = visible && !document.hidden && !idle
+  if (shouldRun === running) return
+  if (!engine || !render || !runner) return
+  running = shouldRun
+  if (shouldRun) {
+    Matter.Runner.run(runner, engine)
+    Matter.Render.run(render)
+  } else {
+    Matter.Runner.stop(runner)
+    Matter.Render.stop(render)
+  }
+}
+
+const handleVisibilityChange = () => syncRunning()
+
+const wake = () => {
+  if (!idle) return
+  idle = false
+  syncRunning()
+}
+
+let visibilityObserver: IntersectionObserver | null = null
+
 const handleFlipGravity = () => {
   if (!engine) return
   const g = engine.gravity
   g.y = -g.y
-  setTimeout(() => { if (engine) engine.gravity.y = -g.y }, 5000)
+  // Las dormidas no reaccionan a un cambio de gravedad si nadie las despierta.
+  for (const body of Matter.Composite.allBodies(engine.world)) {
+    if (!body.isStatic) Matter.Sleeping.set(body, false)
+  }
+  wake()
+  setTimeout(() => {
+    if (!engine) return
+    engine.gravity.y = -g.y
+    for (const body of Matter.Composite.allBodies(engine.world)) {
+      if (!body.isStatic) Matter.Sleeping.set(body, false)
+    }
+    wake()
+  }, 5000)
 }
 
 onMounted(() => {
   init()
   resizeObserver = new ResizeObserver(handleResize)
   if (containerRef.value) resizeObserver.observe(containerRef.value)
+
+  visibilityObserver = new IntersectionObserver(
+    ([entry]) => {
+      visible = !!entry?.isIntersecting
+      syncRunning()
+    },
+    { threshold: 0 }
+  )
+  if (containerRef.value) visibilityObserver.observe(containerRef.value)
+
+  document.addEventListener('visibilitychange', handleVisibilityChange)
   window.addEventListener('flip-gravity', handleFlipGravity)
 })
 
 onUnmounted(() => {
   resizeObserver?.disconnect()
+  visibilityObserver?.disconnect()
   if (resizeTimeout) clearTimeout(resizeTimeout)
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
   window.removeEventListener('flip-gravity', handleFlipGravity)
   destroy()
 })

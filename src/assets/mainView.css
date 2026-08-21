@@ -1669,8 +1669,9 @@ section {
 .modal-overlay {
   position: fixed;
   inset: 0;
+  /* Sin backdrop-filter: a 85% de opacidad el desenfoque es imperceptible
+     y obliga al compositor a difuminar toda la pantalla en cada frame. */
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2175,7 +2176,6 @@ section {
   align-items: center;
   gap: 0.75rem;
   background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 12px;
   padding: 0.75rem 1.25rem;
@@ -2220,52 +2220,6 @@ section {
 
 .light-theme .achievement-desc {
   color: #666;
-}
-
-.easter-badge {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffd700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: default;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.easter-badge:hover {
-  transform: scale(1.1);
-}
-
-.easter-badge-floating {
-  display: none;
-  position: fixed;
-  top: 18px;
-  left: 180px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffd700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: default;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-@media (max-width: 768px) {
-  .easter-badge-floating {
-    display: none;
-  }
 }
 
 .secret-panel-overlay {
@@ -2371,8 +2325,25 @@ section {
   object-fit: contain;
 }
 
-.light-theme .secret-panel-img.easter-egg-profile {
-  filter: brightness(0.6) saturate(1.4);
+.secret-panel-mark {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.secret-panel-mark .logo-angle {
+  color: #64b5f6;
+}
+
+.light-theme .secret-panel-mark {
+  color: #1a1a1a;
+}
+
+.light-theme .secret-panel-mark .logo-angle {
+  color: #1565c0;
 }
 
 .secret-panel-info {

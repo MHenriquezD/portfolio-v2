@@ -4,8 +4,8 @@
     <nav class="navbar" :class="{ 'light-navbar': isLightTheme, 'navbar-scrolled': isScrolled }">
       <div class="navbar-container">
         <div class="navbar-logo">
-          <a href="#inicio" class="logo-link" @click="onLogoClick">
-            <img :src="logoOpen" alt="MH" class="logo-img" />
+          <a href="#inicio" class="logo-link" aria-label="MH" @click="onLogoClick">
+            <span class="logo-mark"><span class="logo-angle">&lt;</span>MH<span class="logo-angle">/&gt;</span></span>
           </a>
           <span v-if="easterEggCount && easterEggCount > 0" class="navbar-badge" @click.stop="$emit('openSecretPanel')">
             <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggTotal }}
@@ -37,8 +37,8 @@
     <!-- Mobile floating menu -->
     <div class="mobile-fab" :class="{ 'light-fab': isLightTheme }">
       <div class="mobile-fab-bar">
-        <a href="#inicio" class="fab-logo-link" @click="onLogoClick">
-          <img :src="logoOpen" alt="MH" class="fab-logo" />
+        <a href="#inicio" class="fab-logo-link" aria-label="MH" @click="onLogoClick">
+          <span class="logo-mark"><span class="logo-angle">&lt;</span>MH<span class="logo-angle">/&gt;</span></span>
         </a>
         <span v-if="easterEggCount && easterEggCount > 0" class="navbar-badge" @click.stop="$emit('openSecretPanel')">
           <Icon icon="mdi:trophy" width="14" /> {{ easterEggCount }}/{{ easterEggTotal }}
@@ -98,9 +98,6 @@ const navItems = [
   { id: 'contacto', label: 'Contacto' },
 ]
 
-const base = import.meta.env.BASE_URL
-const logoOpen = `${base}img/logo/png/4A_mh-code-blue_transparent_512.webp`
-const logoClose = `${base}img/logo/png/5A_angles-blue_transparent_512.webp`
 
 const onLogoClick = () => {
   window.dispatchEvent(new Event('logo-click'))

@@ -64,8 +64,12 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   display: block;
-  /* La imagen ya viene recortada en círculo; el radio es por si se reemplaza. */
+  /* La ilustración llega hasta el borde inferior del círculo: sin un aro,
+     el arco de la base se lee como un corte recto contra el fondo. */
   border-radius: 50%;
+  box-shadow:
+    0 0 0 3px rgba(100, 181, 246, 0.55),
+    0 0 0 7px rgba(100, 181, 246, 0.14);
   transform: rotateX(var(--giro-x, 0deg)) rotateY(var(--giro-y, 0deg));
   transition: transform 0.25s ease-out;
   animation: avatar-flotar 6s ease-in-out infinite;
@@ -79,7 +83,7 @@ onUnmounted(() => {
   /* Sin filter: blur. El degradado radial ya es suave, y un blur animado
      obliga a recalcular el desenfoque en cada frame. Solo se anima opacity,
      que el compositor resuelve sin repintar. */
-  background: radial-gradient(circle, rgba(100, 181, 246, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle closest-side, rgba(100, 181, 246, 0.3) 0%, transparent 100%);
   animation: avatar-halo 6s ease-in-out infinite;
   will-change: opacity;
 }

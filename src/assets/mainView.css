@@ -26,11 +26,11 @@
 
 .light-theme .hero-section::before {
   background: radial-gradient(
-    circle,
-    rgba(100, 181, 246, 0.35) 0%,
-    rgba(66, 165, 245, 0.2) 30%,
-    rgba(33, 150, 243, 0.1) 60%,
-    transparent 80%
+    circle closest-side,
+    rgba(100, 181, 246, 0.32) 0%,
+    rgba(66, 165, 245, 0.18) 35%,
+    rgba(33, 150, 243, 0.08) 65%,
+    transparent 100%
   );
   opacity: 1;
 }
@@ -248,13 +248,15 @@
   transform: translate(-50%, -50%);
   width: 400px;
   height: 400px;
-  /* Sin filter: blur. El degradado radial ya da la difusión, y animar la
-     escala de una capa desenfocada obliga a re-rasterizarla en cada frame. */
+  /* Sin filter: blur (animar la escala de una capa desenfocada obliga a
+     re-rasterizarla en cada frame). closest-side es necesario: por defecto el
+     degradado termina en la esquina, así que en los bordes laterales aún no
+     llegó a transparente y se corta en un rectángulo visible. */
   background: radial-gradient(
-    circle,
+    circle closest-side,
     rgba(100, 181, 246, 0.18) 0%,
-    rgba(66, 165, 245, 0.1) 45%,
-    transparent 75%
+    rgba(66, 165, 245, 0.09) 45%,
+    transparent 100%
   );
   animation: pulse 4s ease-in-out infinite;
   will-change: opacity;

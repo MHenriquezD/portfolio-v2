@@ -440,7 +440,7 @@ watch(() => props.isLightTheme, () => {
   user-select: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .physics-container {
     height: 300px;
   }

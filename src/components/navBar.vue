@@ -19,18 +19,25 @@
               class="nav-link"
               :class="{ 'nav-link-active': activeSection === item.id }"
             >
-              {{ item.label }}
+              {{ t(item.label) }}
             </a>
           </li>
         </ul>
 
-        <button
-          class="theme-toggle"
-          @click="$emit('toggleTheme', $event)"
-          :title="isLightTheme ? 'Modo Oscuro' : 'Modo Claro'"
-        >
-          <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
-        </button>
+        <div class="navbar-actions">
+          <button class="lang-toggle" @click="toggleLocale" :title="t('nav.idiomaTitulo')">
+            <span :class="{ 'lang-active': locale === 'es' }">ES</span>
+            <span class="lang-sep">/</span>
+            <span :class="{ 'lang-active': locale === 'en' }">EN</span>
+          </button>
+          <button
+            class="theme-toggle"
+            @click="$emit('toggleTheme', $event)"
+            :title="isLightTheme ? t('nav.temaOscuro') : t('nav.temaClaro')"
+          >
+            <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -62,11 +69,19 @@
           :class="{ 'fab-link-active': activeSection === item.id }"
           @click="menuOpen = false"
         >
-          {{ item.label }}
+          {{ t(item.label) }}
         </a>
         <button class="fab-theme-toggle" @click="$emit('toggleTheme', $event)">
           <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
-          <span>{{ isLightTheme ? 'Modo Oscuro' : 'Modo Claro' }}</span>
+          <span>{{ isLightTheme ? t('nav.temaOscuro') : t('nav.temaClaro') }}</span>
+        </button>
+        <button class="fab-theme-toggle" @click="toggleLocale">
+          <Icon icon="mdi:translate" width="18" />
+          <span class="lang-toggle-inline">
+            <span :class="{ 'lang-active': locale === 'es' }">ES</span>
+            <span class="lang-sep">/</span>
+            <span :class="{ 'lang-active': locale === 'en' }">EN</span>
+          </span>
         </button>
       </div>
     </Transition>
@@ -76,6 +91,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useLocale } from '@/composables/useLocale'
+import type { UiKey } from '@/i18n/ui'
+
+const { t, toggleLocale, locale } = useLocale()
 
 defineProps<{
   isLightTheme: boolean
@@ -89,13 +108,13 @@ defineEmits<{
   openSecretPanel: []
 }>()
 
-const navItems = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'trayectoria', label: 'Trayectoria' },
-  { id: 'proyectos', label: 'Proyectos' },
-  { id: 'habilidades', label: 'Habilidades' },
-  { id: 'sobre-mi', label: 'Sobre Mí' },
-  { id: 'contacto', label: 'Contacto' },
+const navItems: { id: string; label: UiKey }[] = [
+  { id: 'inicio', label: 'nav.inicio' },
+  { id: 'trayectoria', label: 'nav.trayectoria' },
+  { id: 'proyectos', label: 'nav.proyectos' },
+  { id: 'habilidades', label: 'nav.habilidades' },
+  { id: 'sobre-mi', label: 'nav.sobreMi' },
+  { id: 'contacto', label: 'nav.contacto' },
 ]
 
 

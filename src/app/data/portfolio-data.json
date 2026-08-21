@@ -32,149 +32,531 @@
     }
   ],
   "habilidades": [
-    { "id": 1, "titulo": "JavaScript", "img": "img/skills/javascript.svg", "categoria": "Lenguajes" },
-    { "id": 2, "titulo": "TypeScript", "img": "img/skills/typescript.svg", "categoria": "Lenguajes" },
-    { "id": 3, "titulo": "Python", "img": "img/skills/python.svg", "categoria": "Lenguajes" },
-    { "id": 4, "titulo": "Java", "img": "img/skills/java.svg", "categoria": "Lenguajes" },
-    { "id": 5, "titulo": "C#", "img": "img/skills/csharp.svg", "categoria": "Lenguajes" },
-    { "id": 6, "titulo": "C++", "img": "img/skills/cplusplus.svg", "categoria": "Lenguajes" },
-    { "id": 7, "titulo": "PHP", "img": "img/skills/php.svg", "categoria": "Lenguajes" },
-
-    { "id": 8, "titulo": "React", "img": "img/skills/react.svg", "categoria": "Frontend" },
-    { "id": 9, "titulo": "VueJS", "img": "img/skills/vuelogo.svg", "categoria": "Frontend" },
-    { "id": 10, "titulo": "HTML", "img": "img/skills/html.svg", "categoria": "Frontend" },
-    { "id": 11, "titulo": "CSS", "img": "img/skills/css.svg", "categoria": "Frontend" },
-    { "id": 12, "titulo": "TailwindCSS", "img": "img/skills/tailwind.svg", "categoria": "Frontend" },
-    { "id": 13, "titulo": "Bootstrap", "img": "img/skills/bootstrap.svg", "categoria": "Frontend" },
-    { "id": 14, "titulo": "JQuery", "img": "img/skills/jquery.svg", "categoria": "Frontend" },
-
-    { "id": 15, "titulo": "NodeJS", "img": "img/skills/node.svg", "categoria": "Backend" },
-    { "id": 16, "titulo": "NestJS", "img": "img/skills/nestjslogo.svg", "categoria": "Backend" },
-    { "id": 17, "titulo": "Express", "img": "img/skills/express.svg", "categoria": "Backend" },
-    { "id": 18, "titulo": "Spring Boot", "img": "img/skills/spring.svg", "categoria": "Backend" },
-    { "id": 19, "titulo": "Laravel", "img": "img/skills/laravel.svg", "categoria": "Backend" },
-    { "id": 20, "titulo": "Prisma", "img": "img/skills/prisma.svg", "categoria": "Backend" },
-
-    { "id": 21, "titulo": "PostgreSQL", "img": "img/skills/postgresql.svg", "categoria": "Bases de Datos" },
-    { "id": 22, "titulo": "MySQL", "img": "img/skills/mysql.svg", "categoria": "Bases de Datos" },
-    { "id": 23, "titulo": "MongoDB", "img": "img/skills/mongo.svg", "categoria": "Bases de Datos" },
-    { "id": 24, "titulo": "SQLite", "img": "img/skills/sqlite.svg", "categoria": "Bases de Datos" },
-
-    { "id": 25, "titulo": "Git", "img": "img/skills/git.svg", "categoria": "DevOps y Herramientas" },
-    { "id": 26, "titulo": "Docker", "img": "img/skills/docker.svg", "categoria": "DevOps y Herramientas" },
-    { "id": 27, "titulo": "AWS", "img": "img/skills/aws.svg", "categoria": "DevOps y Herramientas" },
-    { "id": 28, "titulo": "Linux", "img": "img/skills/linux.svg", "categoria": "DevOps y Herramientas" },
-    { "id": 29, "titulo": "Ubuntu", "img": "img/skills/ubuntu.svg", "categoria": "DevOps y Herramientas" }
+    {
+      "id": 1,
+      "titulo": "JavaScript",
+      "img": "img/skills/javascript.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 2,
+      "titulo": "TypeScript",
+      "img": "img/skills/typescript.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 3,
+      "titulo": "Python",
+      "img": "img/skills/python.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 4,
+      "titulo": "Java",
+      "img": "img/skills/java.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 5,
+      "titulo": "C#",
+      "img": "img/skills/csharp.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 6,
+      "titulo": "C++",
+      "img": "img/skills/cplusplus.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 7,
+      "titulo": "PHP",
+      "img": "img/skills/php.svg",
+      "categoria": {
+        "es": "Lenguajes",
+        "en": "Languages"
+      }
+    },
+    {
+      "id": 8,
+      "titulo": "React",
+      "img": "img/skills/react.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 9,
+      "titulo": "VueJS",
+      "img": "img/skills/vuelogo.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 10,
+      "titulo": "HTML",
+      "img": "img/skills/html.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 11,
+      "titulo": "CSS",
+      "img": "img/skills/css.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 12,
+      "titulo": "TailwindCSS",
+      "img": "img/skills/tailwind.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 13,
+      "titulo": "Bootstrap",
+      "img": "img/skills/bootstrap.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 14,
+      "titulo": "JQuery",
+      "img": "img/skills/jquery.svg",
+      "categoria": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": 15,
+      "titulo": "NodeJS",
+      "img": "img/skills/node.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 16,
+      "titulo": "NestJS",
+      "img": "img/skills/nestjslogo.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 17,
+      "titulo": "Express",
+      "img": "img/skills/express.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 18,
+      "titulo": "Spring Boot",
+      "img": "img/skills/spring.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 19,
+      "titulo": "Laravel",
+      "img": "img/skills/laravel.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 20,
+      "titulo": "Prisma",
+      "img": "img/skills/prisma.svg",
+      "categoria": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "id": 21,
+      "titulo": "PostgreSQL",
+      "img": "img/skills/postgresql.svg",
+      "categoria": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "id": 22,
+      "titulo": "MySQL",
+      "img": "img/skills/mysql.svg",
+      "categoria": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "id": 23,
+      "titulo": "MongoDB",
+      "img": "img/skills/mongo.svg",
+      "categoria": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "id": 24,
+      "titulo": "SQLite",
+      "img": "img/skills/sqlite.svg",
+      "categoria": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "id": 25,
+      "titulo": "Git",
+      "img": "img/skills/git.svg",
+      "categoria": {
+        "es": "DevOps y Herramientas",
+        "en": "DevOps & Tools"
+      }
+    },
+    {
+      "id": 26,
+      "titulo": "Docker",
+      "img": "img/skills/docker.svg",
+      "categoria": {
+        "es": "DevOps y Herramientas",
+        "en": "DevOps & Tools"
+      }
+    },
+    {
+      "id": 27,
+      "titulo": "AWS",
+      "img": "img/skills/aws.svg",
+      "categoria": {
+        "es": "DevOps y Herramientas",
+        "en": "DevOps & Tools"
+      }
+    },
+    {
+      "id": 28,
+      "titulo": "Linux",
+      "img": "img/skills/linux.svg",
+      "categoria": {
+        "es": "DevOps y Herramientas",
+        "en": "DevOps & Tools"
+      }
+    },
+    {
+      "id": 29,
+      "titulo": "Ubuntu",
+      "img": "img/skills/ubuntu.svg",
+      "categoria": {
+        "es": "DevOps y Herramientas",
+        "en": "DevOps & Tools"
+      }
+    }
   ],
   "experiencia": [
     {
       "id": 1,
-      "titulo": "Desarrollador Semi-Senior",
+      "titulo": {
+        "es": "Desarrollador Semi-Senior",
+        "en": "Semi-Senior Developer"
+      },
       "empresa": "INFATLAN",
-      "periodo": "Marzo 2026 - Actualidad",
-      "responsabilidades": [
-        "Refactorización y mejora continua de una aplicación heredada en React",
-        "Implementación de animaciones, buenas prácticas UX/UI y patrones escalables",
-        "Incremento significativo en la productividad del equipo y la mantenibilidad del código"
-      ],
-      "tecnologias": ["React", "TypeScript", "PostgreSQL", "AWS"]
+      "periodo": {
+        "es": "Marzo 2026 - Actualidad",
+        "en": "March 2026 - Present"
+      },
+      "responsabilidades": {
+        "es": [
+          "Refactorización y mejora continua de una aplicación heredada en React",
+          "Implementación de animaciones, buenas prácticas UX/UI y patrones escalables",
+          "Incremento significativo en la productividad del equipo y la mantenibilidad del código"
+        ],
+        "en": [
+          "Refactoring and continuous improvement of a legacy React application",
+          "Implemented animations, UX/UI best practices and scalable patterns",
+          "Significant increase in team productivity and code maintainability"
+        ]
+      },
+      "tecnologias": [
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "AWS"
+      ]
     },
     {
       "id": 2,
-      "titulo": "Desarrollador Back-End",
+      "titulo": {
+        "es": "Desarrollador Back-End",
+        "en": "Back-End Developer"
+      },
       "empresa": "SENPRENDE",
-      "periodo": "Enero 2025 - Febrero 2026",
-      "responsabilidades": [
-        "Optimización y desarrollo backend con NestJS para múltiples plataformas: SSE, SIS, ComerciaHN y MIEL",
-        "Lideré la migración a versiones actualizadas, mejorando legibilidad y rendimiento",
-        "Contribuí al crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN",
-        "Frontend con Nuxt (clientes) y Angular (admin)"
-      ],
-      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL", "MongoDB", "Prisma"]
+      "periodo": {
+        "es": "Enero 2025 - Febrero 2026",
+        "en": "January 2025 - February 2026"
+      },
+      "responsabilidades": {
+        "es": [
+          "Optimización y desarrollo backend con NestJS para múltiples plataformas: SSE, SIS, ComerciaHN y MIEL",
+          "Lideré la migración a versiones actualizadas, mejorando legibilidad y rendimiento",
+          "Contribuí al crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN",
+          "Frontend con Nuxt (clientes) y Angular (admin)"
+        ],
+        "en": [
+          "Backend development and optimization with NestJS across several platforms: SSE, SIS, ComerciaHN and MIEL",
+          "Led the migration to updated versions, improving readability and performance",
+          "Contributed to growth from ~300 to over 1,000 registered entrepreneurs on ComerciaHN",
+          "Frontend with Nuxt (customers) and Angular (admin)"
+        ]
+      },
+      "tecnologias": [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB",
+        "Prisma"
+      ]
     },
     {
       "id": 3,
-      "titulo": "Consultoría Tecnológica",
+      "titulo": {
+        "es": "Consultoría Tecnológica",
+        "en": "Technology Consulting"
+      },
       "empresa": "CDE Mipyme Cordillera Nombre de Dios",
-      "periodo": "Jul 2024 - Dic 2024",
-      "responsabilidades": [
-        "Desarrollo backend y soporte de Mi Empresa en Línea (MIEL 3.0)",
-        "Plataforma pública que ayuda a pymes a constituirse de forma gratuita con asesoría legal completa",
-        "Contribuí al crecimiento de ~100 a más de 3,000 usuarios activos"
-      ],
-      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL"]
+      "periodo": {
+        "es": "Jul 2024 - Dic 2024",
+        "en": "Jul 2024 - Dec 2024"
+      },
+      "responsabilidades": {
+        "es": [
+          "Desarrollo backend y soporte de Mi Empresa en Línea (MIEL 3.0)",
+          "Plataforma pública que ayuda a pymes a constituirse de forma gratuita con asesoría legal completa",
+          "Contribuí al crecimiento de ~100 a más de 3,000 usuarios activos"
+        ],
+        "en": [
+          "Backend development and support for Mi Empresa en Línea (MIEL 3.0)",
+          "Public platform that helps SMEs incorporate free of charge with full legal guidance",
+          "Contributed to growth from ~100 to over 3,000 active users"
+        ]
+      },
+      "tecnologias": [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL"
+      ]
     },
     {
       "id": 4,
-      "titulo": "Desarrollador Back-End",
+      "titulo": {
+        "es": "Desarrollador Back-End",
+        "en": "Back-End Developer"
+      },
       "empresa": "SENPRENDE",
-      "periodo": "Nov 2023 - Jun 2024",
-      "responsabilidades": [
-        "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios)",
-        "Gestión de bases de datos y migración a TypeScript",
-        "Optimización de consultas y estabilización de la arquitectura del proyecto"
-      ],
-      "tecnologias": ["NestJS", "TypeScript", "PostgreSQL", "MongoDB"]
+      "periodo": {
+        "es": "Nov 2023 - Jun 2024",
+        "en": "Nov 2023 - Jun 2024"
+      },
+      "responsabilidades": {
+        "es": [
+          "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios)",
+          "Gestión de bases de datos y migración a TypeScript",
+          "Optimización de consultas y estabilización de la arquitectura del proyecto"
+        ],
+        "en": [
+          "Backend development focused on SIS (Comprehensive Services System)",
+          "Database management and migration to TypeScript",
+          "Query optimization and stabilization of the project architecture"
+        ]
+      },
+      "tecnologias": [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB"
+      ]
     },
     {
       "id": 5,
-      "titulo": "Web Developer",
+      "titulo": {
+        "es": "Web Developer",
+        "en": "Web Developer"
+      },
       "empresa": "CCS Consultores",
-      "periodo": "2021 - 2022",
-      "responsabilidades": [
-        "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta",
-        "Sistema con cálculo de ISV y contabilidad integrada",
-        "Primer trabajo profesional: aprendizaje de trabajo en equipo y comunicación efectiva"
-      ],
-      "tecnologias": ["PHP", "jQuery", "CSS", "HTML"]
+      "periodo": {
+        "es": "2021 - 2022",
+        "en": "2021 - 2022"
+      },
+      "responsabilidades": {
+        "es": [
+          "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta",
+          "Sistema con cálculo de ISV y contabilidad integrada",
+          "Primer trabajo profesional: aprendizaje de trabajo en equipo y comunicación efectiva"
+        ],
+        "en": [
+          "Development and improvement of ATKi POS, a point-of-sale system",
+          "System with sales-tax calculation and built-in accounting",
+          "First professional role: learning teamwork and effective communication"
+        ]
+      },
+      "tecnologias": [
+        "PHP",
+        "jQuery",
+        "CSS",
+        "HTML"
+      ]
     }
   ],
   "educacion": [
     {
       "id": 0,
-      "titulo": "Ingeniería Informática",
-      "periodo": "2026 - Actualidad",
-      "descripcion": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO."
+      "titulo": {
+        "es": "Ingeniería Informática",
+        "en": "Computer Engineering"
+      },
+      "periodo": {
+        "es": "2026 - Actualidad",
+        "en": "2026 - Present"
+      },
+      "descripcion": {
+        "es": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO.",
+        "en": "Undergraduate student of Computer Engineering at UNIMETRO."
+      }
     },
     {
       "id": 1,
-      "titulo": "Ingeniería en Sistemas",
-      "periodo": "2015 - 2023",
-      "descripcion": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
+      "titulo": {
+        "es": "Ingeniería en Sistemas",
+        "en": "Systems Engineering"
+      },
+      "periodo": {
+        "es": "2015 - 2023",
+        "en": "2015 - 2023"
+      },
+      "descripcion": {
+        "es": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH.",
+        "en": "Undergraduate student of Systems Engineering at UNAH."
+      }
     },
     {
       "id": 2,
-      "titulo": "NestJS de Cero a Experto",
-      "periodo": "2022 - 2022",
-      "descripcion": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles.",
+      "titulo": {
+        "es": "NestJS de Cero a Experto",
+        "en": "NestJS from Zero to Expert"
+      },
+      "periodo": {
+        "es": "2022 - 2022",
+        "en": "2022 - 2022"
+      },
+      "descripcion": {
+        "es": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles.",
+        "en": "Back-end development course with NestJS, by Fernando Herrera at DevTalles."
+      },
       "certificado": "img/cv/Nest.webp"
     },
     {
       "id": 3,
-      "titulo": "PCAP - Programming Essentials in Python",
-      "periodo": "2021 - 2021",
-      "descripcion": "Curso de desarrollo en Python, de CISCO Networking Academy.",
+      "titulo": {
+        "es": "PCAP - Programming Essentials in Python",
+        "en": "PCAP - Programming Essentials in Python"
+      },
+      "periodo": {
+        "es": "2021 - 2021",
+        "en": "2021 - 2021"
+      },
+      "descripcion": {
+        "es": "Curso de desarrollo en Python, de CISCO Networking Academy.",
+        "en": "Python development course, by CISCO Networking Academy."
+      },
       "certificado": "img/cv/ProgrammingEssentialsPython.webp"
     },
     {
       "id": 4,
-      "titulo": "Introduction to Cybersecurity",
-      "periodo": "2020 - 2020",
-      "descripcion": "Curso de introducción a la cyber seguridad de CISCO Networking Academy.",
+      "titulo": {
+        "es": "Introduction to Cybersecurity",
+        "en": "Introduction to Cybersecurity"
+      },
+      "periodo": {
+        "es": "2020 - 2020",
+        "en": "2020 - 2020"
+      },
+      "descripcion": {
+        "es": "Curso de introducción a la cyber seguridad de CISCO Networking Academy.",
+        "en": "Introduction to cybersecurity course by CISCO Networking Academy."
+      },
       "certificado": "img/cv/IntroductionCybersecurity.webp"
     },
     {
       "id": 5,
-      "titulo": "NDG Linux Unhatched",
-      "periodo": "2020 - 2020",
-      "descripcion": "Curso de introduccion LINUX de CISCO Networking Academy.",
+      "titulo": {
+        "es": "NDG Linux Unhatched",
+        "en": "NDG Linux Unhatched"
+      },
+      "periodo": {
+        "es": "2020 - 2020",
+        "en": "2020 - 2020"
+      },
+      "descripcion": {
+        "es": "Curso de introduccion LINUX de CISCO Networking Academy.",
+        "en": "Introduction to Linux course by CISCO Networking Academy."
+      },
       "certificado": "img/cv/NDGLinuxUnhatched.webp"
     },
     {
       "id": 6,
-      "titulo": "Técnico en Computación",
-      "periodo": "2011 - 2014",
-      "descripcion": "Bachillerato técnico en computación.",
+      "titulo": {
+        "es": "Técnico en Computación",
+        "en": "Computer Technician"
+      },
+      "periodo": {
+        "es": "2011 - 2014",
+        "en": "2011 - 2014"
+      },
+      "descripcion": {
+        "es": "Bachillerato técnico en computación.",
+        "en": "Technical high school diploma in computing."
+      },
       "certificado": "img/cv/titulo_cecnico_computacion.webp"
     }
   ],
@@ -185,8 +567,17 @@
       "img": "img/proyectos/comercia.webp",
       "url": "https://comercia.hn/",
       "featured": true,
-      "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "VueJS"],
-      "descripcion": "Marketplace nacional del Gobierno de Honduras que conecta a más de 1,000 emprendedores hondureños con consumidores locales e internacionales. El sistema incluye catálogo de productos, carrito de compras, pasarelas de pago, gestión de inventario, panel administrativo con analytics y CRM para vendedores. Crecimiento de ~300 a más de 1,000 emprendedores registrados durante mi participación. Backend con NestJS y TypeScript, PostgreSQL con Prisma como ORM, y frontend con Nuxt (clientes) y Angular (administración)."
+      "tags": [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "VueJS"
+      ],
+      "descripcion": {
+        "es": "Marketplace nacional del Gobierno de Honduras que conecta a más de 1,000 emprendedores hondureños con consumidores locales e internacionales. El sistema incluye catálogo de productos, carrito de compras, pasarelas de pago, gestión de inventario, panel administrativo con analytics y CRM para vendedores. Crecimiento de ~300 a más de 1,000 emprendedores registrados durante mi participación. Backend con NestJS y TypeScript, PostgreSQL con Prisma como ORM, y frontend con Nuxt (clientes) y Angular (administración).",
+        "en": "Honduras' national government marketplace, connecting over 1,000 Honduran entrepreneurs with local and international consumers. The system includes a product catalog, shopping cart, payment gateways, inventory management, an admin panel with analytics and a CRM for sellers. It grew from ~300 to over 1,000 registered entrepreneurs during my time on the project. Backend with NestJS and TypeScript, PostgreSQL with Prisma as ORM, and frontend with Nuxt (customers) and Angular (administration)."
+      }
     },
     {
       "id": 5,
@@ -194,8 +585,16 @@
       "img": "img/proyectos/miel.webp",
       "url": "https://miempresaenlinea.org/",
       "featured": true,
-      "tags": ["NestJS", "TypeScript", "PostgreSQL", "Prisma"],
-      "descripcion": "Plataforma digital del Gobierno de Honduras que facilita la creación y constitución de empresas de forma 100% en línea, gratuita y disponible 24/7, conforme a la Ley de Generación de Empleo. El sistema guía al usuario paso a paso desde el registro hasta la obtención de documentos legales, integrando validaciones con instituciones gubernamentales. Más de 3,000 usuarios activos con cientos de empresas constituidas mensualmente. Arquitectura backend robusta con NestJS y TypeScript, PostgreSQL para persistencia, y Prisma como ORM."
+      "tags": [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma"
+      ],
+      "descripcion": {
+        "es": "Plataforma digital del Gobierno de Honduras que facilita la creación y constitución de empresas de forma 100% en línea, gratuita y disponible 24/7, conforme a la Ley de Generación de Empleo. El sistema guía al usuario paso a paso desde el registro hasta la obtención de documentos legales, integrando validaciones con instituciones gubernamentales. Más de 3,000 usuarios activos con cientos de empresas constituidas mensualmente. Arquitectura backend robusta con NestJS y TypeScript, PostgreSQL para persistencia, y Prisma como ORM.",
+        "en": "Honduran government digital platform that lets businesses be created and incorporated 100% online, free of charge and available 24/7, in line with the Employment Generation Act. The system guides users step by step from registration to obtaining legal documents, integrating validations with government institutions. Over 3,000 active users, with hundreds of companies incorporated monthly. Robust backend architecture with NestJS and TypeScript, PostgreSQL for persistence, and Prisma as ORM."
+      }
     },
     {
       "id": 2,
@@ -203,16 +602,33 @@
       "img": "img/proyectos/rapid-riders-admins.webp",
       "isLogo": true,
       "url": "",
-      "tags": ["NodeJS", "TypeScript", "Express", "MongoDB", "Bootstrap"],
-      "descripcion": "Aplicación web full-stack desarrollada como proyecto universitario para la gestión de servicios de delivery. El sistema implementa una arquitectura completa con tres interfaces especializadas: panel administrativo para supervisión y reportes, aplicación de clientes para realizar pedidos, y sistema para motoristas que gestiona las entregas en tiempo real. Desarrollado desde cero con arquitectura RESTful, incluye autenticación JWT, geolocalización en tiempo real, sistema de notificaciones y gestión de estados de órdenes. Stack tecnológico: Node.js, TypeScript, Express, MongoDB para el backend, con frontend en Bootstrap y JavaScript."
+      "tags": [
+        "NodeJS",
+        "TypeScript",
+        "Express",
+        "MongoDB",
+        "Bootstrap"
+      ],
+      "descripcion": {
+        "es": "Aplicación web full-stack desarrollada como proyecto universitario para la gestión de servicios de delivery. El sistema implementa una arquitectura completa con tres interfaces especializadas: panel administrativo para supervisión y reportes, aplicación de clientes para realizar pedidos, y sistema para motoristas que gestiona las entregas en tiempo real. Desarrollado desde cero con arquitectura RESTful, incluye autenticación JWT, geolocalización en tiempo real, sistema de notificaciones y gestión de estados de órdenes. Stack tecnológico: Node.js, TypeScript, Express, MongoDB para el backend, con frontend en Bootstrap y JavaScript.",
+        "en": "Full-stack web application built as a university project for managing delivery services. It implements a complete architecture with three specialized interfaces: an admin panel for supervision and reporting, a customer app for placing orders, and a driver system that handles deliveries in real time. Built from scratch with a RESTful architecture, it includes JWT authentication, real-time geolocation, notifications and order-state management. Tech stack: Node.js, TypeScript, Express and MongoDB on the backend, with a frontend in Bootstrap and JavaScript."
+      }
     },
     {
       "id": 1,
       "titulo": "ATKi Software",
       "img": "img/proyectos/atki-screenshot.webp",
       "url": "https://atki.online/",
-      "tags": ["JavaScript", "PHP", "MySQL", "Bootstrap"],
-      "descripcion": "Plataforma empresarial SaaS diseñada para la administración integral de operaciones diarias en tiempo real. El sistema proporciona módulos completos de gestión financiera, control de inventario, facturación electrónica, recursos humanos y análisis de datos mediante dashboards interactivos. Orientado específicamente a micro, pequeñas y medianas empresas, combina seguridad robusta, escalabilidad y una interfaz amigable que permite a los usuarios gestionar sus negocios de manera eficiente sin requerir conocimientos técnicos avanzados."
+      "tags": [
+        "JavaScript",
+        "PHP",
+        "MySQL",
+        "Bootstrap"
+      ],
+      "descripcion": {
+        "es": "Plataforma empresarial SaaS diseñada para la administración integral de operaciones diarias en tiempo real. El sistema proporciona módulos completos de gestión financiera, control de inventario, facturación electrónica, recursos humanos y análisis de datos mediante dashboards interactivos. Orientado específicamente a micro, pequeñas y medianas empresas, combina seguridad robusta, escalabilidad y una interfaz amigable que permite a los usuarios gestionar sus negocios de manera eficiente sin requerir conocimientos técnicos avanzados.",
+        "en": "SaaS business platform designed for end-to-end management of daily operations in real time. It provides complete modules for financial management, inventory control, electronic invoicing, human resources and data analysis through interactive dashboards. Aimed specifically at micro, small and medium businesses, it combines solid security, scalability and a friendly interface that lets users run their business efficiently without advanced technical knowledge."
+      }
     },
     {
       "id": 0,
@@ -220,8 +636,17 @@
       "img": "img/proyectos/logo.webp",
       "isLogo": true,
       "url": "https://github.com/ManuelDHenriquez/Restaurante",
-      "tags": ["JavaScript", "PHP", "MySQL", "JQuery", "Bootstrap"],
-      "descripcion": "Sistema de punto de venta (POS) integral desarrollado específicamente para la gestión de restaurantes. Implementa funcionalidades completas de gestión de mesas, pedidos en tiempo real, control de inventario, facturación electrónica y reportes de ventas. La arquitectura del sistema facilita la comunicación entre meseros, cocina y caja, optimizando el flujo de trabajo y mejorando la experiencia del cliente. Desarrollado con JavaScript, PHP y MySQL, integrando tecnologías frontend como jQuery y Bootstrap para una interfaz responsiva e intuitiva."
+      "tags": [
+        "JavaScript",
+        "PHP",
+        "MySQL",
+        "JQuery",
+        "Bootstrap"
+      ],
+      "descripcion": {
+        "es": "Sistema de punto de venta (POS) integral desarrollado específicamente para la gestión de restaurantes. Implementa funcionalidades completas de gestión de mesas, pedidos en tiempo real, control de inventario, facturación electrónica y reportes de ventas. La arquitectura del sistema facilita la comunicación entre meseros, cocina y caja, optimizando el flujo de trabajo y mejorando la experiencia del cliente. Desarrollado con JavaScript, PHP y MySQL, integrando tecnologías frontend como jQuery y Bootstrap para una interfaz responsiva e intuitiva.",
+        "en": "Comprehensive point-of-sale (POS) system built specifically for restaurant management. It implements full table management, real-time orders, inventory control, electronic invoicing and sales reports. The architecture streamlines communication between waiters, kitchen and checkout, optimizing workflow and improving the customer experience. Built with JavaScript, PHP and MySQL, integrating frontend technologies such as jQuery and Bootstrap for a responsive, intuitive interface."
+      }
     },
     {
       "id": 3,
@@ -229,8 +654,14 @@
       "img": "img/proyectos/ffaa.webp",
       "isLogo": true,
       "url": "",
-      "tags": ["Soporte Técnico", "Análisis de Sistemas"],
-      "descripcion": "Colaboración técnica en el Salón Azul Computacional de la Fuerza Aérea Hondureña, proporcionando soporte en desarrollo de software y sistemas institucionales. El trabajo incluyó análisis de requerimientos, desarrollo de soluciones tecnológicas personalizadas, mantenimiento de sistemas críticos y capacitación técnica al personal. Experiencia en entorno gubernamental con altos estándares de seguridad y cumplimiento de protocolos institucionales."
+      "tags": [
+        "Soporte Técnico",
+        "Análisis de Sistemas"
+      ],
+      "descripcion": {
+        "es": "Colaboración técnica en el Salón Azul Computacional de la Fuerza Aérea Hondureña, proporcionando soporte en desarrollo de software y sistemas institucionales. El trabajo incluyó análisis de requerimientos, desarrollo de soluciones tecnológicas personalizadas, mantenimiento de sistemas críticos y capacitación técnica al personal. Experiencia en entorno gubernamental con altos estándares de seguridad y cumplimiento de protocolos institucionales.",
+        "en": "Technical collaboration at the Salón Azul Computacional of the Honduran Air Force, providing support in software development and institutional systems. The work included requirements analysis, development of tailored technology solutions, maintenance of critical systems and technical training for staff. Experience in a government environment with high security standards and institutional protocol compliance."
+      }
     }
   ],
   "rapidRidersProyectos": [
@@ -240,7 +671,10 @@
       "url": "https://github.com/ManuelDHenriquez/RapidRiders-Admins",
       "icon": "fa-solid fa-user-shield",
       "img": "img/proyectos/rapid-riders-admins.webp",
-      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Administradores desempeñen su papel sin problema alguno."
+      "descripcion": {
+        "es": "Front-end del proyecto RapidRiders, Este está diseñado para que los Administradores desempeñen su papel sin problema alguno.",
+        "en": "Front-end of the RapidRiders project, designed so administrators can carry out their role without friction."
+      }
     },
     {
       "id": 2,
@@ -248,7 +682,10 @@
       "url": "https://github.com/ManuelDHenriquez/RapidRiders-Clientes",
       "icon": "fa-solid fa-users",
       "img": "img/proyectos/rapid-riders-admins.webp",
-      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Clientes puedan hacer sus órdenes sin inconvenientes."
+      "descripcion": {
+        "es": "Front-end del proyecto RapidRiders, Este está diseñado para que los Clientes puedan hacer sus órdenes sin inconvenientes.",
+        "en": "Front-end of the RapidRiders project, designed so customers can place their orders without trouble."
+      }
     },
     {
       "id": 3,
@@ -256,7 +693,10 @@
       "url": "https://github.com/ManuelDHenriquez/RapidRiders-Motorista",
       "icon": "fa-solid fa-motorcycle",
       "img": "img/proyectos/rapid-riders-admins.webp",
-      "descripcion": "Front-end del proyecto RapidRiders, Este está diseñado para que los Motoristas puedan ver sus órdenes y entregarlas sin inconvenientes."
+      "descripcion": {
+        "es": "Front-end del proyecto RapidRiders, Este está diseñado para que los Motoristas puedan ver sus órdenes y entregarlas sin inconvenientes.",
+        "en": "Front-end of the RapidRiders project, designed so drivers can view and complete their deliveries without trouble."
+      }
     },
     {
       "id": 4,
@@ -264,7 +704,10 @@
       "url": "https://github.com/ManuelDHenriquez/RapidRiders-Backend",
       "icon": "fa-solid fa-server",
       "img": "img/proyectos/rapid-riders-admins.webp",
-      "descripcion": "Back-end del proyecto RapidRiders, en este se encuentra todo el cuerpo central de la aplicación ya que están las rutas, conexiones, esquemas, modelos, endpoints, etc. Este fue diseñado para contribuir con el funcionamiento de la aplicación y que sea lo más eficiente posible."
+      "descripcion": {
+        "es": "Back-end del proyecto RapidRiders, en este se encuentra todo el cuerpo central de la aplicación ya que están las rutas, conexiones, esquemas, modelos, endpoints, etc. Este fue diseñado para contribuir con el funcionamiento de la aplicación y que sea lo más eficiente posible.",
+        "en": "Back-end of the RapidRiders project: the core of the application, holding routes, connections, schemas, models and endpoints. Built to keep the application running as efficiently as possible."
+      }
     }
   ],
   "ComerciaHN": [
@@ -274,7 +717,10 @@
       "url": "https://comercia.hn/",
       "icon": "fa-solid fa-shopping-cart",
       "img": "img/proyectos/comercia.webp",
-      "descripcion": "Marketplace público con más de 465 productos de 981+ emprendedores hondureños en 15 departamentos. Catálogo con búsqueda, carrito de compras, pasarelas de pago y sistema de tiendas virtuales. Desarrollado con Nuxt 3."
+      "descripcion": {
+        "es": "Marketplace público con más de 465 productos de 981+ emprendedores hondureños en 15 departamentos. Catálogo con búsqueda, carrito de compras, pasarelas de pago y sistema de tiendas virtuales. Desarrollado con Nuxt 3.",
+        "en": "Public marketplace with over 465 products from 981+ Honduran entrepreneurs across 15 departments. Catalog with search, shopping cart, payment gateways and a virtual storefront system. Built with Nuxt 3."
+      }
     },
     {
       "id": 2,
@@ -282,7 +728,10 @@
       "url": "https://admin.comercia.hn/",
       "icon": "fa-solid fa-user-shield",
       "img": "img/proyectos/comercia-admin.webp",
-      "descripcion": "Panel administrativo para emprendedores y administradores. Gestión de tiendas, productos, órdenes, inventario, analytics y reportes. Más de 162 tiendas activas. Desarrollado con Angular."
+      "descripcion": {
+        "es": "Panel administrativo para emprendedores y administradores. Gestión de tiendas, productos, órdenes, inventario, analytics y reportes. Más de 162 tiendas activas. Desarrollado con Angular.",
+        "en": "Admin panel for entrepreneurs and administrators. Management of stores, products, orders, inventory, analytics and reports. Over 162 active stores. Built with Angular."
+      }
     }
   ]
 }

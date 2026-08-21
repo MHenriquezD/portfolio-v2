@@ -1,8 +1,14 @@
 {
   "name": "Curriculum Vitae",
-  "title": "Full Stack Web Developer",
+  "title": {
+    "es": "Desarrollador Web Full Stack",
+    "en": "Full Stack Web Developer"
+  },
   "subtitle": "Full Stack Developer - Manuel Henriquez",
-  "profile": "Desarrollador web con más de 5 años de experiencia en el desarrollo de aplicaciones web modernas, tanto en front-end como en back-end. Cuento con experiencia en PHP, Node.js, JavaScript y TypeScript, trabajando con frameworks como Next.js, NestJS y Vue.js. Apasionado por el desarrollo de software, el aprendizaje continuo y el crecimiento profesional, con el objetivo constante de mejorar mis habilidades y crear soluciones cada vez más eficientes, escalables y de mayor calidad.",
+  "profile": {
+    "es": "Desarrollador web con más de 5 años de experiencia en el desarrollo de aplicaciones web modernas, tanto en front-end como en back-end. Cuento con experiencia en PHP, Node.js, JavaScript y TypeScript, trabajando con frameworks como Next.js, NestJS y Vue.js. Apasionado por el desarrollo de software, el aprendizaje continuo y el crecimiento profesional, con el objetivo constante de mejorar mis habilidades y crear soluciones cada vez más eficientes, escalables y de mayor calidad.",
+    "en": "Web developer with over 5 years of experience building modern web applications, both front-end and back-end. Experienced in PHP, Node.js, JavaScript and TypeScript, working with frameworks such as Next.js, NestJS and Vue.js. Passionate about software development, continuous learning and professional growth, with the constant goal of sharpening my skills and building solutions that are more efficient, scalable and higher quality."
+  },
   "photo": "/img/perfil/mhenriquez-profile.webp",
   "contact": {
     "email": "mdhenriquez16@gmail.com",
@@ -43,93 +49,219 @@
   ],
   "experience": [
     {
-      "position": "Desarrollador Semi Senior",
+      "position": {
+        "es": "Desarrollador Semi Senior",
+        "en": "Semi-Senior Developer"
+      },
       "company": "INFATLAN",
-      "duration": "Marzo 2026 - Actualidad",
-      "responsibilities": [
-        "Refactorización y mejora de aplicación heredada en React, implementando buenas prácticas UX/UI y patrones escalables.",
-        "Tecnologías: React, TypeScript, PostgreSQL, AWS"
-      ]
+      "duration": {
+        "es": "Marzo 2026 - Actualidad",
+        "en": "March 2026 - Present"
+      },
+      "responsibilities": {
+        "es": [
+          "Refactorización y mejora de aplicación heredada en React, implementando buenas prácticas UX/UI y patrones escalables.",
+          "Tecnologías: React, TypeScript, PostgreSQL, AWS"
+        ],
+        "en": [
+          "Refactored and improved a legacy React application, applying UX/UI best practices and scalable patterns.",
+          "Technologies: React, TypeScript, PostgreSQL, AWS"
+        ]
+      }
     },
     {
-      "position": "Desarrollador Back-End",
+      "position": {
+        "es": "Desarrollador Back-End",
+        "en": "Back-End Developer"
+      },
       "company": "SENPRENDE",
-      "duration": "Enero 2025 - Febrero 2026",
-      "responsibilities": [
-        "Optimización backend de ComerciaHN, MIEL, SSE y SIS con NestJS. Crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN.",
-        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma"
-      ]
+      "duration": {
+        "es": "Enero 2025 - Febrero 2026",
+        "en": "January 2025 - February 2026"
+      },
+      "responsibilities": {
+        "es": [
+          "Optimización backend de ComerciaHN, MIEL, SSE y SIS con NestJS. Crecimiento de ~300 a más de 1,000 emprendedores registrados en ComerciaHN.",
+          "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma"
+        ],
+        "en": [
+          "Backend optimization of ComerciaHN, MIEL, SSE and SIS with NestJS. Growth from ~300 to over 1,000 registered entrepreneurs on ComerciaHN.",
+          "Technologies: NestJS, TypeScript, PostgreSQL, MongoDB, Prisma"
+        ]
+      }
     },
     {
-      "position": "Consultoría Tecnológica",
+      "position": {
+        "es": "Consultoría Tecnológica",
+        "en": "Technology Consulting"
+      },
       "company": "CDE Mipyme Coordillera Nombre de Dios",
-      "duration": "Jul 2024 - Dic 2024",
-      "responsibilities": [
-        "Desarrollo backend de MIEL 3.0, plataforma pública para constitución gratuita de pymes. Crecimiento de ~100 a más de 3,000 usuarios activos.",
-        "Tecnologías: NestJS, TypeScript, PostgreSQL"
-      ]
+      "duration": {
+        "es": "Jul 2024 - Dic 2024",
+        "en": "Jul 2024 - Dec 2024"
+      },
+      "responsibilities": {
+        "es": [
+          "Desarrollo backend de MIEL 3.0, plataforma pública para constitución gratuita de pymes. Crecimiento de ~100 a más de 3,000 usuarios activos.",
+          "Tecnologías: NestJS, TypeScript, PostgreSQL"
+        ],
+        "en": [
+          "Backend development of MIEL 3.0, a public platform for free SME incorporation. Growth from ~100 to over 3,000 active users.",
+          "Technologies: NestJS, TypeScript, PostgreSQL"
+        ]
+      }
     },
     {
-      "position": "Desarrollador Back-End",
+      "position": {
+        "es": "Desarrollador Back-End",
+        "en": "Back-End Developer"
+      },
       "company": "SENPRENDE",
-      "duration": "Nov 2023 - Jun 2024",
-      "responsibilities": [
-        "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios), gestión de bases de datos y migración a TypeScript.",
-        "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB"
-      ]
+      "duration": {
+        "es": "Nov 2023 - Jun 2024",
+        "en": "Nov 2023 - Jun 2024"
+      },
+      "responsibilities": {
+        "es": [
+          "Desarrollo backend centrado en el SIS (Sistema Integral de Servicios), gestión de bases de datos y migración a TypeScript.",
+          "Tecnologías: NestJS, TypeScript, PostgreSQL, MongoDB"
+        ],
+        "en": [
+          "Backend development focused on SIS (Comprehensive Services System), database management and migration to TypeScript.",
+          "Technologies: NestJS, TypeScript, PostgreSQL, MongoDB"
+        ]
+      }
     },
     {
-      "position": "Web Developer",
+      "position": {
+        "es": "Web Developer",
+        "en": "Web Developer"
+      },
       "company": "CCS Consultores (Honduras)",
-      "duration": "2021 - 2022",
-      "responsibilities": [
-        "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta con cálculo de ISV y contabilidad integrada.",
-        "Tecnologías: PHP, jQuery, CSS, HTML"
-      ]
+      "duration": {
+        "es": "2021 - 2022",
+        "en": "2021 - 2022"
+      },
+      "responsibilities": {
+        "es": [
+          "Desarrollo y mejoramiento de ATKi POS, sistema punto de venta con cálculo de ISV y contabilidad integrada.",
+          "Tecnologías: PHP, jQuery, CSS, HTML"
+        ],
+        "en": [
+          "Development and improvement of ATKi POS, a point-of-sale system with sales-tax calculation and built-in accounting.",
+          "Technologies: PHP, jQuery, CSS, HTML"
+        ]
+      }
     }
   ],
   "education": [
     {
-      "degree": "Ingeniería Informática",
+      "degree": {
+        "es": "Ingeniería Informática",
+        "en": "Computer Engineering"
+      },
       "institution": "UNIMETRO",
-      "duration": "2026 - Actualidad",
-      "description": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO."
+      "duration": {
+        "es": "2026 - Actualidad",
+        "en": "2026 - Present"
+      },
+      "description": {
+        "es": "Pasante universitario de la carrera Ingeniería Informática en la UNIMETRO.",
+        "en": "Undergraduate student of Computer Engineering at UNIMETRO."
+      }
     },
     {
-      "degree": "Ingeniería en Sistemas",
+      "degree": {
+        "es": "Ingeniería en Sistemas",
+        "en": "Systems Engineering"
+      },
       "institution": "UNAH",
-      "duration": "2015 - 2023",
-      "description": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH."
+      "duration": {
+        "es": "2015 - 2023",
+        "en": "2015 - 2023"
+      },
+      "description": {
+        "es": "Pasante universitario de la carrera Ingeniería en Sistemas en la UNAH.",
+        "en": "Undergraduate student of Systems Engineering at UNAH."
+      }
     },
     {
-      "degree": "NestJS de Cero a Experto",
+      "degree": {
+        "es": "NestJS de Cero a Experto",
+        "en": "NestJS from Zero to Expert"
+      },
       "institution": "DevTalles",
-      "duration": "2022 - 2022",
-      "description": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles."
+      "duration": {
+        "es": "2022 - 2022",
+        "en": "2022 - 2022"
+      },
+      "description": {
+        "es": "Curso de desarrollo back-end con NestJS, de Fernando Herrera en DevTalles.",
+        "en": "Back-end development course with NestJS, by Fernando Herrera at DevTalles."
+      }
     },
     {
-      "degree": "PCAP - Programming Essentials in Python",
+      "degree": {
+        "es": "PCAP - Programming Essentials in Python",
+        "en": "PCAP - Programming Essentials in Python"
+      },
       "institution": "CISCO Networking Academy",
-      "duration": "2021 - 2021",
-      "description": "Curso de desarrollo en Python, de CISCO Networking Academy."
+      "duration": {
+        "es": "2021 - 2021",
+        "en": "2021 - 2021"
+      },
+      "description": {
+        "es": "Curso de desarrollo en Python, de CISCO Networking Academy.",
+        "en": "Python development course, by CISCO Networking Academy."
+      }
     },
     {
-      "degree": "Introduction to Cybersecurity",
+      "degree": {
+        "es": "Introduction to Cybersecurity",
+        "en": "Introduction to Cybersecurity"
+      },
       "institution": "CISCO Networking Academy",
-      "duration": "2020 - 2020",
-      "description": "Curso de introducción a la cyber seguridad de CISCO Networking Academy."
+      "duration": {
+        "es": "2020 - 2020",
+        "en": "2020 - 2020"
+      },
+      "description": {
+        "es": "Curso de introducción a la cyber seguridad de CISCO Networking Academy.",
+        "en": "Introduction to cybersecurity course by CISCO Networking Academy."
+      }
     },
     {
-      "degree": "NDG Linux Unhatched",
+      "degree": {
+        "es": "NDG Linux Unhatched",
+        "en": "NDG Linux Unhatched"
+      },
       "institution": "CISCO Networking Academy",
-      "duration": "2020 - 2020",
-      "description": "Curso de introduccion LINUX de CISCO Networking Academy."
+      "duration": {
+        "es": "2020 - 2020",
+        "en": "2020 - 2020"
+      },
+      "description": {
+        "es": "Curso de introduccion LINUX de CISCO Networking Academy.",
+        "en": "Introduction to Linux course by CISCO Networking Academy."
+      }
     },
     {
-      "degree": "Técnico en Computación",
-      "institution": "Bachillerato",
-      "duration": "2011 - 2014",
-      "description": "Bachillerato técnico en computación."
+      "degree": {
+        "es": "Técnico en Computación",
+        "en": "Computer Technician"
+      },
+      "institution": {
+        "es": "Bachillerato",
+        "en": "High School"
+      },
+      "duration": {
+        "es": "2011 - 2014",
+        "en": "2011 - 2014"
+      },
+      "description": {
+        "es": "Bachillerato técnico en computación.",
+        "en": "Technical high school diploma in computing."
+      }
     }
   ],
   "references": [
@@ -156,42 +288,91 @@
   ],
   "languages": [
     {
-      "language": "Español",
-      "level": "Nativo"
+      "language": {
+        "es": "Español",
+        "en": "Spanish"
+      },
+      "level": {
+        "es": "Nativo",
+        "en": "Native"
+      }
     },
     {
-      "language": "Inglés",
-      "level": "Básico"
+      "language": {
+        "es": "Inglés",
+        "en": "English"
+      },
+      "level": {
+        "es": "Básico",
+        "en": "Basic"
+      }
     }
   ],
-  "hobbies": ["Programación", "Videojuegos", "Tecnología", "Cine"],
+  "hobbies": {
+    "es": [
+      "Programación",
+      "Videojuegos",
+      "Tecnología",
+      "Cine"
+    ],
+    "en": [
+      "Programming",
+      "Video games",
+      "Technology",
+      "Film"
+    ]
+  },
   "projects": [
     {
       "name": "ComerciaHN",
-      "description": "Plataforma de comercio electrónico desarrollada para SENPRENDE que conecta a más de 900 emprendedores hondureños con compradores. Ofrece productos 100% locales con visibilidad nacional e internacional y registro gratuito para vendedores.",
-      "technologies": "NestJS, TypeScript, PostgreSQL, VueJS",
+      "description": {
+        "es": "Plataforma de comercio electrónico desarrollada para SENPRENDE que conecta a más de 900 emprendedores hondureños con compradores. Ofrece productos 100% locales con visibilidad nacional e internacional y registro gratuito para vendedores.",
+        "en": "E-commerce platform built for SENPRENDE, connecting over 900 Honduran entrepreneurs with buyers. It offers 100% local products with national and international visibility, and free registration for sellers."
+      },
+      "technologies": {
+        "es": "NestJS, TypeScript, PostgreSQL, VueJS",
+        "en": "NestJS, TypeScript, PostgreSQL, VueJS"
+      },
       "link": ""
     },
     {
       "name": "ATKi Software",
-      "description": "Sistema diseñado para administrar las operaciones diarias de empresas en tiempo real de forma eficiente, segura y muy sencilla. Solución para micro, pequeñas y medianas empresas.",
+      "description": {
+        "es": "Sistema diseñado para administrar las operaciones diarias de empresas en tiempo real de forma eficiente, segura y muy sencilla. Solución para micro, pequeñas y medianas empresas.",
+        "en": "System designed to manage a company’s daily operations in real time, efficiently, securely and simply. A solution for micro, small and medium businesses."
+      },
       "link": "https://atki.online/"
     },
     {
       "name": "RapidRiders",
-      "description": "Proyecto Universitario de desarrollo full-stack para monitorear motoristas, clientes y administradores. Incluye todas las instancias, rutas y endpoints creados desde cero.",
-      "technologies": "NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap",
+      "description": {
+        "es": "Proyecto Universitario de desarrollo full-stack para monitorear motoristas, clientes y administradores. Incluye todas las instancias, rutas y endpoints creados desde cero.",
+        "en": "University full-stack project for monitoring drivers, customers and administrators. Includes every instance, route and endpoint built from scratch."
+      },
+      "technologies": {
+        "es": "NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap",
+        "en": "NodeJS, JavaScript, TypeScript, Express, MongoDB, Bootstrap"
+      },
       "link": ""
     },
     {
       "name": "Salón Azul FFAA",
-      "description": "Apoyo brindado en el salón azul computacional (Desarrollo) de la Fuerza Aerea Hondureña",
+      "description": {
+        "es": "Apoyo brindado en el salón azul computacional (Desarrollo) de la Fuerza Aerea Hondureña",
+        "en": "Support provided at the computing hall (development) of the Honduran Air Force."
+      },
       "link": ""
     },
     {
       "name": "POS para Restaurantes",
-      "description": "Punto de ventas para restaurantes diseñado para dar comodidad a los clientes y a los empleados. Sistema completo de gestión de órdenes y pagos.",
-      "technologies": "JavaScript, PHP, MySQL, jQuery, Bootstrap",
+      "description": {
+        "es": "Punto de ventas para restaurantes diseñado para dar comodidad a los clientes y a los empleados. Sistema completo de gestión de órdenes y pagos.",
+        "en": "Restaurant point-of-sale designed to make things easier for both customers and staff. A complete order and payment management system."
+      },
+      "technologies": {
+        "es": "JavaScript, PHP, MySQL, jQuery, Bootstrap",
+        "en": "JavaScript, PHP, MySQL, jQuery, Bootstrap"
+      },
       "link": "https://github.com/ManuelDHenriquez/Restaurante"
     }
   ]

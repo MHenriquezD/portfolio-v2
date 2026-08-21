@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import NavBar from './components/navBar.vue'
 import MainView from './views/mainView.vue'
 
@@ -104,6 +104,19 @@ const updateActiveSection = () => {
 
   activeSection.value = 'inicio'
 }
+
+// El hash sigue a la sección visible. Se usa replaceState en vez de asignar
+// location.hash: asignarlo agrega una entrada al historial por cada sección
+// (el botón atrás recorrería la página entera) y hace saltar el scroll.
+let hashTimeout: ReturnType<typeof setTimeout> | null = null
+
+watch(activeSection, (id) => {
+  if (hashTimeout) clearTimeout(hashTimeout)
+  hashTimeout = setTimeout(() => {
+    if (window.location.hash === `#${id}`) return
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
+  }, 150)
+})
 
 const openSecretPanel = () => {
   window.dispatchEvent(new Event('open-secret-panel'))

@@ -157,6 +157,66 @@ html {
 }
 
 /* Theme Toggle Button */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 2rem;
+}
+
+.lang-toggle {
+  background: none;
+  border: 1px solid rgba(100, 181, 246, 0.35);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* Los dos códigos se muestran siempre; el activo va resaltado para que se
+     entienda cuál está puesto y cuál se elige al hacer clic. */
+  color: rgba(100, 181, 246, 0.45);
+}
+
+.lang-toggle:hover {
+  background: rgba(100, 181, 246, 0.12);
+}
+
+.lang-toggle .lang-active {
+  color: #64b5f6;
+}
+
+.lang-sep {
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+.light-navbar .lang-toggle {
+  color: rgba(21, 101, 192, 0.45);
+  border-color: rgba(21, 101, 192, 0.35);
+}
+
+.light-navbar .lang-toggle .lang-active {
+  color: #1565c0;
+}
+
+.lang-toggle-inline {
+  display: inline-flex;
+  gap: 4px;
+  color: inherit;
+  opacity: 0.5;
+}
+
+.lang-toggle-inline .lang-active {
+  opacity: 1;
+  font-weight: 700;
+}
+
 .theme-toggle {
   width: 40px;
   height: 40px;
@@ -170,7 +230,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2rem;
 }
 
 .light-navbar .theme-toggle {
@@ -192,7 +251,7 @@ html {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .navbar {
     display: none;
   }

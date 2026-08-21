@@ -6,7 +6,7 @@
     <!-- Sección Hero/Inicio -->
     <section id="inicio" class="hero-section">
       <div class="hero-content">
-        <h2 class="hero-subtitle animate-text">Soy</h2>
+        <h2 class="hero-subtitle animate-text">{{ t('hero.soy') }}</h2>
         <h1 class="hero-title animate-text">Manuel Henriquez</h1>
         <p class="hero-role animate-text">
           <span class="typing-effect" ref="typingEl"></span>
@@ -27,9 +27,9 @@
         </div>
         <div class="hero-cta">
           <button @click="openCvModal" class="btn-primary">
-            <i class="fas fa-file-pdf"></i> Descargar CV
+            <i class="fas fa-file-pdf"></i> {{ t('hero.descargarCV') }}
           </button>
-          <a href="#proyectos" class="btn-secondary">Ver Proyectos</a>
+          <a href="#proyectos" class="btn-secondary">{{ t('hero.verProyectos') }}</a>
         </div>
       </div>
     </section>
@@ -37,9 +37,9 @@
     <!-- Sección Trayectoria (Experiencia + Educación) -->
     <section id="trayectoria" class="trajectory-section">
       <div class="container">
-        <h2 class="section-title scroll-reveal">Trayectoria</h2>
+        <h2 class="section-title scroll-reveal">{{ t('trayectoria.titulo') }}</h2>
         <p class="section-description scroll-reveal">
-          Mi recorrido profesional y formación académica.
+          {{ t('trayectoria.descripcion') }}
         </p>
         <div class="trajectory-tabs">
           <button
@@ -48,7 +48,7 @@
             @click="activeTab = 'experiencia'"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            Experiencia
+            {{ t('trayectoria.experiencia') }}
           </button>
           <button
             class="tab-btn"
@@ -56,7 +56,7 @@
             @click="activeTab = 'educacion'"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
-            Educación
+            {{ t('trayectoria.educacion') }}
           </button>
         </div>
 
@@ -66,11 +66,11 @@
               <div v-for="exp in experiencia" :key="exp.id" class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="timeline-title">{{ exp.titulo }}</h3>
+                  <h3 class="timeline-title">{{ tr(exp.titulo) }}</h3>
                   <p v-if="exp.empresa" class="timeline-company"><i class="fas fa-building"></i> {{ exp.empresa }}</p>
-                  <p class="timeline-period"><i class="fas fa-calendar-alt"></i> {{ exp.periodo }}</p>
+                  <p class="timeline-period"><i class="fas fa-calendar-alt"></i> {{ tr(exp.periodo) }}</p>
                   <ul class="timeline-responsibilities">
-                    <li v-for="(resp, i) in exp.responsabilidades" :key="i">{{ resp }}</li>
+                    <li v-for="(resp, i) in trList(exp.responsabilidades)" :key="i">{{ resp }}</li>
                   </ul>
                   <div class="timeline-techs">
                     <span v-for="tech in exp.tecnologias" :key="tech" class="tech-chip">{{ tech }}</span>
@@ -93,11 +93,11 @@
                   <i class="fas fa-graduation-cap"></i>
                 </div>
                 <div class="education-content">
-                  <h3 class="education-title">{{ edu.titulo }}</h3>
-                  <p class="education-period">{{ edu.periodo }}</p>
-                  <p class="education-description">{{ edu.descripcion }}</p>
+                  <h3 class="education-title">{{ tr(edu.titulo) }}</h3>
+                  <p class="education-period">{{ tr(edu.periodo) }}</p>
+                  <p class="education-description">{{ tr(edu.descripcion) }}</p>
                   <span v-if="edu.certificado" class="ver-certificado">
-                    <i class="fas fa-certificate"></i> Ver certificado
+                    <i class="fas fa-certificate"></i> {{ t('trayectoria.verCertificado') }}
                   </span>
                 </div>
               </div>
@@ -110,7 +110,7 @@
     <!-- Sección Proyectos -->
     <section id="proyectos" class="projects-section">
       <div class="container">
-        <h2 class="section-title scroll-reveal">Proyectos Destacados</h2>
+        <h2 class="section-title scroll-reveal">{{ t('proyectos.titulo') }}</h2>
         <p class="section-description scroll-reveal">
           Una selección de mis trabajos más recientes y relevantes.
         </p>
@@ -123,15 +123,15 @@
         >
           <div class="featured-image">
             <img :src="resolveImg(fp.img)" :alt="fp.titulo" loading="lazy" />
-            <div class="featured-badge">Destacado</div>
+            <div class="featured-badge">{{ t('proyectos.destacado') }}</div>
             <div class="project-overlay">
-              <button v-if="fp.titulo === 'ComerciaHN'" @click="openModalComercia" class="overlay-btn">Ver Detalles</button>
-              <a v-else-if="fp.url" :href="fp.url" target="_blank" class="overlay-btn">Visitar Sitio →</a>
+              <button v-if="fp.titulo === 'ComerciaHN'" @click="openModalComercia" class="overlay-btn">{{ t('proyectos.verDetalles') }}</button>
+              <a v-else-if="fp.url" :href="fp.url" target="_blank" class="overlay-btn">{{ t('proyectos.verSitio') }}</a>
             </div>
           </div>
           <div class="featured-content">
             <h3>{{ fp.titulo }}</h3>
-            <p>{{ fp.descripcion }}</p>
+            <p>{{ tr(fp.descripcion) }}</p>
             <div class="project-tags">
               <span v-for="tag in fp.tags" :key="tag" class="project-tag">{{ tag }}</span>
             </div>
@@ -159,13 +159,13 @@
                   @click="openModalRapidRiders"
                   class="overlay-btn"
                 >
-                  Ver Detalles
+                  {{ t('proyectos.verDetalles') }}
                 </button>
               </div>
             </div>
             <div class="project-content">
               <h3>{{ proyecto.titulo }}</h3>
-              <p>{{ proyecto.descripcion }}</p>
+              <p>{{ tr(proyecto.descripcion) }}</p>
               <div v-if="proyecto.tags" class="project-tags">
                 <span v-for="tag in proyecto.tags" :key="tag" class="project-tag">{{ tag }}</span>
               </div>
@@ -178,22 +178,22 @@
     <!-- Sección Habilidades -->
     <section id="habilidades" class="skills-section">
       <div class="container">
-        <h2 class="section-title scroll-reveal">Habilidades Técnicas</h2>
+        <h2 class="section-title scroll-reveal">{{ t('habilidades.titulo') }}</h2>
         <p class="section-description scroll-reveal">
-          Stack tecnológico con el que he trabajado. Siempre aprendiendo nuevas herramientas.
+          {{ t('habilidades.descripcion') }}
         </p>
         <p class="skills-hint scroll-reveal">
-          <i class="fas fa-hand-pointer"></i> Toca una tarjeta para ver más detalles
+          <i class="fas fa-hand-pointer"></i> {{ t('habilidades.ayuda') }}
         </p>
         <div
           v-for="categoria in skillCategories"
-          :key="categoria"
+          :key="categoria.clave"
           class="skills-category scroll-reveal"
         >
-          <h3 class="category-title">{{ categoria }}</h3>
+          <h3 class="category-title">{{ tr(categoria.valor) }}</h3>
           <div class="skills-grid">
             <div
-              v-for="skill in habilidades.filter((s) => s.categoria === categoria)"
+              v-for="skill in habilidades.filter((s) => catKey(s.categoria) === categoria.clave)"
               :key="skill.id"
               class="skill-card-wrapper"
               :class="{ flipped: flippedSkill === skill.titulo }"
@@ -213,7 +213,7 @@
                     <img :src="resolveImg(skill.img)" :alt="skill.titulo" loading="lazy" />
                   </div>
                   <h3>{{ skill.titulo }}</h3>
-                  <p>{{ skillDescriptions[skill.titulo] }}</p>
+                  <p>{{ skillDescriptions[locale][skill.titulo] }}</p>
                 </div>
               </div>
             </div>
@@ -235,7 +235,7 @@
     <!-- Sección Sobre Mí -->
     <section id="sobre-mi" class="about-section">
       <div class="container">
-        <h2 class="section-title scroll-reveal">Sobre Mí</h2>
+        <h2 class="section-title scroll-reveal">{{ t('sobreMi.titulo') }}</h2>
         <div class="about-content scroll-reveal">
           <div class="about-image" ref="profileImageRef">
             <div class="image-wrapper">
@@ -243,20 +243,9 @@
             </div>
           </div>
           <div class="about-text">
-            <p>
-              Soy un desarrollador web con más de 5 años de experiencia construyendo aplicaciones completas,
-              desde el frontend hasta el backend. Empecé con curiosidad por entender cómo funcionaban las cosas
-              y terminé convirtiendo esa curiosidad en mi profesión.
-            </p>
-            <p>
-              He trabajado con equipos de diferentes tamaños, enfrentando retos que me han obligado a aprender
-              rápido y adaptarme constantemente. Cada proyecto ha sido una oportunidad para mejorar y entregar
-              soluciones que realmente funcionan.
-            </p>
-            <p>
-              Me apasiona mantenerme al día con las tecnologías, buscar siempre la mejor manera de resolver
-              problemas y crear software que haga la diferencia.
-            </p>
+            <p>{{ t('sobreMi.p1') }}</p>
+            <p>{{ t('sobreMi.p2') }}</p>
+            <p>{{ t('sobreMi.p3') }}</p>
           </div>
         </div>
       </div>
@@ -265,9 +254,9 @@
     <!-- Sección Contacto -->
     <section id="contacto" class="contact-section">
       <div class="container">
-        <h2 class="section-title scroll-reveal">Contacto</h2>
+        <h2 class="section-title scroll-reveal">{{ t('contacto.titulo') }}</h2>
         <p class="section-description scroll-reveal">
-          Gracias por visitar mi portafolio. Si te interesa trabajar juntos, no dudes en contactarme.
+          {{ t('contacto.descripcion') }}
         </p>
         <div class="contact-info">
           <a
@@ -306,8 +295,8 @@
             <i class="fas fa-times"></i>
           </button>
           <div class="modal-header">
-            <h2>RapidRiders - Subproyectos</h2>
-            <p>Selecciona un módulo para ver más detalles</p>
+            <h2>{{ t('modal.rapidRidersTitulo') }}</h2>
+            <p>{{ t('modal.rapidRidersDesc') }}</p>
           </div>
           <div class="modal-content">
             <div
@@ -320,9 +309,9 @@
               </div>
               <div class="subproject-info">
                 <h3>{{ subproyecto.titulo }}</h3>
-                <p>{{ subproyecto.descripcion }}</p>
+                <p>{{ tr(subproyecto.descripcion) }}</p>
                 <a :href="subproyecto.url" target="_blank" class="subproject-link">
-                  Ver en GitHub →
+                  {{ t('proyectos.verGithub') }}
                 </a>
               </div>
             </div>
@@ -339,8 +328,8 @@
             <i class="fas fa-times"></i>
           </button>
           <div class="modal-header">
-            <h2>ComerciaHN - Módulos del Sistema</h2>
-            <p>Explora los diferentes componentes de la plataforma</p>
+            <h2>{{ t('modal.comerciaTitulo') }}</h2>
+            <p>{{ t('modal.comerciaDesc') }}</p>
           </div>
           <div class="modal-content">
             <div v-for="modulo in comerciaHNProyectos" :key="modulo.id" class="subproject-card">
@@ -353,8 +342,8 @@
                 </div>
                 <div class="subproject-info">
                   <h3>{{ modulo.titulo }}</h3>
-                  <p>{{ modulo.descripcion }}</p>
-                  <a :href="modulo.url" target="_blank" class="subproject-link"> Visitar Sitio → </a>
+                  <p>{{ tr(modulo.descripcion) }}</p>
+                  <a :href="modulo.url" target="_blank" class="subproject-link"> {{ t('proyectos.verSitio') }} </a>
                 </div>
               </div>
             </div>
@@ -368,9 +357,9 @@
       <div v-if="showModalCV" class="modal-overlay" @click="closeModalCV">
         <div class="modal-container modal-cv" @click.stop>
           <div class="modal-header">
-            <h2>Curriculum Vitae</h2>
+            <h2>{{ t('modal.cvTitulo') }}</h2>
             <button @click="downloadCV" class="btn-download">
-              <i class="fas fa-download"></i> Descargar CV
+              <i class="fas fa-download"></i> {{ t('hero.descargarCV') }}
             </button>
             <button class="modal-close" @click="closeModalCV">
               <i class="fas fa-times"></i>
@@ -404,7 +393,7 @@
     </Transition>
 
     <footer class="footer">
-      <p>© {{ new Date().getFullYear() }} Manuel Henriquez. All Rights Reserved</p>
+      <p>© {{ new Date().getFullYear() }} Manuel Henriquez. {{ t('footer.derechos') }}</p>
       <div class="footer-links">
         <a
           v-for="social in contacto.filter((c) => !c.texto)"
@@ -436,18 +425,18 @@
       <div v-show="showSecretPanel" class="secret-panel-overlay" @click.self="showSecretPanel = false">
         <div class="secret-panel">
           <button class="secret-panel-close" @click="showSecretPanel = false">&times;</button>
-          <h3 class="secret-panel-title"><Icon icon="mdi:gamepad-variant" width="24" /> Panel Secreto</h3>
-          <p class="secret-panel-subtitle">Easter Eggs: {{ easterEggCount }}/{{ easterEggs.length }}</p>
+          <h3 class="secret-panel-title"><Icon icon="mdi:gamepad-variant" width="24" /> {{ t('egg.panelTitulo') }}</h3>
+          <p class="secret-panel-subtitle">{{ t('egg.contador') }}: {{ easterEggCount }}/{{ easterEggs.length }}</p>
           <div class="secret-panel-list">
             <div v-for="egg in easterEggs" :key="egg.key" class="secret-panel-item" :class="{ 'discovered': discoveredKeys.has(egg.key) }" @click="discoveredKeys.has(egg.key) && replayEasterEgg(egg)">
               <span class="secret-panel-icon">
                 <span v-if="discoveredKeys.has(egg.key) && egg.mark" class="logo-mark secret-panel-mark"><span class="logo-angle">&lt;</span>MH<span class="logo-angle">/&gt;</span></span>
-                <img v-else-if="discoveredKeys.has(egg.key) && egg.img && secretPanelSeen" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
+                <img v-else-if="discoveredKeys.has(egg.key) && egg.img && secretPanelSeen" :src="resolveImg(egg.img)" :alt="eggName(egg)" class="secret-panel-img" :class="egg.key" />
                 <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" :color="discoveredKeys.has(egg.key) ? egg.color : undefined" />
               </span>
               <div class="secret-panel-info">
-                <span class="secret-panel-name">{{ discoveredKeys.has(egg.key) ? egg.name : '???' }}</span>
-                <span class="secret-panel-desc">{{ discoveredKeys.has(egg.key) ? egg.desc : egg.hint }}</span>
+                <span class="secret-panel-name">{{ discoveredKeys.has(egg.key) ? eggName(egg) : t('egg.oculto') }}</span>
+                <span class="secret-panel-desc">{{ discoveredKeys.has(egg.key) ? eggDesc(egg) : eggHint(egg) }}</span>
               </div>
               <Icon v-if="discoveredKeys.has(egg.key)" icon="mdi:check-circle" width="22" color="#4caf50" />
             </div>
@@ -463,6 +452,11 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
+import { useLocale, type Translatable } from '@/composables/useLocale'
+import { skillDescriptions, typingPhrases } from '@/i18n/skills'
+import type { UiKey } from '@/i18n/ui'
+
+const { t, tr, trList, locale } = useLocale()
 
 defineProps<{
   isLightTheme: boolean
@@ -479,41 +473,18 @@ const {
 } = data
 const comerciaHNProyectos = ComerciaHN
 
-const skillCategories = computed(() =>
-  [...new Set(habilidades.map((s: { categoria: string }) => s.categoria))]
-)
+/** Clave estable de categoría: el texto en español, que no cambia con el idioma. */
+const catKey = (c: Translatable): string => (typeof c === 'string' ? c : (c.es ?? ''))
 
-const skillDescriptions: Record<string, string> = {
-  'JavaScript': 'Lenguaje principal para desarrollo web interactivo y dinámico',
-  'TypeScript': 'Tipado estático sobre JavaScript para código más robusto',
-  'Python': 'Automatización, scripting y desarrollo backend',
-  'Java': 'Desarrollo de aplicaciones empresariales y multiplataforma',
-  'C#': 'Desarrollo de aplicaciones .NET y videojuegos con Unity',
-  'C++': 'Programación de sistemas y aplicaciones de alto rendimiento',
-  'PHP': 'Desarrollo web backend y sistemas CMS',
-  'React': 'Interfaces de usuario con componentes reutilizables',
-  'VueJS': 'Framework progresivo para construir SPAs reactivas',
-  'HTML': 'Estructura y semántica de páginas web',
-  'CSS': 'Estilos, animaciones y diseño responsive',
-  'TailwindCSS': 'Framework de utilidades CSS para diseño rápido',
-  'Bootstrap': 'Componentes UI y grid system responsive',
-  'JQuery': 'Manipulación del DOM y peticiones AJAX simplificadas',
-  'NodeJS': 'JavaScript en el servidor para APIs y microservicios',
-  'NestJS': 'Framework backend con arquitectura modular y escalable',
-  'Express': 'Framework minimalista para APIs REST en Node.js',
-  'Spring Boot': 'Framework Java para aplicaciones empresariales',
-  'Laravel': 'Framework PHP con ORM Eloquent y Blade templates',
-  'Prisma': 'ORM moderno con tipado automático para bases de datos',
-  'PostgreSQL': 'Base de datos relacional robusta y escalable',
-  'MySQL': 'Base de datos relacional ampliamente utilizada',
-  'MongoDB': 'Base de datos NoSQL orientada a documentos JSON',
-  'SQLite': 'Base de datos ligera embebida en la aplicación',
-  'Git': 'Control de versiones y colaboración en equipo',
-  'Docker': 'Contenedores para despliegue consistente de aplicaciones',
-  'AWS': 'Servicios cloud: EC2, S3, Lambda y más',
-  'Linux': 'Administración de servidores y entornos de desarrollo',
-  'Ubuntu': 'Distribución Linux para servidores y desarrollo',
-}
+const skillCategories = computed(() => {
+  const vistas = new Map<string, Translatable>()
+  for (const s of habilidades as { categoria: Translatable }[]) {
+    const clave = catKey(s.categoria)
+    if (!vistas.has(clave)) vistas.set(clave, s.categoria)
+  }
+  return [...vistas].map(([clave, valor]) => ({ clave, valor }))
+})
+
 
 const activeSkillTooltip = ref<string | null>(null)
 const flippedSkill = ref<string | null>(null)
@@ -534,23 +505,27 @@ const profileImageRef = ref<HTMLElement | null>(null)
 
 interface EasterEgg {
   key: string
-  name: string
-  desc: string
+  /** Prefijo de las claves de i18n: egg.<id>.nombre / .desc / .hint */
+  id: string
   icon: string
-  hint: string
   img?: string
   color?: string
   mark?: boolean
 }
 
 const easterEggs: EasterEgg[] = [
-  { key: 'easter-egg-flip', name: 'Flip Secreto', desc: 'Haz click en una skill card', icon: 'mdi:rotate-3d-variant', hint: 'Las cartas siempre tienen dos caras...' },
-  { key: 'easter-egg-konami', name: 'Konami Code', desc: '↑↑↓↓←→←→BA', icon: '', img: 'img/games/contra-logo.png', hint: '30 vidas extra, si sabes el código' },
-  { key: 'easter-egg-logo', name: '¡Sal de ahí, Shenlong!', desc: 'Toca el logo MH varias veces', icon: '', img: 'img/games/dragon-ball.svg', hint: 'Invoca a Shenlong tocando 7 veces donde empieza todo' },
-  { key: 'easter-egg-zelda', name: 'It\'s Dangerous to Go Alone', desc: 'La Trifuerza se invoca: escribe "zelda" en PC o traza la Z en móvil', icon: 'mdi:zelda', color: '#ffd700', hint: 'Nombra a la princesa con el teclado, o dibuja su inicial con el dedo' },
-  { key: 'easter-egg-profile', name: 'Sobre Mí', desc: 'Descubre la sección Sobre Mí', icon: '', mark: true, hint: 'A veces hay que bajar para encontrar algo' },
-  { key: 'easter-egg-sphere', name: 'Hasta la Vista', desc: 'Lanza una esfera fuera del canvas', icon: 'mdi:orbit', hint: 'Algunas cosas se rompen si las empujas fuerte...' },
+  { key: 'easter-egg-flip', id: 'flip', icon: 'mdi:rotate-3d-variant' },
+  { key: 'easter-egg-konami', id: 'konami', icon: '', img: 'img/games/contra-logo.png' },
+  { key: 'easter-egg-logo', id: 'logo', icon: '', img: 'img/games/dragon-ball.svg' },
+  { key: 'easter-egg-zelda', id: 'zelda', icon: 'mdi:zelda', color: '#ffd700' },
+  { key: 'easter-egg-profile', id: 'profile', icon: '', mark: true },
+  { key: 'easter-egg-sphere', id: 'sphere', icon: 'mdi:orbit' },
 ]
+
+// Los textos se resuelven en cada render para que cambien con el idioma.
+const eggName = (e: EasterEgg) => t(`egg.${e.id}.nombre` as UiKey)
+const eggDesc = (e: EasterEgg) => t(`egg.${e.id}.desc` as UiKey)
+const eggHint = (e: EasterEgg) => t(`egg.${e.id}.hint` as UiKey)
 
 const discoveredKeys = ref(new Set(easterEggs.filter(e => localStorage.getItem(e.key)).map(e => e.key)))
 const easterEggCount = computed(() => discoveredKeys.value.size)
@@ -592,11 +567,11 @@ const triggerEasterEgg = (key: string) => {
   if (localStorage.getItem(key)) return
   localStorage.setItem(key, '1')
   discoveredKeys.value = new Set([...discoveredKeys.value, key])
-  showToast('mdi:trophy', 'Easter Egg Desbloqueado', egg.name, eggSounds[key])
+  showToast('mdi:trophy', t('egg.desbloqueado'), eggName(egg), eggSounds[key])
 }
 
 const replayEasterEgg = (egg: typeof easterEggs[number]) => {
-  showToast(egg.icon || 'mdi:trophy', 'Ya desbloqueado', `"${egg.name}" — ya lo encontraste`, eggSounds[egg.key])
+  showToast(egg.icon || 'mdi:trophy', t('egg.yaDesbloqueado'), `"${eggName(egg)}" — ${t('egg.yaLoEncontraste')}`, eggSounds[egg.key])
 }
 
 const toggleFlip = (titulo: string, event: Event) => {
@@ -626,7 +601,7 @@ const resolveImg = (path: string): string => {
 }
 
 const typingEl = ref<HTMLElement | null>(null)
-const typingPhrases = ['Desarrollador Full Stack', 'Backend Developer', 'Frontend Developer']
+
 let typingTimeout: ReturnType<typeof setTimeout> | null = null
 
 const startTypingEffect = () => {
@@ -635,7 +610,7 @@ const startTypingEffect = () => {
   let isDeleting = false
 
   const type = () => {
-    const current = typingPhrases[phraseIndex]!
+    const current = typingPhrases[locale.value][phraseIndex]!
     if (!typingEl.value) return
 
     if (!isDeleting) {
@@ -652,7 +627,7 @@ const startTypingEffect = () => {
       charIndex--
       if (charIndex === 0) {
         isDeleting = false
-        phraseIndex = (phraseIndex + 1) % typingPhrases.length
+        phraseIndex = (phraseIndex + 1) % typingPhrases[locale.value].length
         typingTimeout = setTimeout(type, 500)
         return
       }
@@ -875,11 +850,11 @@ const certificadoImg = ref('')
 const certificadoTitle = ref('')
 const certificadoLoaded = ref(false)
 
-const openCertificado = (edu: { titulo: string; certificado?: string }) => {
+const openCertificado = (edu: { titulo: Translatable; certificado?: string }) => {
   if (!edu.certificado) return
   certificadoLoaded.value = false
   certificadoImg.value = edu.certificado
-  certificadoTitle.value = edu.titulo
+  certificadoTitle.value = tr(edu.titulo)
   showCertificado.value = true
   document.body.style.overflow = 'hidden'
 }
@@ -892,7 +867,9 @@ const closeCertificado = () => {
 const showModalRapidRiders = ref(false)
 const showModalComercia = ref(false)
 const showModalCV = ref(false)
-const pdfUrl = resolveImg('CV_Manuel_Henriquez.pdf')
+// Hay un PDF por idioma, generado en build por scripts/generate-cv.js.
+const pdfNombre = computed(() => `CV_Manuel_Henriquez_${locale.value.toUpperCase()}.pdf`)
+const pdfUrl = computed(() => resolveImg(pdfNombre.value))
 
 const openCvModal = () => {
   showModalCV.value = true
@@ -906,8 +883,8 @@ const closeModalCV = () => {
 
 const downloadCV = () => {
   const link = document.createElement('a')
-  link.href = pdfUrl
-  link.download = 'CV_Manuel_Henriquez.pdf'
+  link.href = pdfUrl.value
+  link.download = pdfNombre.value
   link.click()
 }
 

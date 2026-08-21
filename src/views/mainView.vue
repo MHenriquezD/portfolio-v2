@@ -6,6 +6,7 @@
     <!-- Sección Hero/Inicio -->
     <section id="inicio" class="hero-section">
       <div class="hero-content">
+        <AvatarHero :src="resolveImg('img/perfil/avatar.webp')" />
         <h2 class="hero-subtitle animate-text">{{ t('hero.soy') }}</h2>
         <h1 class="hero-title animate-text">Manuel Henriquez</h1>
         <p class="hero-role animate-text">
@@ -239,7 +240,7 @@
         <div class="about-content scroll-reveal">
           <div class="about-image" ref="profileImageRef">
             <div class="image-wrapper">
-              <img :src="resolveImg('img/perfil/mhenriquez-profile.webp')" alt="Manuel Henriquez" loading="lazy" />
+              <img :src="resolveImg('img/perfil/profile.webp')" alt="Manuel Henriquez" loading="lazy" />
             </div>
           </div>
           <div class="about-text">
@@ -453,6 +454,7 @@ import { Icon } from '@iconify/vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
 import BaseModal from '@/components/BaseModal.vue'
+import AvatarHero from '@/components/AvatarHero.vue'
 import { useLocale, type Translatable } from '@/composables/useLocale'
 import { skillDescriptions, typingPhrases } from '@/i18n/skills'
 import type { UiKey } from '@/i18n/ui'

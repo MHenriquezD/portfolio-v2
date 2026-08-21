@@ -32,7 +32,6 @@
     rgba(33, 150, 243, 0.1) 60%,
     transparent 80%
   );
-  filter: blur(60px);
   opacity: 1;
 }
 
@@ -249,14 +248,16 @@
   transform: translate(-50%, -50%);
   width: 400px;
   height: 400px;
+  /* Sin filter: blur. El degradado radial ya da la difusión, y animar la
+     escala de una capa desenfocada obliga a re-rasterizarla en cada frame. */
   background: radial-gradient(
     circle,
-    rgba(100, 181, 246, 0.15) 0%,
-    rgba(66, 165, 245, 0.08) 50%,
-    transparent 80%
+    rgba(100, 181, 246, 0.18) 0%,
+    rgba(66, 165, 245, 0.1) 45%,
+    transparent 75%
   );
   animation: pulse 4s ease-in-out infinite;
-  filter: blur(60px);
+  will-change: opacity;
 }
 
 @keyframes pulse {
@@ -490,23 +491,21 @@
 }
 
 .about-image .image-wrapper {
+  /* La foto ya viene recortada en círculo: sin caja ni sombra rectangular. */
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(100, 181, 246, 0.15);
 }
 
 .about-image .image-wrapper img {
   width: 250px;
-  border-radius: 20px;
+  border-radius: 50%;
   display: block;
-  filter: grayscale(0.6);
-  transition: filter 0.4s ease;
+  /* Sin filtro: el fondo de la foto ya está en la paleta del sitio. */
+  transition: transform 0.4s ease;
 }
 
 @media (hover: hover) {
   .about-image .image-wrapper:hover img {
-    filter: grayscale(0);
+    transform: scale(1.03);
   }
 }
 

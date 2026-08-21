@@ -122,7 +122,7 @@
           class="featured-project scroll-reveal"
         >
           <div class="featured-image">
-            <img :src="resolveImg(fp.img)" :alt="fp.titulo" />
+            <img :src="resolveImg(fp.img)" :alt="fp.titulo" loading="lazy" />
             <div class="featured-badge">Destacado</div>
             <div class="project-overlay">
               <button v-if="fp.titulo === 'ComerciaHN'" @click="openModalComercia" class="overlay-btn">Ver Detalles</button>
@@ -433,7 +433,7 @@
 
     <!-- Panel Secreto -->
     <Transition name="secret-panel">
-      <div v-if="showSecretPanel" class="secret-panel-overlay" @click.self="showSecretPanel = false">
+      <div v-show="showSecretPanel" class="secret-panel-overlay" @click.self="showSecretPanel = false">
         <div class="secret-panel">
           <button class="secret-panel-close" @click="showSecretPanel = false">&times;</button>
           <h3 class="secret-panel-title"><Icon icon="mdi:gamepad-variant" width="24" /> Panel Secreto</h3>
@@ -442,7 +442,7 @@
             <div v-for="egg in easterEggs" :key="egg.key" class="secret-panel-item" :class="{ 'discovered': discoveredKeys.has(egg.key) }" @click="discoveredKeys.has(egg.key) && replayEasterEgg(egg)">
               <span class="secret-panel-icon">
                 <span v-if="discoveredKeys.has(egg.key) && egg.mark" class="logo-mark secret-panel-mark"><span class="logo-angle">&lt;</span>MH<span class="logo-angle">/&gt;</span></span>
-                <img v-else-if="discoveredKeys.has(egg.key) && egg.img" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
+                <img v-else-if="discoveredKeys.has(egg.key) && egg.img && secretPanelSeen" :src="resolveImg(egg.img)" :alt="egg.name" class="secret-panel-img" :class="egg.key" />
                 <Icon v-else :icon="discoveredKeys.has(egg.key) && egg.icon ? egg.icon : 'mdi:help-circle-outline'" :width="28" :color="discoveredKeys.has(egg.key) ? egg.color : undefined" />
               </span>
               <div class="secret-panel-info">
@@ -522,6 +522,13 @@ const achievementTitle = ref('')
 const achievementDesc = ref('')
 const achievementIcon = ref('mdi:trophy')
 const showSecretPanel = ref(false)
+// El panel usa v-show para no recrear su DOM en cada apertura, pero eso haría
+// que sus imágenes se descargaran al cargar la página. Se difiere el src hasta
+// que se abre por primera vez; después quedan en el DOM y no se vuelven a pedir.
+const secretPanelSeen = ref(false)
+watch(showSecretPanel, (open) => {
+  if (open) secretPanelSeen.value = true
+})
 const profileImageVisible = ref(false)
 const profileImageRef = ref<HTMLElement | null>(null)
 

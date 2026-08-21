@@ -33,7 +33,9 @@ const respawnTimers = new Set<ReturnType<typeof setTimeout>>()
 const loadImage = (src: string): Promise<HTMLImageElement> => {
   return new Promise((resolve) => {
     const img = new Image()
-    img.crossOrigin = 'anonymous'
+    // Sin crossOrigin: los íconos son del mismo origen y nunca leemos píxeles
+    // del canvas, pero el atributo creaba una entrada de caché aparte y hacía
+    // que cada ícono se descargara dos veces (una por las tarjetas, otra acá).
     img.onload = () => resolve(img)
     img.onerror = () => resolve(img)
     img.src = src

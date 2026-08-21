@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import NavBar from './components/navBar.vue'
 import MainView from './views/mainView.vue'
 
@@ -8,9 +8,53 @@ const activeSection = ref('inicio')
 const easterEggCount = ref(0)
 const easterEggTotal = ref(0)
 
-const toggleTheme = () => {
+const applyTheme = () => {
   isLightTheme.value = !isLightTheme.value
   localStorage.setItem('theme', isLightTheme.value ? 'light' : 'dark')
+}
+
+// El nuevo tema se revela con un círculo que crece desde el botón, como si
+// amaneciera desde ahí. Si el navegador no soporta View Transitions o el
+// usuario pidió menos movimiento, el cambio es instantáneo.
+const toggleTheme = async (event?: MouseEvent) => {
+  const startViewTransition = (
+    document as Document & {
+      startViewTransition?: (cb: () => Promise<void>) => { ready: Promise<void> }
+    }
+  ).startViewTransition
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (!startViewTransition || reduceMotion) {
+    applyTheme()
+    return
+  }
+
+  const target = event?.currentTarget as HTMLElement | undefined
+  const rect = target?.getBoundingClientRect()
+  const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2
+  const y = rect ? rect.top + rect.height / 2 : 0
+  const radius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y),
+  )
+
+  const transition = startViewTransition.call(document, async () => {
+    applyTheme()
+    await nextTick()
+  })
+
+  await transition.ready
+  document.documentElement.animate(
+    {
+      clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
+    },
+    {
+      duration: 650,
+      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      pseudoElement: '::view-transition-new(root)',
+    },
+  )
 }
 
 const sectionIds: string[] = ['inicio', 'trayectoria', 'proyectos', 'habilidades', 'sobre-mi', 'contacto']
@@ -86,6 +130,22 @@ onUnmounted(() => {
    (que pone overflow:hidden en el body) no ensanche la página. */
 html {
   scrollbar-gutter: stable;
+}
+
+/* El crossfade por defecto se desactiva: el tema nuevo se dibuja encima y
+   se revela con el círculo que anima toggleTheme. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
 }
 
 body {

@@ -26,7 +26,7 @@
 
         <button
           class="theme-toggle"
-          @click="$emit('toggleTheme')"
+          @click="$emit('toggleTheme', $event)"
           :title="isLightTheme ? 'Modo Oscuro' : 'Modo Claro'"
         >
           <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
@@ -64,7 +64,7 @@
         >
           {{ item.label }}
         </a>
-        <button class="fab-theme-toggle" @click="$emit('toggleTheme')">
+        <button class="fab-theme-toggle" @click="$emit('toggleTheme', $event)">
           <i :class="isLightTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
           <span>{{ isLightTheme ? 'Modo Oscuro' : 'Modo Claro' }}</span>
         </button>
@@ -85,7 +85,7 @@ defineProps<{
 }>()
 
 defineEmits<{
-  toggleTheme: []
+  toggleTheme: [event: MouseEvent]
   openSecretPanel: []
 }>()
 

@@ -13,13 +13,16 @@ const applyTheme = () => {
   localStorage.setItem('theme', isLightTheme.value ? 'light' : 'dark')
 }
 
-// El nuevo tema se revela con un círculo que crece desde el botón, como si
-// amaneciera desde ahí. Si el navegador no soporta View Transitions o el
-// usuario pidió menos movimiento, el cambio es instantáneo.
+// La luz se expande y la oscuridad engulle: al ir a claro crece un círculo
+// con el tema nuevo; al ir a oscuro se encoge el círculo del tema viejo, que
+// queda por encima, como si la luz se apagara hacia el botón.
 const toggleTheme = async (event?: MouseEvent) => {
   const startViewTransition = (
     document as Document & {
-      startViewTransition?: (cb: () => Promise<void>) => { ready: Promise<void> }
+      startViewTransition?: (cb: () => Promise<void>) => {
+        ready: Promise<void>
+        finished: Promise<void>
+      }
     }
   ).startViewTransition
 
@@ -39,22 +42,35 @@ const toggleTheme = async (event?: MouseEvent) => {
     Math.max(y, window.innerHeight - y),
   )
 
+  // Si está en claro, el toggle lleva a oscuro.
+  const goingDark = isLightTheme.value
+  const root = document.documentElement
+
+  // Para encoger hay que dejar la captura vieja por encima de la nueva.
+  if (goingDark) root.classList.add('theme-shrink')
+
   const transition = startViewTransition.call(document, async () => {
     applyTheme()
     await nextTick()
   })
 
   await transition.ready
-  document.documentElement.animate(
-    {
-      clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
-    },
+
+  const grande = `circle(${radius}px at ${x}px ${y}px)`
+  const chico = `circle(0px at ${x}px ${y}px)`
+
+  const animacion = root.animate(
+    { clipPath: goingDark ? [grande, chico] : [chico, grande] },
     {
       duration: 650,
-      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      pseudoElement: '::view-transition-new(root)',
+      easing: goingDark ? 'cubic-bezier(0.4, 0, 1, 1)' : 'cubic-bezier(0.4, 0, 0.2, 1)',
+      pseudoElement: goingDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
     },
   )
+
+  // Atado a la animación propia y no a transition.finished, que resuelve
+  // antes de tiempo porque el crossfade por defecto está desactivado.
+  animacion.finished.finally(() => root.classList.remove('theme-shrink'))
 }
 
 const sectionIds: string[] = ['inicio', 'trayectoria', 'proyectos', 'habilidades', 'sobre-mi', 'contacto']
@@ -146,6 +162,16 @@ html {
 
 ::view-transition-new(root) {
   z-index: 2;
+}
+
+/* Al pasar a oscuro se anima la captura vieja encogiéndose, así que tiene
+   que quedar encima de la nueva. */
+:root.theme-shrink::view-transition-old(root) {
+  z-index: 2;
+}
+
+:root.theme-shrink::view-transition-new(root) {
+  z-index: 1;
 }
 
 body {

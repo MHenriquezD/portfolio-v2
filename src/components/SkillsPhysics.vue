@@ -311,6 +311,7 @@ const init = async (loadImages = true) => {
 let resizeTimeout: ReturnType<typeof setTimeout> | null = null
 
 const handleResize = () => {
+  if (!started) return
   if (resizeTimeout) clearTimeout(resizeTimeout)
   resizeTimeout = setTimeout(() => {
     destroy()
@@ -326,6 +327,7 @@ let resizeObserver: ResizeObserver | null = null
 // cada frame, así que se pausa cuando no se ve.
 let visible = false
 let running = false
+let started = false
 // Cuando todas las esferas se duermen no hay nada que animar, así que se
 // corta el loop hasta que el usuario interactúe.
 let idle = false
@@ -374,16 +376,23 @@ const handleFlipGravity = () => {
 }
 
 onMounted(() => {
-  init()
   resizeObserver = new ResizeObserver(handleResize)
   if (containerRef.value) resizeObserver.observe(containerRef.value)
 
   visibilityObserver = new IntersectionObserver(
     ([entry]) => {
       visible = !!entry?.isIntersecting
+      // El init se retrasa hasta la primera vez que el canvas entra en
+      // pantalla: precarga los 29 iconos con new Image(), que ignora
+      // loading="lazy" y los bajaría todos al abrir la página.
+      if (visible && !started) {
+        started = true
+        init()
+        return
+      }
       syncRunning()
     },
-    { threshold: 0 }
+    { rootMargin: '200px' }
   )
   if (containerRef.value) visibilityObserver.observe(containerRef.value)
 

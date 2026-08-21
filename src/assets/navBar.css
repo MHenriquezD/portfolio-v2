@@ -68,6 +68,8 @@ html {
   gap: 8px;
 }
 
+/* El dorado se mantiene acá a propósito: es el contador de logros y el
+   contraste con el azul del tema lo hace destacar. */
 .navbar-badge {
   background: rgba(0, 0, 0, 0.6);
   color: #ffd700;

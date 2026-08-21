@@ -112,7 +112,7 @@
       <div class="container">
         <h2 class="section-title scroll-reveal">{{ t('proyectos.titulo') }}</h2>
         <p class="section-description scroll-reveal">
-          Una selección de mis trabajos más recientes y relevantes.
+          {{ t('proyectos.descripcion') }}
         </p>
 
         <!-- Proyectos Featured -->
@@ -152,7 +152,7 @@
                 class="project-overlay"
               >
                 <a v-if="proyecto.url" :href="proyecto.url" target="_blank" class="overlay-btn">
-                  Ver Proyecto
+                  {{ t('proyectos.verProyecto') }}
                 </a>
                 <button
                   v-else-if="proyecto.id === 2"
@@ -288,10 +288,10 @@
     </section>
 
     <!-- Modal RapidRiders -->
-    <Transition name="modal">
-      <div v-if="showModalRapidRiders" class="modal-overlay" @click="closeModalRapidRiders">
-        <div class="modal-container" @click.stop>
-          <button class="modal-close" @click="closeModalRapidRiders">
+    <BaseModal v-model="showModalRapidRiders">
+      <template #default="{ close }">
+        <div class="modal-container">
+          <button class="modal-close" :aria-label="t('modal.cerrar')" @click="close">
             <i class="fas fa-times"></i>
           </button>
           <div class="modal-header">
@@ -317,14 +317,14 @@
             </div>
           </div>
         </div>
-      </div>
-    </Transition>
+      </template>
+    </BaseModal>
 
     <!-- Modal ComerciaHN -->
-    <Transition name="modal">
-      <div v-if="showModalComercia" class="modal-overlay" @click="closeModalComercia">
-        <div class="modal-container" @click.stop>
-          <button class="modal-close" @click="closeModalComercia">
+    <BaseModal v-model="showModalComercia">
+      <template #default="{ close }">
+        <div class="modal-container">
+          <button class="modal-close" :aria-label="t('modal.cerrar')" @click="close">
             <i class="fas fa-times"></i>
           </button>
           <div class="modal-header">
@@ -349,19 +349,19 @@
             </div>
           </div>
         </div>
-      </div>
-    </Transition>
+      </template>
+    </BaseModal>
 
     <!-- Modal CV PDF -->
-    <Transition name="modal">
-      <div v-if="showModalCV" class="modal-overlay" @click="closeModalCV">
-        <div class="modal-container modal-cv" @click.stop>
+    <BaseModal v-model="showModalCV">
+      <template #default="{ close }">
+        <div class="modal-container modal-cv">
           <div class="modal-header">
             <h2>{{ t('modal.cvTitulo') }}</h2>
             <button @click="downloadCV" class="btn-download">
               <i class="fas fa-download"></i> {{ t('hero.descargarCV') }}
             </button>
-            <button class="modal-close" @click="closeModalCV">
+            <button class="modal-close" :aria-label="t('modal.cerrar')" @click="close">
               <i class="fas fa-times"></i>
             </button>
           </div>
@@ -369,14 +369,14 @@
             <iframe :src="pdfUrl" class="pdf-iframe"></iframe>
           </div>
         </div>
-      </div>
-    </Transition>
+      </template>
+    </BaseModal>
 
     <!-- Modal Certificado -->
-    <Transition name="modal">
-      <div v-if="showCertificado" class="modal-overlay" @click="closeCertificado">
-        <div class="modal-certificado" @click.stop>
-          <button class="modal-close" @click="closeCertificado">
+    <BaseModal v-model="showCertificado">
+      <template #default="{ close }">
+        <div class="modal-certificado">
+          <button class="modal-close" :aria-label="t('modal.cerrar')" @click="close">
             <i class="fas fa-times"></i>
           </button>
           <h3 class="modal-certificado-title">{{ certificadoTitle }}</h3>
@@ -389,8 +389,8 @@
             />
           </div>
         </div>
-      </div>
-    </Transition>
+      </template>
+    </BaseModal>
 
     <footer class="footer">
       <p>© {{ new Date().getFullYear() }} Manuel Henriquez. {{ t('footer.derechos') }}</p>
@@ -452,6 +452,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import data from '../app/data/portfolio-data.json'
 import SkillsPhysics from '@/components/SkillsPhysics.vue'
+import BaseModal from '@/components/BaseModal.vue'
 import { useLocale, type Translatable } from '@/composables/useLocale'
 import { skillDescriptions, typingPhrases } from '@/i18n/skills'
 import type { UiKey } from '@/i18n/ui'
@@ -497,8 +498,17 @@ const showSecretPanel = ref(false)
 // que sus imágenes se descargaran al cargar la página. Se difiere el src hasta
 // que se abre por primera vez; después quedan en el DOM y no se vuelven a pedir.
 const secretPanelSeen = ref(false)
+// El panel no usa BaseModal (necesita v-show para no recargar sus imágenes),
+// así que replica su comportamiento: bloqueo de scroll y cierre con Escape.
+const cerrarPanelConEscape = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') showSecretPanel.value = false
+}
+
 watch(showSecretPanel, (open) => {
   if (open) secretPanelSeen.value = true
+  document.body.style.overflow = open ? 'hidden' : 'auto'
+  if (open) window.addEventListener('keydown', cerrarPanelConEscape)
+  else window.removeEventListener('keydown', cerrarPanelConEscape)
 })
 const profileImageVisible = ref(false)
 const profileImageRef = ref<HTMLElement | null>(null)
@@ -511,13 +521,15 @@ interface EasterEgg {
   img?: string
   color?: string
   mark?: boolean
+  /** Su pista cambia según haya teclado o pantalla táctil. */
+  pistaPorDispositivo?: boolean
 }
 
 const easterEggs: EasterEgg[] = [
   { key: 'easter-egg-flip', id: 'flip', icon: 'mdi:rotate-3d-variant' },
   { key: 'easter-egg-konami', id: 'konami', icon: '', img: 'img/games/contra-logo.png' },
   { key: 'easter-egg-logo', id: 'logo', icon: '', img: 'img/games/dragon-ball.svg' },
-  { key: 'easter-egg-zelda', id: 'zelda', icon: 'mdi:zelda', color: '#ffd700' },
+  { key: 'easter-egg-zelda', id: 'zelda', icon: 'mdi:zelda', color: '#64b5f6', pistaPorDispositivo: true },
   { key: 'easter-egg-profile', id: 'profile', icon: '', mark: true },
   { key: 'easter-egg-sphere', id: 'sphere', icon: 'mdi:orbit' },
 ]
@@ -525,7 +537,10 @@ const easterEggs: EasterEgg[] = [
 // Los textos se resuelven en cada render para que cambien con el idioma.
 const eggName = (e: EasterEgg) => t(`egg.${e.id}.nombre` as UiKey)
 const eggDesc = (e: EasterEgg) => t(`egg.${e.id}.desc` as UiKey)
-const eggHint = (e: EasterEgg) => t(`egg.${e.id}.hint` as UiKey)
+const eggHint = (e: EasterEgg) =>
+  e.pistaPorDispositivo && !supportsHover
+    ? t(`egg.${e.id}.hintTactil` as UiKey)
+    : t(`egg.${e.id}.hint` as UiKey)
 
 const discoveredKeys = ref(new Set(easterEggs.filter(e => localStorage.getItem(e.key)).map(e => e.key)))
 const easterEggCount = computed(() => discoveredKeys.value.size)
@@ -834,6 +849,7 @@ onUnmounted(() => {
   if (typingTimeout) clearTimeout(typingTimeout)
   scrollObserver?.disconnect()
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('keydown', cerrarPanelConEscape)
   window.removeEventListener('logo-click', handleLogoClick)
   window.removeEventListener('open-secret-panel', openSecretPanel)
   window.removeEventListener('touchstart', handleMobileTouchStart)
@@ -856,12 +872,6 @@ const openCertificado = (edu: { titulo: Translatable; certificado?: string }) =>
   certificadoImg.value = edu.certificado
   certificadoTitle.value = tr(edu.titulo)
   showCertificado.value = true
-  document.body.style.overflow = 'hidden'
-}
-
-const closeCertificado = () => {
-  showCertificado.value = false
-  document.body.style.overflow = 'auto'
 }
 
 const showModalRapidRiders = ref(false)
@@ -873,12 +883,6 @@ const pdfUrl = computed(() => resolveImg(pdfNombre.value))
 
 const openCvModal = () => {
   showModalCV.value = true
-  document.body.style.overflow = 'hidden'
-}
-
-const closeModalCV = () => {
-  showModalCV.value = false
-  document.body.style.overflow = 'auto'
 }
 
 const downloadCV = () => {
@@ -890,12 +894,6 @@ const downloadCV = () => {
 
 const openModalRapidRiders = () => {
   showModalRapidRiders.value = true
-  document.body.style.overflow = 'hidden'
-}
-
-const closeModalRapidRiders = () => {
-  showModalRapidRiders.value = false
-  document.body.style.overflow = 'auto'
 }
 
 let tooltipTimeout: ReturnType<typeof setTimeout> | null = null
@@ -933,12 +931,6 @@ const scrollToSkill = (titulo: string) => {
 
 const openModalComercia = () => {
   showModalComercia.value = true
-  document.body.style.overflow = 'hidden'
-}
-
-const closeModalComercia = () => {
-  showModalComercia.value = false
-  document.body.style.overflow = 'auto'
 }
 </script>
 

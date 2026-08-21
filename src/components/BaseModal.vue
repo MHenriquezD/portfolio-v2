@@ -1,17 +1,7 @@
 <template>
   <Transition name="modal">
-    <div
-      v-show="modelValue"
-      class="modal-overlay"
-      :class="overlayClass"
-      @click.self="close"
-    >
-      <div class="modal-box" :class="boxClass">
-        <button v-if="closable" class="modal-close" aria-label="Cerrar" @click="close">
-          <i class="fas fa-times"></i>
-        </button>
-        <slot />
-      </div>
+    <div v-if="modelValue" class="modal-overlay" @click.self="close">
+      <slot :close="close" />
     </div>
   </Transition>
 </template>
@@ -19,18 +9,13 @@
 <script setup lang="ts">
 import { watch, onUnmounted } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    modelValue: boolean
-    /** Clase extra para la caja, p. ej. modal-container o modal-certificado */
-    boxClass?: string
-    overlayClass?: string
-    /** El botón de cerrar se oculta cuando el contenido trae el suyo */
-    closable?: boolean
-  }>(),
-  { closable: true },
-)
-
+/**
+ * Contenedor de modales: aporta el comportamiento, no la apariencia.
+ * La caja la pone quien lo usa vía slot, así conserva sus propias clases
+ * y estilos (los scoped de la vista padre alcanzan al contenido del slot,
+ * pero no llegarían a un elemento propio de este componente).
+ */
+const props = defineProps<{ modelValue: boolean }>()
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
 
 const close = () => emit('update:modelValue', false)
@@ -39,8 +24,7 @@ const onKeydown = (e: KeyboardEvent) => {
   if (e.key === 'Escape') close()
 }
 
-// El bloqueo del scroll se centraliza acá: antes cada modal lo hacía por su
-// cuenta y cerrar uno podía devolver el scroll con otro todavía abierto.
+// Centraliza el bloqueo del scroll, que antes cada modal repetía por su cuenta.
 watch(
   () => props.modelValue,
   (open) => {

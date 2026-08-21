@@ -159,6 +159,12 @@
   color: #1565c0;
 }
 
+.light-theme .about-image .image-wrapper img {
+  box-shadow:
+    0 12px 28px rgba(21, 101, 192, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
 .light-theme .contact-item {
   background: rgba(100, 181, 246, 0.08);
   border-color: rgba(100, 181, 246, 0.3);
@@ -501,6 +507,8 @@
   width: 250px;
   border-radius: 50%;
   display: block;
+  /* Sombra difusa que la despega del fondo. Solo en tema claro: sobre el
+     fondo oscuro no se distinguiría. */
   /* Sin filtro: el fondo de la foto ya está en la paleta del sitio. */
   transition: transform 0.4s ease;
 }
